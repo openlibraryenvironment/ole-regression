@@ -1,4 +1,4 @@
-$test_site = "tst.ole.kuali.org"
+$test_site = "qa.ole.kuali.org"
 
 #$target_folder = File.expand_path("../lib/resources", "#{File}" )
 $: << File.dirname(__FILE__)+'/../../lib'

@@ -8,18 +8,6 @@
 module Workflows
   @@status="null"
 
-
-
-
-  def initialize(browser , opts={})
-    @browser = browser
-
-    defaults = {
-        loan_item_barcode: 0
-    }
-    set_options(defaults.merge(opts))
-  end
-
   def log_in(username)
 
     visit OLELoginPage do |page|
@@ -27,28 +15,6 @@ module Workflows
       # sleep(20)
       page.ole_login.set username
     end
-  end
-
-  def uniq_alphanums
-    @currenttime = DateTime.now
-    @day = @currenttime.strftime("%d")
-    @month = @currenttime.strftime("%b")
-    @hour = @currenttime.strftime("%H")
-    @min = @currenttime.strftime("%M")
-    @sec = @currenttime.strftime("%S")
-    @year = @currenttime.strftime("%Y")
-    @day+@month+@year+@hour+@min+@sec
-  end
-
-  def uniq_number
-    @currenttime = DateTime.now
-    @day = @currenttime.strftime("%d")
-    @month = @currenttime.strftime("%m")
-    @hour = @currenttime.strftime("%H")
-    @min = @currenttime.strftime("%M")
-    @sec = @currenttime.strftime("%S")
-    @year = @currenttime.strftime("%Y")
-    @day+@month+@year+@hour+@min+@sec
   end
 
 
@@ -109,7 +75,7 @@ module Workflows
       page.search_req.click
       sleep(10)
       @doc_status= page.doc_status
-      @doc_status.should == 'FINAL'
+      @doc_status.should match 'FINAL'
       page.doc_id_link.click
       sleep(10)
       page.windows[2].use
@@ -118,7 +84,7 @@ module Workflows
       sleep(10)
       page.windows[3].use
       @purchase_order_status= page.purchase_order_status
-      @purchase_order_status.should == 'FINAL'
+      @purchase_order_status.should match 'FINAL'
 
     end
 
@@ -168,11 +134,10 @@ module Workflows
       sleep(10)
       page.blanketApprove.click
 # Navigate to the Doc Search screen to fetch the purchase order
-      sleep(20)
+      sleep(10)
       page.doc_search.click
       sleep(10)
       page.doc_id.set @doc_value
-      sleep(10)
       page.search_req.click
       sleep(10)
 # @doc_status= page.doc_status
@@ -215,22 +180,23 @@ module Workflows
       page.add_po.click
       sleep(5)
       page.blanketApprove_invoice
-      sleep(30)
+      sleep(10)
     end
   end
 
   def search_purchase_order_status()
-    visit CreateReq do |page|
-      sleep(25)
-      page.doc_search.click
-      sleep(25)
-      page.doc_id.set @purchase_order_Doc_id
-      sleep(25)
-      page.search_req.click
-      sleep(30)
-      @doc_status= page.doc_status
 
-      @doc_status.should == 'PROCESSED'
+    visit CreateReq do |page|
+
+      sleep(10)
+      page.doc_search.click
+      sleep(10)
+      page.doc_id.set @purchase_order_Doc_id
+      sleep(5)
+      page.search_req.click
+      sleep(10)
+      @doc_status= page.doc_status
+      @doc_status.should match 'PROCESSED'
       sleep(10)
       page.doc_id_link.click
       sleep(10)
@@ -240,7 +206,82 @@ module Workflows
       sleep(10)
       page.windows[3].use
       @purchase_order_status= page.purchase_order_status
-      @purchase_order_status.should == 'FINAL'
+      @purchase_order_status.should match 'FINAL'
+
+    end
+
+  end
+
+  def check_inactive_patron()
+
+    visit CheckOut_Item do |page|
+    page.deliver.click
+    page.loan.click
+    sleep(5)
+    page.select_patron.click
+    sleep(5)
+    page.patron_id.click
+    page.patron_id.set "10001"
+    page.search.click
+    sleep(5)
+    page.return_patron.click
+    sleep(5)
+    @@status =  page.patron_message
+    puts "The message is:#@@status"
+    end
+
+  end
+
+  def verify_patron_message
+    @@status.should match /\d.\sThis patron\Ws record has been marked inactive. Do you want to continue\W/
+      sleep(5)
+
+  end
+
+  def checkoutitem()
+    visit CheckOut_Item do |page|
+      page.deliver.click
+      page.loan.click
+      sleep(5)
+      page.circulation_desk.select("BL_EDUC")
+      sleep(3)
+      page.select_circulation_desk.click
+      sleep(5)
+      page.select_patron.click
+      sleep(5)
+      page.patron_id.click
+      page.patron_id.set "00531853E"
+      page.search.click
+      sleep(5)
+      page.return_patron.click
+      sleep(5)
+      page.fast_add_item.click
+      sleep(5)
+      page.item_title.set "test"
+      page.location.set "B-EDUC/BED-STACKS"
+      page.barcode.set "028"
+      page.item_type.select("Book")
+      page.call_number_type.select("Library of Congress Classification (LCC)")
+      page.checkin_note.set "testing"
+      sleep(5)
+      page.submit.click
+      page.checkout.click
+      sleep(3)
+      page.send_keys :enter
+      sleep(5)
+      @@status=page.status
+      puts "Item status is #@@status"
+      sleep(3)
+
     end
   end
-  end
+
+  def check_itemstatus()
+    @@status.should == 'LOANED'
+    sleep(5)
+    end
+
+
+
+
+end
