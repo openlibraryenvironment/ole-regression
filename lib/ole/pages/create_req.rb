@@ -25,7 +25,7 @@ class CreateReq < PageFactory #< BasePage
   element(:dataField_tag_id_line0_control) { |b| b.iframe(id:"iframeportlet").form(id:"kualiForm").text_field(:id, "dataField_value_id_line0_control")}
   element(:submitEditor) { |b| b.iframe(id:"iframeportlet").form(id:"kualiForm").button(:id, "submitEditor")}
 
-#Requ Window
+  #Requ Window
 
   element(:location) { |b| b.iframe(id:"iframeportlet").select_list(id: "newPurchasingItemLine.itemLocation")}
   element(:listPrice) { |b| b.iframe(id:"iframeportlet").text_field(:id, "newPurchasingItemLine.itemListPrice")}
@@ -43,14 +43,14 @@ class CreateReq < PageFactory #< BasePage
   element(:sourceAnchor) { |b| b.iframe(id:"iframeportlet").input(:name, "methodToCall.insertSourceLine.line0.anchoraccountingSourceAnchor")}
   element(:institutionalInfo) { |b| b.iframe(id:"iframeportlet").input(:id, "tab-AdditionalInstitutionalInfo-imageToggle")}
   element(:blanketApprove) { |b| b.iframe(id:"iframeportlet").input(:name, "methodToCall.blanketApprove")}
-# Doc Search Page
+  # Doc Search Page
   element(:doc_search) { |b| b.img(alt:"doc search") }
   element(:doc_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"documentId") }
   element(:search_req) { |b| b.iframe(id:"iframeportlet").input(title:"search") }
   element(:doc_status) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:3).text}
   element(:doc_id_link) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:0).a(title:"")}
 
-# Elements to get the Doc Status
+  # Elements to get the Doc Status
   element(:tab_viewRelatedDocuments) { |b| b.input(id:"tab-ViewRelatedDocuments-imageToggle") }
   element(:purchase_order_id_link) { |b| b.a(href:/&command=displayDocSearchView$/) }
   element(:purchase_order_status) { |b| b.iframe(id:"iframeportlet").td(index:1).text}
@@ -65,11 +65,17 @@ class CreateReq < PageFactory #< BasePage
   element(:select_acquire_red) { |b| b.link(class: "red", title:"Select/Acquire") }
 
   element(:vendor_select_invoice_page) { |b| b.iframe(id:"iframeportlet").select_list(:id, "invoice-vendorHeaderIdentifier_control")}
-  element(:invoice_date) { |b| b.iframe(id:"iframeportlet").text_field(id:"invoice-invoiceDate_control") }
+  element(:invoice_date) { |b| b.iframe(id:"iframeportlet").text_field(id:"invoice-invoiceDate_control")}
   element(:invoice_amount) { |b| b.iframe(id:"iframeportlet").text_field(id: "invoice-invoiceVendorAmount_control")}
-  element(:process_item_link) { |b| b.iframe(id:"iframeportlet").link(text: "Process Items") }
+  element(:payment_method) { |b| b.iframe(id:"iframeportlet").select(id:"invoice-paymentMethod_control")}
+  element(:process_item_link) { |b| b.iframe(id:"iframeportlet").link(text: "Process Items")}
   element(:purchase_order_search) { |b| b.iframe(id:"iframeportlet").text_field(id: "OleInvoice_POLookup_control")}
-  element(:add_po) { |b| b.iframe(id:"iframeportlet").button(id: "addPOItems_button_test_line0") }
+  element(:add_po) { |b| b.iframe(id:"iframeportlet").button(id: "addPOItems_button_test_line0")}
   action(:blanketApprove_invoice) { |b| b.iframe(id:"iframeportlet").button(text:"blanket approve").click}
+
+  action(:address) { |b| b.iframe(id:"iframeportlet").input(name:"methodToCall.performLookup.(!!org.kuali.ole.sys.businessobject.Building!!).(((buildingCode:document.deliveryBuildingCode,buildingName:document.deliveryBuildingName,campusCode:document.deliveryCampusCode,buildingStreetAddress:document.deliveryBuildingLine1Address,buildingAddressCityName:document.deliveryCityName,buildingAddressStateCode:document.deliveryStateCode,buildingAddressZipCode:document.deliveryPostalCode,buildingAddressCountryCode:document.deliveryCountryCode))).((`document.deliveryCampusCode:campusCode`)).((<>)).(([])).((**)).((^^)).((&&)).((//)).((~~)).(::::;;::::).anchor").when_present(60).click}
+  element(:room) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.deliveryBuildingRoomNumber")}
+  action(:search_address) { |b| b.iframe(id:"iframeportlet").input(alt:"search").when_present(60).click}
+  action(:return_address) { |b| b.iframe(id:"iframeportlet").a(text:"return value").when_present(60).click}
 
 end

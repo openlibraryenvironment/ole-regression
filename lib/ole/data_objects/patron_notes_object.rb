@@ -4,9 +4,9 @@ class PatronNotesObject < DataFactory
   include StringFactory
   include Workflows
 
-   attr_accessor :note_type,
-                 :note_text,
-                 :note_level
+  attr_accessor :note_type,
+                :note_text,
+                :note_level
 
   def generate_random_string(length=6)
     string = ""
@@ -48,7 +48,7 @@ class PatronNotesObject < DataFactory
   end
 
 
-  end
+end
 
 
 

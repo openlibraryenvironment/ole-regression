@@ -27,13 +27,10 @@ class Circulation_desk < DataFactory
     @count_level= 0
     visit Circulationdesk do |page|
       page.maintenance
-      sleep(5)
       page.circ
-      sleep(10)
       page.circulation_desk_code.set @circulationdesk_code
       sleep(5)
       page.circ_search
-      sleep(5)
       page.edit_circ
       sleep(5)
       page.description.set "test"
@@ -59,4 +56,4 @@ class Circulation_desk < DataFactory
   end
 
 
-  end
+end

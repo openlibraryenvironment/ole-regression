@@ -76,9 +76,7 @@ class PatronObject < DataFactory
   def create(opts={})
     on PatronPage do |page|
       page.deliver
-      sleep(3)
       page.patron
-      sleep(3)
       page.create_new
       sleep(3)
       page.overview
@@ -108,9 +106,6 @@ class PatronObject < DataFactory
 
     end
   end
-
-
-
   def create_patron_with_proxy
     visit PatronPage do |page|
       page.patron
@@ -140,7 +135,7 @@ class PatronObject < DataFactory
       page.add_email
       sleep(3)
       page.proxypatron
-      sleep(5)
+      sleep(10)
       page.add_proxy_barcode.set @proxy_patron_barcode
       #page.proxy_search_field
       #page.search_proxy
@@ -155,8 +150,6 @@ class PatronObject < DataFactory
       sleep(5)
     end
   end
-
-
 
   def create_patron_with_notes
     visit PatronPage do |page|
@@ -198,7 +191,7 @@ class PatronObject < DataFactory
     end
   end
 
-    def edit_patrons
+  def edit_patrons
     visit PatronPage do |page|
       page.patron
       sleep(3)
@@ -252,9 +245,5 @@ class PatronObject < DataFactory
 
     end
   end
-
-
-
-
 end
 

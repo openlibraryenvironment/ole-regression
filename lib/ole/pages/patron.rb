@@ -3,9 +3,9 @@ class PatronPage < PageFactory
 
   #Create a new patron
   action(:deliver) { |b| b.link(class:"red" , title:"Deliver").click}
-  action(:patron) { |b| b.link(class:"portal_link" , title:"Patron").click}
-  action(:create_new) { |b| b.iframe(id:"iframeportlet").a(class:"uif-actionLink uif-createNewLink uif-boxLayoutHorizontalItem").click}
-  action(:overview) { |b| b.iframe(id:"iframeportlet").img(id:"OlePatronDocument-OverviewSection_toggle_col").click}
+  action(:patron) { |b| b.link(class:"portal_link" , title:"Patron").when_present(60).click}
+  action(:create_new) { |b| b.iframe(id:"iframeportlet").a(class:"uif-actionLink uif-createNewLink uif-boxLayoutHorizontalItem").when_present(60).click}
+  action(:overview) { |b| b.iframe(id:"iframeportlet").img(id:"OlePatronDocument-OverviewSection_toggle_col").when_present(60).click}
   element(:barcode) { |b| b.iframe(id:"iframeportlet").text_field(id:"barcode_control")}
   element(:borrowertype) { |b| b.iframe(id:"iframeportlet").select(id:"borrowerType_control")}
   element(:expiration_date) { |b| b.iframe(id:"iframeportlet").text_field(id:"expirationDate_control")}
@@ -23,10 +23,10 @@ class PatronPage < PageFactory
   action(:submit) { |b| b.iframe(id:"iframeportlet").button(id:"oleSubmit").when_present.click}
 
   #Doc_search
-  action(:doc_search) { |b| b.img(alt:"doc search").click}
-  action(:search) { |b| b.iframe(id:"iframeportlet").button(title:"search").click}
-  value(:patronstatus) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:3).text}
-  action(:open_patron) { |b| b.iframe(id:"iframeportlet").table(id:"row").a(title:"").click}
+  action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
+  action(:search) { |b| b.iframe(id:"iframeportlet").button(title:"search").when_present(60).click}
+  value(:patronstatus) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:3).when_present.text}
+  action(:open_patron) { |b| b.iframe(id:"iframeportlet").table(id:"row").a(title:"").when_present.click}
   action(:open_proxypatron) { |b| b.form(id:"kualiForm").div(id:"OlePatronDocument-ProxySection-Wrapper").span(class:"uif-headerText-span").a(text:"Proxy Patron").when_present.click}
   value(:proxypatron_barcode) { |b| b.form(id:"kualiForm").div(id:"barcode_Proxy_line0").span(id:"barcode_Proxy_line0_control").when_present.text}
 
@@ -39,11 +39,11 @@ class PatronPage < PageFactory
   action(:return_proxy) { |b| b.iframe(class:"fancybox-iframe").a(text:"return value").when_present.click}
   element(:proxy_activation_date) { |b| b.iframe(id:"iframeportlet").text_field(id:"proxyPatronActivationDate_Proxy_add_control")}
   element(:proxy_expiration_date) { |b| b.iframe(id:"iframeportlet").text_field(id:"proxyPatronExpirationDate_Proxy_add_control")}
-  action(:add_proxypatron) { |b| b.iframe(id:"iframeportlet").button(id:"addProxyPatron_add").click}
+  action(:add_proxypatron) { |b| b.iframe(id:"iframeportlet").button(id:"addProxyPatron_add").when_present.click}
 
   #For Notes
   action(:open_note) { |b| b.form(id:"kualiForm").a(text:"Note").when_present.click}
-  action(:note) { |b| b.iframe(id:"iframeportlet").a(text:"Note").click}
+  action(:note) { |b| b.iframe(id:"iframeportlet").a(text:"Note").when_present.click}
   element(:note_type) { |b| b.iframe(id:"iframeportlet").select(id:"patronNoteTypeId_add_control")}
   element(:note_text) { |b| b.iframe(id:"iframeportlet").textarea(id:"patronNoteText_add_control")}
   action(:add_note) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_add").when_present.click}

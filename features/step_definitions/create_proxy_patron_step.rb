@@ -17,22 +17,23 @@ Then (/^Status should be FINAL$/) do
 
   #@patron_with_proxy.search_proxy_patron
   @proxy_patron_barcode = @proxy.patron_barcode
-    visit PatronPage do |page|
-      page.doc_search
-      sleep(3)
-      page.search
-      sleep(5)
-      @patronstatus = page.patronstatus
-      puts "Patron is #@patronstatus"
-      page.patronstatus.should == 'FINAL'
-      page.open_patron
-      page.windows[1].use
-      page.open_proxypatron
-      @proxypatron_barcode = page.proxypatron_barcode
-      puts "proxy patron barcode while search #@proxypatron_barcode"
-      page.proxypatron_barcode.should == @proxy_patron_barcode
-      sleep(5)
+  visit PatronPage do |page|
+    page.doc_search
+    page.search
+    sleep(10)
+    @patronstatus = page.patronstatus
+    puts "Patron is #@patronstatus"
+    page.patronstatus.should == 'FINAL'
+    page.open_patron
+    sleep(10)
+    page.windows[1].use
+    page.open_proxypatron
+    sleep(5)
+    @proxypatron_barcode = page.proxypatron_barcode
+    puts "proxy patron barcode while search #@proxypatron_barcode"
+    page.proxypatron_barcode.should == @proxy_patron_barcode
+    sleep(5)
 
-    end
   end
+end
 

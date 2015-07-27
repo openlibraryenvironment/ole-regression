@@ -8,7 +8,7 @@ When(/^I scan patron barcode for checkOut an item/)do
   @patron = create PatronObject , :patron_barcode => uniq_alphanums
 
 
-  @loan_item = make Checkout_item_with_activepatron ,:item_barcode => uniq_number
+  @loan_item = make CheckoutWithPatron ,:item_barcode => uniq_number
   @loan_item.checkout_item(@patron.patron_barcode)
 
 end
