@@ -6,7 +6,7 @@ When(/^I altered the due date for loaned item$/) do
 
   @patron_object_for_loan = create PatronObject , :patron_barcode => uniq_alphanums
 
-  @loaning = make Checkout_item_with_activepatron ,:item_barcode => uniq_number
+  @loaning = make CheckoutWithPatron ,:item_barcode => uniq_number
   @loaning.checkout_item(@patron_object_for_loan.patron_barcode)
 
   @renew_item = create Loan , :item_barcode => @loaning.item_barcode

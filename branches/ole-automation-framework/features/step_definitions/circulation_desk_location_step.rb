@@ -1,9 +1,9 @@
 Given(/^I am log in as ole-quickstart$/) do
-    log_in("ole-quickstart")
+  log_in("ole-quickstart")
 end
 When(/^I am setting pickup location$/) do
-    @circ_desk = make Circulation_desk
-    @circ_desk.create
+  @circ_desk = make Circulation_desk
+  @circ_desk.create
 end
 
 Then(/^document should be successfully submit$/) do
@@ -12,9 +12,7 @@ Then(/^document should be successfully submit$/) do
   @count_level = 0
   on Circulationdesk do |page|
     page.doc_search
-    sleep(3)
     page.search
-    sleep(3)
     page.open_circ
     sleep(10)
     page.windows[1].use

@@ -10,10 +10,10 @@ class Loan < DataFactory
 
   def initialize(browser , opts={})
     @browser = browser
-        defaults = {
+    defaults = {
 
-            altered_due_date: "07/06/2015"
-        }
+        altered_due_date: (Date.today-1).strftime("%m/%d/%Y")
+    }
     set_options(defaults.merge(opts))
   end
 
@@ -25,7 +25,7 @@ class Loan < DataFactory
       sleep(5)
       page.set_due_date.set @altered_due_date
       page.alter_due_date_button
-      sleep(5)
+      sleep(10)
       @due_date = page.get_due_date
       puts "Item due date #@due_date"
       sleep(3)
@@ -38,5 +38,5 @@ class Loan < DataFactory
       sleep(5)
     end
   end
-  end
+end
 

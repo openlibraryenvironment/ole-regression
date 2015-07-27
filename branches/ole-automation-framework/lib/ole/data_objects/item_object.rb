@@ -24,7 +24,6 @@ class ItemObject < DataFactory
 
     visit RecallRequest do |page|
       page.deliver
-      sleep(3)
       page.item_search
       page.item_id.set item_id
       page.click_item_search
@@ -34,15 +33,15 @@ class ItemObject < DataFactory
 
   def place_request patron_barcode
     on RecallRequest do |page|
-    page.open_request
-    page.place_request
-    page.windows[1].use
-    page.patron_detail.set patron_barcode
-    page.send_keys :enter
-    page.conform_patron
-    page.check_recall
-    page.request_submit
-    sleep(10)
+      page.open_request
+      page.place_request
+      page.windows[1].use
+      page.patron_detail.set patron_barcode
+      page.send_keys :enter
+      page.conform_patron
+      page.check_recall
+      page.request_submit
+      sleep(10)
     end
   end
 
@@ -51,7 +50,6 @@ class ItemObject < DataFactory
   def item_search item_id
     visit RecallRequest do |page|
       page.open_deliver
-      sleep(15)
       page.item_search
       page.item_id.set item_id
       page.click_item_search
@@ -64,7 +62,6 @@ class ItemObject < DataFactory
       page.open_request
       page.place_request
       page.windows[1].use
-      sleep(10)
       page.patron_detail.set patron_barcode
       page.send_keys :enter
       page.conform_patron

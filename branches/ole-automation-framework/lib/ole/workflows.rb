@@ -61,6 +61,12 @@ module Workflows
 
       @doc_value = page.doc_no_value
       puts @doc_value
+      if page.room.value == ""
+        page.address
+        page.search_address
+        page.return_address
+        page.room.set '001'
+      end
       page.tab_vendor.click
       page.vendor_alias_name.set 'ybp'
       page.vendor_select.click
@@ -131,9 +137,14 @@ module Workflows
       page.select_acquire.click
       page.create_btn.click
 
-
       @doc_value = page.doc_no_value
       puts @doc_value
+      if page.room.value == ""
+        page.address
+        page.search_address
+        page.return_address
+        page.room.set '001'
+      end
       page.tab_vendor.click
       page.vendor_alias_name.set 'ybp'
       page.vendor_select.click
@@ -204,6 +215,9 @@ module Workflows
       page.invoice_date.set '05/10/2015'
       puts "Setting Invoice Amount"
       page.invoice_amount.set '10'
+      sleep(5)
+      page.payment_method.select 'Check'
+      sleep(5)
       page.process_item_link.click
       sleep(10)
       puts "Searching purchase order"
@@ -229,7 +243,6 @@ module Workflows
       page.search_req.click
       sleep(30)
       @doc_status= page.doc_status
-
       @doc_status.should == 'PROCESSED'
       sleep(10)
       page.doc_id_link.click
@@ -243,4 +256,4 @@ module Workflows
       @purchase_order_status.should == 'FINAL'
     end
   end
-  end
+end
