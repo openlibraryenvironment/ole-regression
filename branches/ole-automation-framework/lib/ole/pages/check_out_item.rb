@@ -14,6 +14,7 @@ class CheckOut_Item < PageFactory
   action(:search) { |b| b.iframe(class:"fancybox-iframe").button(text:"Search").when_present.click}
   element(:return_patron) { |b| b.iframe(class:"fancybox-iframe").a(text:"return value")}
   element(:patron_message) { |b| b.iframe(id:"iframeportlet").div(id:"message_return").text}
+  value(:selected_circulation_desc) { |b| b.iframe(id:"iframeportlet").select(id:"LoanCirculationDesk_control").value}
   #checkout an item
   action(:fast_add_item) { |b| b.iframe(id:"iframeportlet").button(id:"FastAddItemSectionLink").when_present(60).click}
   element(:item_title) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").text_field(id:"addTitle_control").when_present(60)}
@@ -21,6 +22,9 @@ class CheckOut_Item < PageFactory
   element(:barcode) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").text_field(id:"barcode_control")}
   element(:item_type) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").select_list(id:"itemType_control")}
   element(:call_number_type) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").select_list(id:"callNumberType_control")}
+  element(:callnumber) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").input(name:"oleLoanFastAdd.callNumber").value}
+  element(:return_circulation_desc) { |b| b.iframe(id:"iframeportlet").select(id:"ReturnCirculationDesk_control").value}
+  element(:set_call_number) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").text_field(name:"oleLoanFastAdd.callNumber")}
   element(:checkout_note) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").text_field(id:"checkinNote_control")}
   action(:submit) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").button(id:"saveFastAddItemBtn").when_present.click}
   element(:checkout) { |b| b.iframe(id:"iframeportlet").input(id:"Patron-item_control")}

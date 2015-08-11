@@ -34,8 +34,11 @@ class CheckoutWithPatron < DataFactory
     visit CheckOut_Item do |page|
       page.deliver
       page.loan
-      page.circulation_desk.select(@circulation_desk)
-      page.select_circulation_desk
+      if(page.selected_circulation_desc != "1")
+        page.circulation_desk.select(@circulation_desk)
+        sleep(5)
+        page.select_circulation_desk
+      end
       sleep(5)
       page.set_patron_barcode.set patron_barcode
       page.send_keys :enter
@@ -45,6 +48,9 @@ class CheckoutWithPatron < DataFactory
       page.barcode.set @item_barcode
       page.item_type.select(@item_type)
       page.call_number_type.select(@callnumber_type)
+      if(page.callnumber == "")
+        page.set_call_number.set 'abc'
+      end
       page.checkout_note.set @note
       page.submit
       sleep(10)
@@ -64,9 +70,11 @@ class CheckoutWithPatron < DataFactory
       page.deliver
       page.return
       sleep(3)
-      page.return_circ_desk.select ("BL_EDUC")
-      page.change_return_location
-      sleep(5)
+      if(page.return_circulation_desc != "1")
+        page.return_circ_desk.select ("BL_EDUC")
+        page.change_return_location
+        sleep(5)
+      end
       page.return_item.set item_barcode
       page.send_keys :enter
       page.checkin_note

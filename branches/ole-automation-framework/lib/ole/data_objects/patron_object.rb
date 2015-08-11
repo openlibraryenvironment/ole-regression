@@ -26,7 +26,9 @@ class PatronObject < DataFactory
                 :existing_field,
                 :deleted_text,
                 :count_of_total_notes,
-                :remaining_count
+                :remaining_count,
+                :patron_feetype,
+                :patron_amount
 
 
 
@@ -64,7 +66,9 @@ class PatronObject < DataFactory
         patron_status: "FINAL",
         proxy_patron_barcode: "1018",
         proxy_patron_activation_date: "11/26/2016",
-        proxy_patron_expiration_date: "11/26/2060"
+        proxy_patron_expiration_date: "11/26/2060",
+        patron_feetype: ["Overdue Fine","Replacement Fee","Service Fee"].sample,
+        patron_amount: '100'
 
 
 
@@ -243,6 +247,26 @@ class PatronObject < DataFactory
       page.submit
       sleep(5)
 
+    end
+  end
+
+  def create_patron_bill patron_fee_amount
+
+    visit PatronPage do |page|
+      page.patron
+      sleep(3)
+      page.patron_barcode.set @patron_barcode
+      page.search_patron_barcode
+      page.createbill
+      page.windows[1].use
+      page.feetype.select(@patron_feetype)
+      page.feeamount.set patron_fee_amount
+      page.addfee
+      sleep(10)
+      $fee_amount=page.patron_amount
+      page.patron_submit
+      sleep(10)
+      page.windows[1].close
     end
   end
 end

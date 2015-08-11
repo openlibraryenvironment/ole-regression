@@ -20,6 +20,11 @@
      When I have edited a patron with notes
      Then the deleted note no longer exists
 
+   Scenario: Create patron bill
+     Given I log in as ole_quickstart
+     When I give feetype and amount in patron bill
+     Then the patron bill should create with current date
+
 
 
 
