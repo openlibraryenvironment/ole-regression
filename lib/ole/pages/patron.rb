@@ -20,7 +20,7 @@ class PatronPage < PageFactory
   action(:deliver_address) { |b| b.iframe(id:"iframeportlet").input(id:"deliverAddress_add_control").click}
   action(:default_value) { |b| b.iframe(id:"iframeportlet").input(id:"defaultValue_add_control").click}
   action(:add_address) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-Address_add").click}
-  action(:submit) { |b| b.iframe(id:"iframeportlet").button(id:"oleSubmit").when_present.click}
+  action(:submit) { |b| b.iframe(id:"iframeportlet").button(id:"olePatronSubmit").when_present.click}
 
   #Doc_search
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
@@ -46,7 +46,7 @@ class PatronPage < PageFactory
   action(:note) { |b| b.iframe(id:"iframeportlet").a(text:"Note").when_present.click}
   element(:note_type) { |b| b.iframe(id:"iframeportlet").select(id:"patronNoteTypeId_add_control")}
   element(:note_text) { |b| b.iframe(id:"iframeportlet").textarea(id:"patronNoteText_add_control")}
-  action(:add_note) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_add").when_present.click}
+  action(:add_note) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection-add_add").when_present.click}
   #action(:delete_note) { |notes_level,b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection-delete_line#{notes_level-1}").when_present.click}
   action(:delete_note) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection-delete_line0").click}
   value(:added_note_text0) { |b| b.form(id:"kualiForm").span(id:"patronNoteText_line0_control").text}
@@ -66,7 +66,16 @@ class PatronPage < PageFactory
   action(:activate_email_addr) { |b| b.iframe(id:"iframeportlet").input(id:"email_active_add_control").click}
   action(:active_indicator) { |b| b.iframe(id:"iframeportlet").input(id:"activeIndicator_control").click}
   value(:existing_note_text) { |b| b.iframe(id:"iframeportlet").div(id:"patronNoteText_line0").text}
-
-
+  #for patron bill
+  action(:createbill) { |b| b.iframe(id:"iframeportlet").a(text:"Create Bill").when_present(60).click}
+  element(:feetype) { |b| b.form(id:"kualiForm").select(id:"fee_feeType_add_control")}
+  element(:feeamount) { |b| b.form(id:"kualiForm").text_field(id:"feeAmt_add_control")}
+  action(:addfee) { |b| b.form(id:"kualiForm").button(id:"addFee_add").when_present.click}
+  action(:patron_submit) { |b| b.form(id:"kualiForm").button(id:"oleSubmit").when_present(60).click}
+  action(:patron_bill_link) { |b| b.iframe(id:"iframeportlet").a(text:"Patron Bill").when_present(60).click}
+  element(:enabled_patron_bill) { |b| b.iframe(id:"iframeportlet").a(text:"Patron Bill")}
+  value(:bill_date) { |b| b.form(id:"kualiForm").span(id:"billDate_line0_control").when_present.text}
+  value(:patron_amount) { |b| b.form(id:"kualiForm").span(id:"feeAmt_line0_control").when_present.text}
+  value(:view_patron_amount) { |b| b.form(id:"kualiForm").span(id:"totalFeeAmount_line0_control").when_present.text}
 
 end
