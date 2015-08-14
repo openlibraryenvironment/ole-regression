@@ -77,5 +77,6 @@ class CreateReq < PageFactory #< BasePage
   element(:room) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.deliveryBuildingRoomNumber")}
   action(:search_address) { |b| b.iframe(id:"iframeportlet").input(alt:"search").when_present(60).click}
   action(:return_address) { |b| b.iframe(id:"iframeportlet").a(text:"return value").when_present(60).click}
+  value(:po_number) { |b| b.form(id:"kualiForm").a(target:"_BLANK").text}
 
 end

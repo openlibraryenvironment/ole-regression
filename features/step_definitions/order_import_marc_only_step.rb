@@ -1,6 +1,7 @@
-When(/^I select Order Import Profile and upload a marc and edi file and start the job$/) do
+When(/^I select Order Import Profile and upload a marc file and start the job$/) do
 
-  @order_import = make BatchProcesses , :bib_import_file_name => "7eocra" , :bib_import_file_type => "mrc", :order_import_file_name => "7eocra" , :order_import_file_type => "edi"
+  @order_import = make BatchProcesses , :bib_import_file_name => "7eocra" , :bib_import_file_type => "mrc", :profile_type => "marc only"
+  @order_import.choose_file_type
   @order_import.create_order_import
 
 end

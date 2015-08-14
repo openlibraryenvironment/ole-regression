@@ -9,6 +9,7 @@ When(/^I create a new patron with notes$/) do
   @patron_note_delete.create_patron_with_notes
 end
 
+
 Then(/^Patron status should be FINAL$/) do
    #@patron_note_delete.search_patron
    on PatronPage do |page|
@@ -17,11 +18,19 @@ Then(/^Patron status should be FINAL$/) do
      sleep(5)
      page.doc_search
      sleep(3)
+     page.doc_id.set $document_id
+     sleep(3)
+
      page.search
      sleep(5)
-     page.patronstatus.should == 'FINAL'
+
      page.open_patron
      page.windows[1].use
+     sleep(10)
+     saved = page.doc_status
+     puts saved
+     page.doc_status.should == "FINAL"
+     sleep(3)
      page.open_note
      sleep(3)
      @count_of_total_notes = page.total_added_notes

@@ -3,6 +3,9 @@ class PatronPage < PageFactory
 
   #Create a new patron
   action(:deliver) { |b| b.link(class:"red" , title:"Deliver").click}
+  value(:doc_number) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:0).when_present(60).text}
+  value(:document_number) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.tr.td(index:0).when_present(60).text}
+  element(:doc_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"documentId") }
   action(:patron) { |b| b.link(class:"portal_link" , title:"Patron").when_present(60).click}
   action(:create_new) { |b| b.iframe(id:"iframeportlet").a(class:"uif-actionLink uif-createNewLink uif-boxLayoutHorizontalItem").when_present(60).click}
   action(:overview) { |b| b.iframe(id:"iframeportlet").img(id:"OlePatronDocument-OverviewSection_toggle_col").when_present(60).click}
@@ -24,6 +27,8 @@ class PatronPage < PageFactory
 
   #Doc_search
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
+  value(:doc_status) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:1).text}
+  action(:doc_id_link) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:0).a(title:"").click}
   action(:search) { |b| b.iframe(id:"iframeportlet").button(title:"search").when_present(60).click}
   value(:patronstatus) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:3).when_present.text}
   action(:open_patron) { |b| b.iframe(id:"iframeportlet").table(id:"row").a(title:"").when_present.click}
