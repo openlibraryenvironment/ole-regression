@@ -32,7 +32,11 @@ class Batch_process < PageFactory
   action(:doc_id_link) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:0).a(title:"").when_present(60).click}
   #batch_process_profile
   action(:batch_process_profile) { |b| b.a(class:"portal_link" , title:"Batch Process Profile").when_present(60).click}
+  element(:batch_process_profile_name) { |b| b.iframe(id:"iframeportlet").text_field(id:"lookup-batchProcessProfileName_control")}
+  action(:search_profile) { |b| b.iframe(id:"iframeportlet").button(text:"Search").click}
+  action(:edit_profile) { |b| b.iframe(id:"iframeportlet").a(text:"edit").when_present(60).click}
   action(:new_profile) { |b| b.iframe(id:"iframeportlet").a(text:"Create New").when_present(60).click}
+  element(:marc_only) { |b| b.iframe(id:"iframeportlet").input(id:"mainSection-MaintenanceView-marcOnly_control")}
   element(:description) { |b| b.iframe(id:"iframeportlet").text_field(name:"document.documentHeader.documentDescription")}
   element(:profile_name) { |b| b.iframe(id:"iframeportlet").text_field(id:"mainSection-MaintenanceView-batchProcessProfileName_control")}
   action(:search_field) { |b| b.iframe(id:"iframeportlet").input(alt:"Search Field").click}

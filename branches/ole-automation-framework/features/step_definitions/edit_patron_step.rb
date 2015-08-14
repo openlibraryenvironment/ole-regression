@@ -11,6 +11,9 @@ When(/^I have edited a patron with notes$/) do
   @delete_notes.edit_patrons
 end
 
+
+
+
 Then(/^the deleted note no longer exists$/) do
 
   #@patron_with_notes.delete_notes :delete_collection => (make PatronNotesObject , :note_level => 1)
@@ -20,11 +23,16 @@ Then(/^the deleted note no longer exists$/) do
     @note_text = page.existing_note_text
     page.doc_search
     sleep(3)
+    page.doc_id.set $document_id
+    sleep(3)
     page.search
     sleep(5)
-    page.patronstatus.should == 'FINAL'
     page.open_patron
     page.windows[1].use
+    sleep(3)
+    saved = page.doc_status
+    puts saved
+    page.doc_status.should == "FINAL"
     page.open_note
     sleep(3)
     @remaining_count = page.total_added_notes

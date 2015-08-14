@@ -105,6 +105,8 @@ class PatronObject < DataFactory
       page.activate_email_addr
       page.add_email
       sleep(3)
+      $document_id = page.doc_number
+      puts $document_id
       page.submit
       sleep(5)
 
@@ -150,6 +152,8 @@ class PatronObject < DataFactory
       #page.proxy_activation_date.set @proxy_patron_activation_date
       #page.proxy_expiration_date.set @proxy_patron_expiration_date
       page.add_proxypatron
+      $document_id = page.doc_number
+      puts $document_id
       page.submit
       sleep(5)
     end
@@ -187,6 +191,8 @@ class PatronObject < DataFactory
       @notes_collection.each do |notes|
         notes.create
       end
+      $document_id = page.doc_number
+      puts $document_id
       page.submit
       sleep(5)
       @created_note_text0 = page.note_created_text0
@@ -208,6 +214,8 @@ class PatronObject < DataFactory
       puts "deleted note text is #@deleted_text"
       sleep(3)
       page.delete_note
+      $document_id = page.doc_number
+      puts $document_id
       page.submit
       sleep(5)
     end
@@ -254,11 +262,14 @@ class PatronObject < DataFactory
 
     visit PatronPage do |page|
       page.patron
-      sleep(3)
+
       page.patron_barcode.set @patron_barcode
       page.search_patron_barcode
       page.createbill
       page.windows[1].use
+      sleep(3)
+      $document_id = page.document_number
+      puts $document_id
       page.feetype.select(@patron_feetype)
       page.feeamount.set patron_fee_amount
       page.addfee

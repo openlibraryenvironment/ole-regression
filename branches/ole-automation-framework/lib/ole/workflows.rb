@@ -120,9 +120,12 @@ module Workflows
       sleep(10)
       page.windows[2].use
       page.tab_viewRelatedDocuments.click
+      $purchase_order_number = page.po_number
+      puts "po number is #$purchase_order_number"
       page.purchase_order_id_link.click
       sleep(10)
       page.windows[3].use
+
       @purchase_order_status= page.purchase_order_status
       @purchase_order_status.should == 'FINAL'
 

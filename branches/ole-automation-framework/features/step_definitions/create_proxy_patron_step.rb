@@ -13,20 +13,25 @@ When (/^Create new patron with proxypatron$/) do
 
 end
 
+
+
 Then (/^Status should be FINAL$/) do
 
   #@patron_with_proxy.search_proxy_patron
   @proxy_patron_barcode = @proxy.patron_barcode
   visit PatronPage do |page|
     page.doc_search
+    sleep(3)
+    page.doc_id.set $document_id
+    sleep(3)
     page.search
     sleep(10)
-    @patronstatus = page.patronstatus
-    puts "Patron is #@patronstatus"
-    page.patronstatus.should == 'FINAL'
     page.open_patron
     sleep(10)
     page.windows[1].use
+    saved = page.doc_status
+    puts saved
+    page.doc_status.should == "FINAL"
     page.open_proxypatron
     sleep(5)
     @proxypatron_barcode = page.proxypatron_barcode

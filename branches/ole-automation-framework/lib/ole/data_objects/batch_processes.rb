@@ -18,7 +18,8 @@ class BatchProcesses < DataFactory
                 :invoice_import_profile_name,
                 :batchprocess_invoice_import,
                 :file_name,
-                :file_type
+                :file_type,
+                :profile_type
 
   def initialize(browser,opts={})
     @browser = browser
@@ -60,7 +61,7 @@ class BatchProcesses < DataFactory
 
   def create_order_import
     visit Batch_process do |page|
-      page.admin
+
       page.batch_process
       page.batch_process_type.select(@batchprocess_order_import)
       sleep(5)
@@ -73,11 +74,13 @@ class BatchProcesses < DataFactory
       puts marc_file_path
       page.upload_mrc_file.set marc_file_path
       sleep(10)
-      file_path = $target_folder+"/"+order_import_file_name+"."+order_import_file_type
-      puts "edi file"
-      puts file_path
-      page.upload_edi_file.set file_path
-      sleep(5)
+      if(@profile_type == "marc and edi")
+        file_path = $target_folder+"/"+order_import_file_name+"."+order_import_file_type
+        puts "edi file"
+        puts file_path
+        page.upload_edi_file.set file_path
+        sleep(5)
+      end
       page.submit_action
       sleep(10)
       page.windows[1].use
@@ -109,6 +112,39 @@ class BatchProcesses < DataFactory
       sleep(5)
       page.windows[1].use
       sleep(10)
+    end
+  end
+
+  def choose_file_type
+    visit Batch_process do |page|
+      page.admin
+      page.batch_process_profile
+      sleep(5)
+      page.batch_process_profile_name.set @order_import_profile_name
+      page.search_profile
+      sleep(5)
+      page.edit_profile
+      page.description.set @description
+      sleep(3)
+      if(@profile_type == "marc only")
+        if(page.marc_only.checked?.to_s == 'true')
+          puts "marc only"
+        else
+          page.marc_only.click
+          puts "selected marc only file"
+        end
+      else
+        if(@profile_type == "marc and edi")
+          if(page.marc_only.checked?.to_s == 'true')
+            page.marc_only.click
+            puts "selected marc and edi file"
+          else
+            puts "marc and edi"
+          end
+        end
+      end
+      page.submit
+      sleep(3)
     end
   end
 
