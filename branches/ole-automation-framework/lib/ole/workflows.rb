@@ -59,8 +59,8 @@ module Workflows
       page.create_btn.click
 
 
-      @doc_value = page.doc_no_value
-      puts @doc_value
+      $doc_value = page.doc_no_value
+      puts $doc_value
       if page.room.value == ""
         page.address
         page.search_address
@@ -87,7 +87,7 @@ module Workflows
       page.location.select("API")
       page.listPrice.set "10"
       page.addItem.click
-
+      page.windows[1].close
       page.accounting.click
       page.accountsCode.select("BL")
       page.accountNumber.set "1031400"
@@ -111,7 +111,7 @@ module Workflows
       sleep(10)
       page.doc_search.click
       sleep(10)
-      page.doc_id.set @doc_value
+      page.doc_id.set $doc_value
       page.search_req.click
       sleep(10)
       @doc_status= page.doc_status
@@ -133,6 +133,7 @@ module Workflows
 
   end
 
+
   # Creates a req and gets the purchase order number to initiate an Invoice
   def create_invoice
     visit CreateReq do |page|
@@ -140,8 +141,8 @@ module Workflows
       page.select_acquire.click
       page.create_btn.click
 
-      @doc_value = page.doc_no_value
-      puts @doc_value
+      $doc_value = page.doc_no_value
+      puts $doc_value
       if page.room.value == ""
         page.address
         page.search_address
@@ -185,7 +186,7 @@ module Workflows
       sleep(20)
       page.doc_search.click
       sleep(10)
-      page.doc_id.set @doc_value
+      page.doc_id.set $doc_value
       sleep(10)
       page.search_req.click
       sleep(10)
