@@ -58,7 +58,6 @@ module Workflows
       page.select_acquire.click
       page.create_btn.click
 
-
       $doc_value = page.doc_no_value
       puts $doc_value
       if page.room.value == ""
@@ -87,7 +86,7 @@ module Workflows
       page.location.select("API")
       page.listPrice.set "10"
       page.addItem.click
-      page.windows[1].close
+      #page.windows[1].close
       page.accounting.click
       page.accountsCode.select("BL")
       page.accountNumber.set "1031400"
