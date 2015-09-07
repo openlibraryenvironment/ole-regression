@@ -1,8 +1,8 @@
-Given(/^I log in with user name ole-quickstart$/) do
+Given(/^I log-in with user name ole-quickstart$/) do
   log_in("ole-quickstart")
 end
 
-When(/^I search record using po number and start creating serial receiving transaction$/) do
+When(/^I search record using PO number and start creating serial receiving transaction$/) do
   create_requsition()
   search_created_req()
   @serial_receiving = make Serial_receiving_transaction , :po_number => $purchase_order_number , :search_conditions => "Purchase Order No" , :line_level => 4

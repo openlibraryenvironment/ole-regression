@@ -7,7 +7,8 @@ class Marc_editor < DataFactory
 
   attr_accessor :line_level,
                 :item_barcode,
-                :local_id
+                :local_id,
+                :title
 
   def initialize(browser,opts={})
     @browser = browser
@@ -19,10 +20,11 @@ class Marc_editor < DataFactory
 
   def create_bib
     visit Marc_editor_fields do |page|
+
       page.describe
       page.open_marc_editor
       page.datafield_tag(opts=@line_level=0).set '245'
-      page.datafield_value(opts=@line_level=0).set 'Catch Me If You Can'
+      page.datafield_value(opts=@line_level=0).set @title
       page.add_tag_button(opts=@line_level=0)
       page.datafield_tag(opts=@line_level=1).set '100'
       page.datafield_value(opts=@line_level=1).set 'Steven Spielberg'
