@@ -20,5 +20,6 @@ Then(/^document status should be in SAVED$/) do
     saved = page.doc_status
     puts saved
     page.doc_status.should == "SAVED"
+    page.windows[1].close
   end
 end
