@@ -3,9 +3,11 @@ Given(/^I log-in with user name ole-quickstart$/) do
 end
 
 When(/^I search record using PO number and start creating serial receiving transaction$/) do
-  create_requsition()
-  search_created_req()
-  @serial_receiving = make Serial_receiving_transaction , :po_number => $purchase_order_number , :search_conditions => "Purchase Order No" , :line_level => 4
+  @requisition = make Requisition
+  @requisition.create_requsition
+  @requisition.get_PO_number
+
+  @serial_receiving = make Serial_receiving_transaction , :po_number => @requisition.purchase_order_number , :search_conditions => "Purchase Order No" , :line_level => 4
   @serial_receiving.create_serial_receiving_transaction
 end
 
@@ -16,10 +18,12 @@ Then(/^the document should be in SAVED status$/) do
       page.doc_id.set $document_id
       page.search_req
       page.doc_id_link
-      page.windows[4].use
+      page.windows[2].use
       sleep(10)
       saved = page.doc_status
       puts saved
       page.doc_status.should == "SAVED"
+      page.windows[2].close
+      page.windows[1].close
     end
 end

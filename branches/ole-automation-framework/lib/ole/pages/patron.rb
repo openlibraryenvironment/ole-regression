@@ -2,7 +2,10 @@ class PatronPage < PageFactory
   page_url $test_site
 
   #Create a new patron
-  action(:deliver) { |b| b.link(class:"red" , title:"Deliver").click}
+  action(:deliver_green) { |b| b.a(class:"green" , title:"Deliver").when_present(60).click}
+  element(:deliver_green_tab){ |b| b.a(class:"green" , title:"Deliver").exists?}
+  element(:deliver_red_tab){ |b| b.a(class:"red" , title:"Deliver").exists?}
+  action(:deliver_red) { |b| b.link(class:"red" , title:"Deliver").click}
   value(:doc_number) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:0).when_present(60).text}
   value(:document_number) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.tr.td(index:0).when_present(60).text}
   element(:doc_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"documentId") }

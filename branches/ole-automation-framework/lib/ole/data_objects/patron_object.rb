@@ -79,7 +79,11 @@ class PatronObject < DataFactory
 
   def create(opts={})
     on PatronPage do |page|
-      page.deliver
+      if (page.deliver_red_tab == true)
+        puts "deliver"
+      else
+        page.deliver_green
+      end
       page.patron
       page.create_new
       sleep(3)
