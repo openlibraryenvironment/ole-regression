@@ -5,7 +5,7 @@ end
 
 When(/^I create an  invoice using a purchase order$/) do
   @requisition = make Requisition
-  @requisition.create_requsition
+  @requisition.create_requsition_for_invoice
   @requisition.get_PO_number
 
   @invoice = make Invoice , :purchase_order_id => @requisition.purchase_order_number
