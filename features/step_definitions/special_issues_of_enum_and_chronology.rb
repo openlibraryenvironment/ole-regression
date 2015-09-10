@@ -25,6 +25,6 @@ Then(/^the  special issues informations should be saved$/) do
 
     page.show_enum_and_chrom
     page.enum_values.should  == @serial_receiving.issue_note
-
+    page.windows[1].close
   end
 end

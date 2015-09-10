@@ -1,5 +1,5 @@
 When(/^I search record using serial receiving record number and update the record values$/) do
-  @marc_editor = make Marc_editor , :item_barcode => uniq_number , :title => uniq_alphanums
+  @marc_editor = make Marc_editor , :item_barcode => uniq_number , :title => uniq_alphanums ,:issn_num => uniq_number
   @marc_editor.create_bib
   @marc_editor.create_holding
   @marc_editor.create_item

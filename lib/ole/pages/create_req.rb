@@ -4,7 +4,7 @@ class CreateReq < PageFactory #< BasePage
 
   page_url $test_site
   #expected_element :select_acquire,30
-
+  element(:open_select_acquire) {|b| b.link(class: "green", title:"Select/Acquire").exists?}
   action(:select_acquire) { |b| b.link(class: "green", title:"Select/Acquire").when_present(60).click}
   action(:create_btn) { |b| b.link(class: "portal_link", title:"Create").when_present(60).click}
 
