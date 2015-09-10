@@ -70,7 +70,7 @@ class Requisition < DataFactory
       page.location.select(@location)
       page.listPrice.set @list_price
       page.addItem
-      page.windows[1].close
+      #page.windows[1].close
       page.accounting
       page.accountsCode.select(@acc_code)
       page.accountNumber.set @acc_number
