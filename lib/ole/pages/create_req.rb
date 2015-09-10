@@ -1,14 +1,16 @@
 class CreateReq < PageFactory #< BasePage
 
 
-
+  puts"setting page url"
   page_url $test_site
   #expected_element :select_acquire,30
+  puts"selecting select and acquire tab"
   element(:open_select_acquire) {|b| b.link(class: "green", title:"Select/Acquire").exists?}
   action(:select_acquire) { |b| b.link(class: "green", title:"Select/Acquire").when_present(60).click}
   action(:create_btn) { |b| b.link(class: "portal_link", title:"Create").when_present(60).click}
-
+  puts"after selecting create requisition"
   element(:doc_no) { |b| b.iframe(id:"iframeportlet").input(name:"document.documentHeader.documentNumber") }
+  puts"after selecting documentnumber"
   value(:doc_no_value) { |b| b.iframe(id:"iframeportlet").div(id:"headerarea").table(class:"headerinfo").td(index:0).text }
 
   action(:tab_vendor) { |b| b.iframe(id:"iframeportlet").input(id:"tab-Vendor-imageToggle").when_present(60).click}
