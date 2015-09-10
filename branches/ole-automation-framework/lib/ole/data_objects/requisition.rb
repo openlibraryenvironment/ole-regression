@@ -36,12 +36,14 @@ class Requisition < DataFactory
   end
 
   def create_requsition
+    puts"inside create_requsition..."
     visit CreateReq do |page|
+      puts"after visiting the page"
       if(page.open_select_acquire == true)
       page.select_acquire
       end
       page.create_btn
-
+      puts"after selecting Requistion for creation"
       $doc_value = page.doc_no_value
       puts $doc_value
       if page.room.value == ""

@@ -1,13 +1,15 @@
 Given(/^I am logged in as an acquisition staff$/) do
+  puts"executing Given step of requisition creation"
   log_in("ole_quickstart")
-
+  puts"finished Given step of requisition creation"
 end
 
 
 When(/^I initiate a requisition document$/) do
+  puts"executing when step of requisition creation"
   @requisition = make Requisition
   @requisition.create_requsition
-
+  puts"finished when step of requisition creation"
 end
 
 
