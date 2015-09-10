@@ -31,6 +31,6 @@ Then(/^the removed special issues information should  no longer exists$/) do
     @issue_notes =  @serial_receiving.enumeration
     puts "note---->#@issue_notes"
     page.enum_values.should_not  == @serial_receiving.enumeration
-
+    page.windows[1].close
   end
 end

@@ -34,6 +34,6 @@ Then(/^the deleted informations should no longer exists$/) do
     puts"#@chron"
     page.enum_values.should_not  == @serial_receiving.enumeration
     page.chron_values.should_not == @serial_receiving.chronology
-
+    page.windows[1].close
   end
 end

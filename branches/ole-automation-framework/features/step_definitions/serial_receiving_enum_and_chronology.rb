@@ -29,6 +29,6 @@ Then(/^the enumeration and chronology informations should be saved$/) do
     puts"#@chron"
     @enum.should  == @serial_receiving.enumeration
     @chron.should == @serial_receiving.chronology
-
+    page.windows[1].close
   end
 end

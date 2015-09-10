@@ -8,12 +8,13 @@ class Marc_editor < DataFactory
   attr_accessor :line_level,
                 :item_barcode,
                 :local_id,
-                :title
+                :title,
+                :issn_num
 
   def initialize(browser,opts={})
     @browser = browser
     defaults={
-
+        issn_num: "10001"
     }
     set_options(defaults.merge(opts))
   end
@@ -31,6 +32,9 @@ class Marc_editor < DataFactory
       page.add_tag_button(opts=@line_level=1)
       page.datafield_tag(opts=@line_level=2).set '999'
       page.datafield_value(opts=@line_level=2).set '|b  DreamWorks'
+      page.add_tag_button(opts=@line_level=2)
+      page.datafield_tag(opts=@line_level=3).set '022'
+      page.datafield_value(opts=@line_level=3).set @issn_num
       page.bib_submit
       sleep(3)
     end
@@ -47,7 +51,9 @@ class Marc_editor < DataFactory
 
   def create_item
     on Marc_editor_fields do |page|
-      page.click_icon
+      if(page.open_item == false)
+        page.click_icon
+      end
       page.click_item
       page.windows[1].use
       page.set_barcode.set @item_barcode

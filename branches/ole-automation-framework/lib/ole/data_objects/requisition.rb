@@ -37,8 +37,9 @@ class Requisition < DataFactory
 
   def create_requsition
     visit CreateReq do |page|
-
+      if(page.open_select_acquire == true)
       page.select_acquire
+      end
       page.create_btn
 
       $doc_value = page.doc_no_value

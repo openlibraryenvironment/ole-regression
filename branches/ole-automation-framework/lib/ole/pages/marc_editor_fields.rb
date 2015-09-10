@@ -12,6 +12,7 @@ class Marc_editor_fields < PageFactory
   action(:add_holdings) { |b| b.iframe(id:"iframeportlet").input(title:"Add Holdings").when_present(60).click}
   element(:holding_location) { |b| b.iframe(id:"iframeportlet").text_field(id:"OleHoldingLocation_control")}
 
+  element(:open_item) { |b| b.iframe(id:"iframeportlet").span(text:"Item").visible?}
   action(:click_icon) { |b| b.iframe(id:"iframeportlet").ins(class:"jstree-icon").when_present(60).click}
   action(:click_item) { |b| b.iframe(id:"iframeportlet").span(text:"Item").click}
   element(:set_barcode) { |b| b.iframe(id:"iframeportlet").text_field(id:"oleItemAccessInformationBarcode_control")}
