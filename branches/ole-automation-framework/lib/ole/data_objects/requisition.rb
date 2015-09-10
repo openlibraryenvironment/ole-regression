@@ -59,7 +59,8 @@ class Requisition < DataFactory
       sleep(3)
       page.createCurrentItemButton
       sleep(10)
-      page.windows[1].use
+      put"marc editor window 2"
+      page.windows[2].use
       sleep(5)
       #page.dataField_tag_data.exists?.should be_true
       page.dataField_tag_data.set @tag
