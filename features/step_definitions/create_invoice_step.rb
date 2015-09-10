@@ -33,6 +33,7 @@ Then(/^a invoice should be successfully created with status as FINAL$/) do
     page.windows[3].use
     @purchase_order_status= page.purchase_order_status
     @purchase_order_status.should match 'FINAL'
-
+    page.windows[1].close
+    page.windows[2].close
   end
 end

@@ -97,13 +97,13 @@ class Requisition < DataFactory
       sleep(10)
       page.doc_id_link
       sleep(10)
-      page.windows[1].use
+      page.windows[2].use
       page.tab_viewRelatedDocuments
       @purchase_order_number = page.po_number
       puts "po number is #@purchase_order_number"
       page.purchase_order_id_link
       sleep(5)
-      page.windows[1].close
+
     end
   end
 end
