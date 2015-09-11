@@ -19,6 +19,7 @@ Then(/^The due date should be updated$/) do
       @due_date = page.get_due_date
       puts "Item due date after renewal #@due_date"
       Date.parse(DateTime.strptime("#@due_date","%m/%d/%Y  %H:%M  %p").to_s).to_s == Date.parse((DateTime.now + 10).to_s).to_s
+      puts "Item renewal done successfully"
     end
   end
 
