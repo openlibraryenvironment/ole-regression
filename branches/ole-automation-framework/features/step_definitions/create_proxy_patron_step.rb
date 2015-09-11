@@ -1,4 +1,3 @@
-
 Given (/^Log in with ole-quickstart$/) do
   log_in("ole-quickstart")
 end
@@ -38,6 +37,7 @@ Then (/^Status should be FINAL$/) do
     puts "proxy patron barcode while search #@proxypatron_barcode"
     page.proxypatron_barcode.should == @proxy_patron_barcode
     sleep(5)
+    page.windows[1].close
 
   end
 end

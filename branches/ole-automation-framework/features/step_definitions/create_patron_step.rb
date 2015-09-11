@@ -24,7 +24,9 @@ Then(/^Patron status must be FINAL$/) do
     saved = page.doc_status
     puts saved
     page.doc_status.should == "FINAL"
+    page.windows[1].close
     sleep(5)
+
   end
 end
 

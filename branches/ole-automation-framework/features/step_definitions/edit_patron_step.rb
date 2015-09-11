@@ -1,4 +1,3 @@
-
 Given(/^I am logged in with ole-quickstart$/)do
   log_in("ole-quickstart")
 end
@@ -42,6 +41,7 @@ Then(/^the deleted note no longer exists$/) do
     puts"note text after delete--->#@note_text"
     puts "existing text--->#@existing_field"
     page.added_note_text0.should == @note_text
+    page.windows[1].close
   end
 
   end
