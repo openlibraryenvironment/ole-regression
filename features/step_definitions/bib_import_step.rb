@@ -27,5 +27,8 @@ Then(/^the job status should be COMPLETED, total records and success records sho
     page.total_no_of_records.should == page.no_of_success_records
     page.no_of_failure_records.should == "0"
     page.job_status.should == "Batch Operation Completed"
+    puts "Batch Operation Completed"
+    page.windows[2].close
+    page.windows[1].close
   end
 end

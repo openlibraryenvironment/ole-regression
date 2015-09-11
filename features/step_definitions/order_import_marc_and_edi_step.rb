@@ -26,5 +26,8 @@ Then(/^the job status should be COMPLETED, total records and number of orders ad
     page.total_no_of_records.should == page.order_import_success_count
     page.order_import_failure_count.should == "0"
     page.job_status.should == "Staff Upload executed successfully."
+    puts "Staff Upload executed successfully."
+    page.windows[2].close
+    page.windows[1].close
   end
 end
