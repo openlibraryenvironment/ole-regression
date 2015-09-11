@@ -23,12 +23,15 @@ class Invoice < DataFactory
   def create_invoice
     on CreateReq do |page|
 
-      page.windows[1].close
-      page.windows[2].close
+
+
 # page.windows[3].use
 # page.windows[3].close
-      page.windows[0].use
-      page.select_acquire_red
+      if(page.open_select_acquire == false)
+        page.select_acquire_red
+      else
+        page.select_acquire
+      end
       page.create_invoice_btn
       sleep(10)
       puts "Create Invoice Process Started"
