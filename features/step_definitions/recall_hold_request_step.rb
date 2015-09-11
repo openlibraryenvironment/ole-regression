@@ -29,5 +29,6 @@ Then(/^The request type should be RecallHoldRequest$/) do
     page.search_request
     sleep(10)
     page.recallrequest_type.should == "Recall/Hold Request"
+    puts "Recall/Hold Request created successfully"
   end
 end

@@ -20,7 +20,6 @@ end
 
 Then(/^The request type should be RecallDeliverRequest$/) do
   item_id = @loan.item_barcode
-
   visit RecallRequest do |page|
     page.deliver
     page.request_search
@@ -29,6 +28,7 @@ Then(/^The request type should be RecallDeliverRequest$/) do
     page.search_request
     sleep(10)
     page.recallrequest_type.should == 'Recall/Delivery Request'
+    puts "Recall/Delivery Request created successfully"
   end
 end
 
