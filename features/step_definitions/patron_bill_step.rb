@@ -34,5 +34,6 @@ Then(/^the patron bill should create with current date$/) do
     puts saved
     page.doc_status.should == "FINAL"
     sleep(5)
+    page.windows[1].close
   end
 end
