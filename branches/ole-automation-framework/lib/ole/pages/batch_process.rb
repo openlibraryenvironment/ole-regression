@@ -1,6 +1,7 @@
 class Batch_process < PageFactory
   page_url $test_site
 
+  element(:open_admin){ |b| b.a(class:"green" , title:"Admin").exists?}
   action(:admin) { |b| b.a(class:"green" , title:"Admin").when_present(60).click}
   action(:batch_process) { |b| b.a(class:"portal_link" , title:"Batch Process").when_present(60).click}
   element(:batch_process_type) { |b| b.iframe(id:"iframeportlet").select(id:"BatchProcessDefinition-batchProcessType_control")}

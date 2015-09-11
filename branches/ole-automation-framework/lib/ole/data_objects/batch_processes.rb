@@ -42,7 +42,9 @@ class BatchProcesses < DataFactory
 
   def create_bib_import
     visit Batch_process do |page|
+      if(page.open_admin == true)
       page.admin
+      end
       page.batch_process
       page.batch_process_type.select(@batchprocess_bibtype)
       sleep(5)
@@ -90,7 +92,9 @@ class BatchProcesses < DataFactory
 
   def create_invoice_import
     visit Batch_process do |page|
-      page.admin
+      if(page.open_admin == true)
+        page.admin
+      end
       page.batch_process
       page.batch_process_type.select(@batchprocess_invoice_import)
       sleep(5)
@@ -105,7 +109,7 @@ class BatchProcesses < DataFactory
       sleep(5)
       if(page.popup_box)
         if(page.popup_message == "Warning: This EDIFACT invoice file has already been loaded. Are you sure you want to load it again?")
-          puts puts page.popup_message
+          puts  page.popup_message
           page.continue_process
         end
       end
@@ -117,7 +121,9 @@ class BatchProcesses < DataFactory
 
   def choose_file_type
     visit Batch_process do |page|
-      page.admin
+      if(page.open_admin == true)
+        page.admin
+      end
       page.batch_process_profile
       sleep(5)
       page.batch_process_profile_name.set @order_import_profile_name

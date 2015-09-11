@@ -22,17 +22,9 @@ Then(/^the job status should be successfully COMPLETED, total records and succes
     page.total_no_of_records.should == page.no_of_success_records
     page.no_of_failure_records.should == "0"
     page.job_status.should == "Invoice Ingest executed successfully."
-    #page.windows[2].close
-    #page.windows[1].close
-    #page.windows[0].use
-    #page.doc_search
-    #sleep(5)
-    #page.search_document
-    #sleep(5)
-    #page.doc_id_link
-    #page.windows[1].use
-    #sleep(5)
-    #page.invoice_doc.should == "Invoice"
-    #page.invoice_status.should == "SAVED"
+    puts "Invoice Ingest executed successfully."
+    page.windows[2].close
+    page.windows[1].close
+
   end
 end
