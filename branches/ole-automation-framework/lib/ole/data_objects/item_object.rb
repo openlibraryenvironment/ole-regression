@@ -42,6 +42,7 @@ class ItemObject < DataFactory
       page.check_recall
       page.request_submit
       sleep(10)
+      page.windows[1].close
     end
   end
 
@@ -71,6 +72,7 @@ class ItemObject < DataFactory
       sleep(5)
       page.request_submit
       sleep(5)
+      page.windows[1].close
     end
   end
 
