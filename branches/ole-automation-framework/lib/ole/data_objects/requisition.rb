@@ -62,7 +62,7 @@ class Requisition < DataFactory
       puts"marc editor window 2"
       count=@browser.windows.count
       puts count
-      page.windows[2].use
+      page.windows[1].use
       sleep(5)
       #page.dataField_tag_data.exists?.should be_true
       page.dataField_tag_data.set @tag
@@ -75,7 +75,7 @@ class Requisition < DataFactory
       page.location.select(@location)
       page.listPrice.set @list_price
       page.addItem
-      #page.windows[1].close
+      page.windows[1].close
       page.accounting
       page.accountsCode.select(@acc_code)
       page.accountNumber.set @acc_number
@@ -93,7 +93,7 @@ class Requisition < DataFactory
   end
 
   def get_PO_number
-    visit CreateReq do |page|
+    on CreateReq do |page|
       sleep(10)
       page.doc_search
       sleep(10)
@@ -102,65 +102,14 @@ class Requisition < DataFactory
       sleep(10)
       page.doc_id_link
       sleep(10)
-      page.windows[2].use
+      page.windows[1].use
       page.tab_viewRelatedDocuments
       @purchase_order_number = page.po_number
       puts "po number is #@purchase_order_number"
-      page.purchase_order_id_link
       sleep(5)
-
+      page.windows[1].close
     end
   end
 
-  def create_requsition_for_invoice
-    on CreateReq do |page|
-      if(page.open_select_acquire == true)
-        page.select_acquire
-      end
-      page.create_btn
 
-      $doc_value = page.doc_no_value
-      puts $doc_value
-      if page.room.value == ""
-        page.address
-        page.search_address
-        page.return_address
-        page.room.set @room_no
-      end
-      page.tab_vendor
-      page.vendor_alias_name.set @vendor
-      page.vendor_select
-      page.attachBib
-      sleep(3)
-      page.createCurrentItemButton
-      sleep(10)
-      page.windows[1].use
-      sleep(5)
-      #page.dataField_tag_data.exists?.should be_true
-      page.dataField_tag_data.set @tag
-      page.dataField_tag_id_line0_control.set @title
-      page.submitEditor
-      sleep(10)
-
-      page.windows[0].use
-      sleep(10)
-      page.location.select(@location)
-      page.listPrice.set @list_price
-      page.addItem
-      #page.windows[1].close
-      page.accounting
-      page.accountsCode.select(@acc_code)
-      page.accountNumber.set @acc_number
-      page.financialObjectCode.set @object_code
-      page.sourceAnchor
-
-      sleep(10)
-      page.institutionalInfo
-
-      sleep(10)
-      page.blanketApprove
-      sleep(10)
-
-    end
-  end
 end

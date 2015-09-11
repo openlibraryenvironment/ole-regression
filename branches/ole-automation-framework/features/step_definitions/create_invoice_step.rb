@@ -5,7 +5,7 @@ end
 
 When(/^I create an  invoice using a purchase order$/) do
   @requisition = make Requisition
-  @requisition.create_requsition_for_invoice
+  @requisition.create_requsition
   @requisition.get_PO_number
 
   @invoice = make Invoice , :purchase_order_id => @requisition.purchase_order_number
@@ -26,15 +26,15 @@ Then(/^a invoice should be successfully created with status as FINAL$/) do
     sleep(10)
     page.doc_id_link
     sleep(10)
-    page.windows[2].use
+    page.windows[1].use
     page.tab_viewRelatedDocuments
     page.purchase_order_id_link
     sleep(10)
-    page.windows[3].use
+    page.windows[2].use
     @purchase_order_status= page.purchase_order_status
     @purchase_order_status.should match 'FINAL'
     puts "after matching the invoice status..."
-    page.windows[1].close
     page.windows[2].close
+    page.windows[1].close
   end
 end
