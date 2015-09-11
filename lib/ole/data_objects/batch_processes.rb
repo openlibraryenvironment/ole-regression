@@ -69,7 +69,9 @@ class BatchProcesses < DataFactory
       sleep(5)
       page.batchprocess_order_import_profile_name.set @order_import_profile_name
       sleep(5)
-      page.batchprocess_name.set @batch_process_name
+      page.send_keys :tab
+      sleep(10)
+      #page.batchprocess_name.set @batch_process_name
       marc_file_path = $target_folder+"/"+bib_import_file_name+"."+bib_import_file_type
       sleep(5)
       puts "marc file"
