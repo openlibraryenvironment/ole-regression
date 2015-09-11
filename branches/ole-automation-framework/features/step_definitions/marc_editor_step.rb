@@ -3,7 +3,7 @@ Given(/^I logged in with username ole-quickstart$/) do
 end
 
 When(/^I give bib,holding,item informations and open the item in search workbench$/) do
-  @marc_editor = make Marc_editor , :item_barcode => uniq_number
+  @marc_editor = make Marc_editor , :item_barcode => uniq_number  ,:title => uniq_alphanums
   @marc_editor.create_bib
   @marc_editor.create_holding
   @marc_editor.create_item
@@ -17,5 +17,7 @@ Then(/^the opened item local id should be equal to created item local id$/) do
     @id = page.search_local_id
     puts "search workbench item local id --->#@id"
     @marc_editor.local_id.should == @id
+    puts "Item created Successfully"
+    page.windows[1].close
   end
 end
