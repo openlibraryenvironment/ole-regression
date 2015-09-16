@@ -28,7 +28,8 @@ class PatronObject < DataFactory
                 :count_of_total_notes,
                 :remaining_count,
                 :patron_feetype,
-                :patron_amount
+                :patron_amount,
+                :env
 
 
 
@@ -112,7 +113,11 @@ class PatronObject < DataFactory
       sleep(3)
       $document_id = page.doc_number
       puts $document_id
-      page.submit
+      if(@env == "dev")
+       page.ole_submit
+      else
+       page.submit
+      end
       sleep(5)
 
     end
@@ -166,6 +171,7 @@ class PatronObject < DataFactory
       $document_id = page.doc_number
       puts $document_id
       page.submit
+
       sleep(5)
     end
   end

@@ -27,6 +27,7 @@ class PatronPage < PageFactory
   action(:default_value) { |b| b.iframe(id:"iframeportlet").input(id:"defaultValue_add_control").click}
   action(:add_address) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-Address_add").click}
   action(:submit) { |b| b.iframe(id:"iframeportlet").button(id:"olePatronSubmit").when_present.click}
+  action(:ole_submit) { |b| b.iframe(id:"iframeportlet").button(id:"oleSubmit").when_present(60).click}
 
   #Doc_search
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
