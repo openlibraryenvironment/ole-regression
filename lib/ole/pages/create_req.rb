@@ -81,4 +81,8 @@ class CreateReq < PageFactory #< BasePage
   action(:return_address) { |b| b.iframe(id:"iframeportlet").a(text:"return value").when_present(60).click}
   value(:po_number) { |b| b.form(id:"kualiForm").a(target:"_BLANK").text}
 
+  element(:title) { |b| b.iframe(id:"iframeportlet").textarea(name:"documentForm.dataFields[3].value").when_present(60)}
+  element(:po_exists) { |b| b.iframe(id:"iframeportlet").input(id:"OleInvoice_POLookup_control").exists?}
+  action(:conformation_popup) { |b| b.iframe(id:"iframeportlet").div(id:"OLEInvoice-ConfirmationPopUp").button(text:"close").when_present(60).click}
+
 end

@@ -1,7 +1,8 @@
-@nightly
-  Feature: OLE.Checkin
 
-    Scenario: Checkin an item
-      Given I'm logged-in with ole-quickstart
-      When I give valid item barcode to checkin that item
-      Then the item status should be recently returned
+@nightly
+Feature: OLE.CheckinItem
+
+  Scenario: PL 1.1.3 Checkin an item
+    Given Logged in with ole-quickstart
+    When I give item id for checkin
+    Then Item status should be Recently Returned

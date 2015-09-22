@@ -1,5 +1,5 @@
 When(/^I changed the due date for loaned item$/) do
-  @patron = create PatronObject , :patron_barcode => uniq_alphanums ,:env => "dev"
+  @patron = create PatronObject , :patron_barcode => uniq_alphanums
   @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
   @checkout.create_an_item(@patron.patron_barcode)
 

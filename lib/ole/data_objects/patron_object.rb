@@ -28,9 +28,7 @@ class PatronObject < DataFactory
                 :count_of_total_notes,
                 :remaining_count,
                 :patron_feetype,
-                :patron_amount,
-                :env
-
+                :patron_amount
 
 
   def generate_random_string(length=6)
@@ -113,13 +111,8 @@ class PatronObject < DataFactory
       sleep(3)
       $document_id = page.doc_number
       puts $document_id
-      if(@env == "dev")
-       page.ole_submit
-      else
        page.submit
-      end
       sleep(5)
-
     end
   end
   def create_patron_with_proxy

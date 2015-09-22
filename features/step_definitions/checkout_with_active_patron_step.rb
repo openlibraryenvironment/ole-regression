@@ -14,8 +14,8 @@ end
 Then(/^Item status should be LOANED$/)do
   #@loan_item.check_item_status()
     on CheckOut_Item do |page|
-      puts "Item status is LOANED"
       page.status.should == 'LOANED'
+      puts "Item status is LOANED"
     end
     sleep(5)
   end
