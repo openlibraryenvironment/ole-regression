@@ -26,7 +26,7 @@ class PatronPage < PageFactory
   action(:deliver_address) { |b| b.iframe(id:"iframeportlet").input(id:"deliverAddress_add_control").click}
   action(:default_value) { |b| b.iframe(id:"iframeportlet").input(id:"defaultValue_add_control").click}
   action(:add_address) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-Address_add").click}
-  action(:submit) { |b| b.iframe(id:"iframeportlet").button(id:"olePatronSubmit").when_present.click}
+  action(:submit) { |b| b.iframe(id:"iframeportlet").button(text:"submit").when_present.click}
   action(:ole_submit) { |b| b.iframe(id:"iframeportlet").button(id:"oleSubmit").when_present(60).click}
 
   #Doc_search
@@ -86,5 +86,8 @@ class PatronPage < PageFactory
   value(:bill_date) { |b| b.form(id:"kualiForm").span(id:"billDate_line0_control").when_present.text}
   value(:patron_amount) { |b| b.form(id:"kualiForm").span(id:"feeAmt_line0_control").when_present.text}
   value(:view_patron_amount) { |b| b.form(id:"kualiForm").span(id:"totalFeeAmount_line0_control").when_present.text}
+
+  action(:add_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_add").when_present(60).click}
+  action(:delete_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_del_line0").when_present(60).click}
 
 end

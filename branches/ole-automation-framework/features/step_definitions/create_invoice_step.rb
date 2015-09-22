@@ -20,7 +20,7 @@ Then(/^a invoice should be successfully created with status as FINAL$/) do
     page.doc_id.set @purchase_order_Doc_id
     sleep(5)
     page.search_req
-    sleep(10)
+    sleep(20)
     @doc_status= page.doc_status
     @doc_status.should == 'PROCESSED'
     sleep(10)

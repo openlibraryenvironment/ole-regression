@@ -22,7 +22,7 @@ class Checkin_dataobject < DataFactory
       if(page.circ_desk_val != "1")
         page.select_circ_desk.select(@circulation_desk)
         page.circ_desk_button
-        #sleep(5)
+        sleep(5)
       end
       page.checkin.set @item_id
       #sleep(3)

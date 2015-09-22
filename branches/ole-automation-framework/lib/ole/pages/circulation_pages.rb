@@ -40,7 +40,7 @@ class ItemCheckoutAndCkeckin < PageFactory
   action(:close) { |b| b.iframe(id:"iframeportlet").button(id:"circDoneButton").when_present(60).click}
   element(:renew_custom_due_date) { |b| b.iframe(id:"iframeportlet").text_field(id:"checkoutRenewCustomDueDate_control").when_present(60)}
   action(:renew_custom_due_date_button) { |b| b.iframe(id:"iframeportlet").button(id:"checkoutRenewCustomDueDateloanButton").when_present(60).click}
-  action(:ok_general_info) { |b| b.iframe(id:"iframeportlet").button(id:"btnOKGeneralInfo").when_present(60).click}
+  action(:ok_general_info) { |b| b.iframe(id:"iframeportlet").button(id:"btnOKGeneralInfoWithRefresh").when_present(60).click}
   action(:show_all) { |b| b.iframe(id:"iframeportlet").button(id:"circShowExistingLoans").when_present(60).click}
   value(:status) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.tr(class:"odd").td(index:11).when_present(60).text}
   value(:date) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.tr(class:"odd").td(index:12).when_present(60).text}

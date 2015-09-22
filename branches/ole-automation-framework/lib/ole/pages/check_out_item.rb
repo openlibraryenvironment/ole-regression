@@ -7,14 +7,14 @@ class CheckOut_Item < PageFactory
   #verify patron
   action(:deliver) { |b| b.link(class:"red" , title:"Deliver").click}
   action(:loan) { |b| b.link(class:"portal_link" , title:"Loan").when_present.click}
-  element(:circulation_desk) { |b| b.iframe(id:"iframeportlet").select_list(id:"LoanCirculationDesk_control")}
+  element(:circulation_desk) { |b| b.iframe(id:"iframeportlet").select_list(id:"LoanCirculationDesk_control").when_present}
   action(:select_circulation_desk) { |b| b.iframe(id:"iframeportlet").button(id:"ChangeCirculationLocationBtn").when_present(60).click}
   element(:select_patron) { |b| b.iframe(id:"iframeportlet").input(:title  , "Search Field")}
   element(:patron_id) { |b| b.iframe(class:"fancybox-iframe").text_field(id:"olePatronId_control")}
   action(:search) { |b| b.iframe(class:"fancybox-iframe").button(text:"Search").when_present.click}
   element(:return_patron) { |b| b.iframe(class:"fancybox-iframe").a(text:"return value")}
   element(:patron_message) { |b| b.iframe(id:"iframeportlet").div(id:"message_return").text}
-  value(:selected_circulation_desc) { |b| b.iframe(id:"iframeportlet").select(id:"LoanCirculationDesk_control").value}
+  value(:selected_circulation_desc) { |b| b.iframe(id:"iframeportlet").select(id:"LoanCirculationDesk_control").when_present.value}
   #checkout an item
   action(:fast_add_item) { |b| b.iframe(id:"iframeportlet").button(id:"FastAddItemSectionLink").when_present(60).click}
   element(:item_title) { |b| b.iframe(id:"iframeportlet").iframe(class:"fancybox-iframe").text_field(id:"addTitle_control").when_present(60)}

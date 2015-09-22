@@ -1,7 +1,7 @@
 
 When(/^I'm raising the recall request for loaned item$/) do
-  @patron = create PatronObject , :patron_barcode => uniq_alphanums ,:env => "dev"
-  @request_patron = create PatronObject , :patron_barcode => uniq_alphanums ,:env => "dev"
+  @patron = create PatronObject , :patron_barcode => uniq_alphanums
+  @request_patron = create PatronObject , :patron_barcode => uniq_alphanums
   @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
   @checkout.create_an_item(@patron.patron_barcode)
 
@@ -26,8 +26,8 @@ Then(/^the request type should be RecallDeliverRequest$/) do
 end
 
 When(/^I'm setting pick up location for an item$/) do
-  @patron = create PatronObject , :patron_barcode => uniq_alphanums ,:env => "dev"
-  @request_patron = create PatronObject , :patron_barcode => uniq_alphanums ,:env => "dev"
+  @patron = create PatronObject , :patron_barcode => uniq_alphanums
+  @request_patron = create PatronObject , :patron_barcode => uniq_alphanums
   @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
   @checkout.create_an_item(@patron.patron_barcode)
 
