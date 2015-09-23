@@ -27,7 +27,8 @@ class Serial_receiving_transaction < DataFactory
                 :enumeration,
                 :number,
                 :chronology,
-                :issue_note
+                :issue_note,
+                :local_id
 
 
 
@@ -88,7 +89,7 @@ class Serial_receiving_transaction < DataFactory
     elsif(@search_conditions == "Serials Receiving Record No")
       page.search_fields(opts = @line_level).set @record_number
     elsif(@search_conditions == "Local Identifier")
-      page.search_fields(opts = @line_level).set @local_identifier
+      page.search_fields(opts = @line_level).set @local_id
     else
       if(@search_conditions == "Purchase Order No")
         page.search_fields(opts = @line_level).set @po_number
