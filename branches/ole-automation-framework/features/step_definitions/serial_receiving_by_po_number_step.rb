@@ -18,12 +18,11 @@ Then(/^the document should be in SAVED status$/) do
       page.doc_id.set $document_id
       page.search_req
       page.doc_id_link
-      page.windows[2].use
+      page.windows[1].use
       sleep(10)
       saved = page.doc_status
       puts saved
       page.doc_status.should == "SAVED"
-      page.windows[2].close
       page.windows[1].close
     end
 end

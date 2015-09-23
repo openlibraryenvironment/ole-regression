@@ -7,9 +7,6 @@
 
 module Workflows
 
-
-
-
   def initialize(browser , opts={})
     @browser = browser
 
@@ -20,6 +17,9 @@ module Workflows
   end
 
   def log_in(username)
+
+    @browser.window.resize_to 1600, 1200
+    #@browser.window.maximize
 
     visit OLELoginPage do |page|
       # page.cookies.clear
@@ -49,7 +49,4 @@ module Workflows
     @year = @currenttime.strftime("%Y")
     @day+@month+@year+@hour+@min+@sec
   end
-
-
-
 end
