@@ -1,5 +1,8 @@
+Given(/^I logged in with ole_quickstart$/) do
+  log_in("ole_quickstart")
+end
 
-When(/^I'm raising the recall request for loaned item$/) do
+When(/^I'm raising the recall request$/) do
   @patron = create PatronObject , :patron_barcode => uniq_alphanums
   @request_patron = create PatronObject , :patron_barcode => uniq_alphanums
   @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
@@ -11,7 +14,7 @@ When(/^I'm raising the recall request for loaned item$/) do
 
 end
 
-Then(/^the request type should be RecallDeliverRequest$/) do
+Then(/^The request type should be RecallDeliverRequest$/) do
 
   visit RecallRequest do |page|
     page.deliver
@@ -25,7 +28,7 @@ Then(/^the request type should be RecallDeliverRequest$/) do
   end
 end
 
-When(/^I'm setting pick up location for an item$/) do
+When(/^I'm setting pick up location$/) do
   @patron = create PatronObject , :patron_barcode => uniq_alphanums
   @request_patron = create PatronObject , :patron_barcode => uniq_alphanums
   @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
@@ -37,12 +40,9 @@ When(/^I'm setting pick up location for an item$/) do
   @deliver_item.item_search (@checkout.item_barcode)
   @deliver_item.recall_hold_request(@request_patron.patron_barcode)
 
-
-
-
 end
 
-Then(/^the request type should be RecallHoldRequest$/) do
+Then(/^The request type should be RecallHoldRequest$/) do
 
   visit RecallRequest do |page|
     page.deliver

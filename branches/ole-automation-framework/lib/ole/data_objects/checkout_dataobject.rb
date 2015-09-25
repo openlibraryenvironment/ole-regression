@@ -56,4 +56,22 @@ class CheckoutDataobject < DataFactory
       sleep(5)
     end
   end
+
+  def check_inactive_patron patron_barcode
+
+    visit ItemCheckoutAndCkeckin do |page|
+      page.deliver
+      page.loan
+      if(page.circ_desk_val != "1")
+        page.select_circ_desk.select(@circulation_desk)
+        page.circ_desk_button
+        sleep(5)
+      end
+      sleep(5)
+      page.patron_barcode.set patron_barcode
+      page.send_keys :enter
+      sleep(5)
+    end
+
+  end
 end
