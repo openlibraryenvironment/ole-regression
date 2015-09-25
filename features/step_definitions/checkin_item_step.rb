@@ -2,21 +2,18 @@ Given(/^Logged in with ole-quickstart$/)do
   log_in("ole_quickstart")
 end
 
-When(/^I give item id for checkin/)do
+When(/^I give item id for checkin$/) do
+  @patron = create PatronObject , :patron_barcode => uniq_alphanums
+  @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
+  @checkout.create_an_item(@patron.patron_barcode)
 
-  @patron_obj = create PatronObject , :patron_barcode => uniq_alphanums
-  @loaned = make CheckoutWithPatron ,:item_barcode => uniq_number
-  @loaned.checkout_item(@patron_obj.patron_barcode)
-  @loaned.item_checkin (@loaned.item_barcode)
+  @checkin = make Checkin_dataobject , :item_id => @checkout.item_barcode
+  @checkin.item_checkin
 end
 
-Then(/^Item status should be Recently Returned/)do
-  #@loaned.item_status
-
-  on CheckOut_Item do |page|
-    puts "Item is returned"
-    sleep(5)
-    page.checkin_status.should == 'Recently Returned'
-    sleep(3)
+Then(/^Item status should be Recently Returned$/) do
+  on ItemCheckoutAndCkeckin do |page|
+    page.return_status.should == "RECENTLY-RETURNED"
+    puts "Item status is recently returned"
   end
 end

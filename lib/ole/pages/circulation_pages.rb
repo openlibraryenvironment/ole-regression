@@ -20,6 +20,7 @@ class ItemCheckoutAndCkeckin < PageFactory
   action(:due_date_button) { |b| b.iframe(id:"iframeportlet").button(id:"customDueDateloanButton").when_present(60).click}
   value(:item_status) { |b| b.iframe(id:"iframeportlet").span(id:"currentyLoanedCheckoutItemStatus_line0_control").when_present(60).text}
   value(:duedate) { |b| b.iframe(id:"iframeportlet").span(id:"currentyLoanedLoanDueDate_line0_control").when_present(60).text}
+  value(:popup_message) { |b| b.iframe(id:"iframeportlet").div(id:"ptrnValidationErrorMessageDialog").div(id:"errorMsgSection").when_present(60).text}
 
 
   #checkin

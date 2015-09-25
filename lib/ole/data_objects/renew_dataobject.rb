@@ -26,9 +26,9 @@ class RenewDataobject < DataFactory
 
       page.select_loaned_item
       page.renew
-      page.select_box
-      page.set_due_date.set @due_date
-      page.circ_renew_btn
+      # page.select_box
+      # page.set_due_date.set @due_date
+      # page.circ_renew_btn
       page.ok_general_info
       # page.checkout_item_control.set @item_id
       # page.send_keys :enter

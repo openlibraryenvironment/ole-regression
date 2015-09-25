@@ -42,7 +42,7 @@ class Marc_editor < DataFactory
 
   def create_holding
     on Marc_editor_fields do |page|
-      page.add_holdings
+      page.add_holding
       page.holding_location.set 'B-EDUC/BED-STACKS'
       page.bib_submit
       sleep(3)
@@ -57,7 +57,7 @@ class Marc_editor < DataFactory
       page.click_item
       page.windows[1].use
       page.set_barcode.set @item_barcode
-      page.item_type.select("Book")
+      page.select_item_type.set "BOOK"
       page.item_status.select("Available")
       @local_id = page.local_id
       puts "local id---> #@local_id"
@@ -71,7 +71,7 @@ class Marc_editor < DataFactory
     visit Search_workbench do |page|
       page.search_workbench
       page.search_selection_type.select("Item")
-      page.item_search_condition.select("Item Barcode")
+      #page.item_search_condition.select("Item Barcode")
       page.set_item_barcode.set @item_barcode
       page.search
     end

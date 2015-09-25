@@ -45,7 +45,9 @@ class Invoice < DataFactory
       sleep(5)
       page.payment_method.select 'Check'
       sleep(5)
-      page.process_item_link
+      if(page.po_exists == false)
+        page.process_item_link
+      end
       sleep(5)
       puts "Searching purchase order"
       puts "po-id --->#@purchase_order_id"
@@ -58,6 +60,8 @@ class Invoice < DataFactory
       sleep(10)
       page.blanketApprove_invoice
       sleep(30)
+      # page.conformation_popup
+      # sleep(15)
     end
   end
 

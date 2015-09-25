@@ -65,8 +65,9 @@ class Requisition < DataFactory
       page.windows[1].use
       sleep(5)
       #page.dataField_tag_data.exists?.should be_true
-      page.dataField_tag_data.set @tag
-      page.dataField_tag_id_line0_control.set @title
+      # page.dataField_tag_data.set @tag
+      # page.dataField_tag_id_line0_control.set @title
+      page.title.set "|a Best Laid Plans"
       page.submitEditor
       sleep(10)
 
