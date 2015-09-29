@@ -7,9 +7,10 @@ class Marc_editor < DataFactory
 
   attr_accessor :line_level,
                 :item_barcode,
-                :local_id,
+                :local_item_id,
                 :title,
-                :issn_num
+                :issn_num,
+                :item_id
 
   def initialize(browser,opts={})
     @browser = browser
@@ -46,6 +47,8 @@ class Marc_editor < DataFactory
       page.holding_location.set 'B-EDUC/BED-STACKS'
       page.bib_submit
       sleep(3)
+      @local_item_id = page.local_id
+      puts "local id---> #@local_item_id"
     end
   end
 
@@ -59,8 +62,7 @@ class Marc_editor < DataFactory
       page.set_barcode.set @item_barcode
       page.select_item_type.set "BOOK"
       page.item_status.select("Available")
-      @local_id = page.local_id
-      puts "local id---> #@local_id"
+      @item_id = page.item_id
       page.bib_submit
       sleep(5)
       page.windows[1].close

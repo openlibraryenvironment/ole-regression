@@ -20,8 +20,9 @@ class Marc_editor_fields < PageFactory
   element(:select_item_type) { |b| b.iframe(id:"iframeportlet").text_field(id:"oleItemItemType_control")}
   element(:item_status) { |b| b.iframe(id:"iframeportlet").select(id:"oleItemStatus_control")}
 
-  value(:local_id) { |b| b.iframe(id:"iframeportlet").span(id:"LocalItem_control").text}
+  value(:local_id) { |b| b.iframe(id:"iframeportlet").span(id:"LocalIdHolding_control").text}
 
   action(:add_holding){ |b| b.iframe(id:"iframeportlet").button(title:"Add Holdings").click}
+  value(:item_id) { |b| b.iframe(id:"iframeportlet").span(id:"LocalItem_control").text}
 
 end
