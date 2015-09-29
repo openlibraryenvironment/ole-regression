@@ -16,7 +16,7 @@ Then(/^the opened item local id should be equal to created item local id$/) do
     page.windows[1].use
     @id = page.search_local_id
     puts "search workbench item local id --->#@id"
-    @marc_editor.local_id.should == @id
+    @marc_editor.item_id.should == @id
     puts "Item created Successfully"
     page.windows[1].close
   end

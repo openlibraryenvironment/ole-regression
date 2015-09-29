@@ -50,9 +50,9 @@ class CheckoutDataobject < DataFactory
       page.checkin_note.set @note
       page.click_submit
       sleep(5)
-      due_date = (Date.today+10).strftime("%m/%d/%Y")
-      page.select_due_date.set due_date
-      page.due_date_button
+      # due_date = (Date.today+10).strftime("%m/%d/%Y")
+      # page.select_due_date.set due_date
+      # page.due_date_button
       sleep(5)
     end
   end

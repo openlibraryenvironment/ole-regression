@@ -71,8 +71,6 @@ class Serial_receiving_transaction < DataFactory
       page.substatus_field.select (@sub_status_field)
       $document_id = page.document_number
       puts $document_id
-      @local_identifier = page.local_id
-      puts "local id is #@local_identifier"
       page.save_transaction
       sleep(5)
       @record_number = page.record_no
