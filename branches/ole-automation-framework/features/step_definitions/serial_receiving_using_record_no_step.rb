@@ -11,7 +11,7 @@ When(/^I search record using serial receiving record number and update the recor
   @serial_receiving_using_record_no.create_serial_receiving_transaction
 end
 
-Then(/^document status should be SAVED$/) do
+Then(/^document status should be saved$/) do
   visit Serial_receiving do |page|
     page.doc_search
     sleep(3)
