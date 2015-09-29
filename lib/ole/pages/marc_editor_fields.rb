@@ -15,7 +15,7 @@ class Marc_editor_fields < PageFactory
   element(:open_item) { |b| b.iframe(id:"iframeportlet").span(text:"Item").visible?}
   action(:click_icon) { |b| b.iframe(id:"iframeportlet").ins(class:"jstree-icon").when_present(60).click}
   action(:click_item) { |b| b.iframe(id:"iframeportlet").span(text:"Item").click}
-  element(:set_barcode) { |b| b.iframe(id:"iframeportlet").text_field(id:"oleItemAccessInformationBarcode_control")}
+  element(:set_barcode) { |b| b.iframe(id:"iframeportlet").text_field(id:"oleItemAccessInformationBarcode_control").when_present(60)}
   element(:item_type) { |b| b.iframe(id:"iframeportlet").select(id:"oleItemItemType_control")}
   element(:select_item_type) { |b| b.iframe(id:"iframeportlet").text_field(id:"oleItemItemType_control")}
   element(:item_status) { |b| b.iframe(id:"iframeportlet").select(id:"oleItemStatus_control")}

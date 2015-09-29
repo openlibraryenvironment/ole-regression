@@ -13,17 +13,17 @@
     Scenario: Creating serial receiving using local identifier via serial receiving search
       Given I log-in with user name ole-quickstart
       When I search record local identifier and start creating serial receiving transaction
-      Then document status should be SAVED
+      Then document status should be in SAVED
 
     Scenario: Creating serial receiving using ISSN via serial receiving search
       Given I log-in with user name ole-quickstart
       When I search record using ISSN and start creating serial receiving transaction
-      Then document status should be in SAVED
+      Then document status should be in saved state
 
     Scenario: Editing the record using serial receiving record number
       Given I log-in with user name ole-quickstart
       When I search record using serial receiving record number and update the record values
-      Then document status should be SAVED
+      Then document status should be saved
 
     Scenario: Receiving title with enumeration and chronology for serial receiving
       Given I log-in with user name ole-quickstart

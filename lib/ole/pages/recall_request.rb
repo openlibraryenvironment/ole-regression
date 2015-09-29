@@ -16,7 +16,7 @@ class RecallRequest <  PageFactory
   action(:request_submit) { |b| b.iframe(id:"iframeportlet").button(id:"request_submit_button").click}
   action(:request_search) { |b| b.a(title:"Request Search").click}
   element(:item_Id_control) { |b| b.iframe(id:"iframeportlet").text_field(id:"itemId_control")}
-  element(:patron_detail) { |b| b.iframe(id:"iframeportlet").text_field(id:"pl_req_pat_control").when_present}
+  element(:patron_detail) { |b| b.iframe(id:"iframeportlet").text_field(id:"pl_req_pat_control").when_present(60)}
   element(:request_search_patron) { |b| b.iframe(id:"iframeportlet").text_field(id:"olePatronBarcode_control")}
   action(:search_request) { |b| b.iframe(id:"iframeportlet").button(id:"searchReqBtn").when_present.click}
   value(:recallrequest_type) { |b| b.iframe(id:"iframeportlet").a(class:"uif-link").text}

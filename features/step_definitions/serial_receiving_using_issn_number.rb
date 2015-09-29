@@ -7,3 +7,19 @@ When(/^I search record using ISSN and start creating serial receiving transactio
   @serial_receiving = make Serial_receiving_transaction , :item_identifier => @marc_editor.item_barcode , :doc_type => "Item Barcode" ,:search_conditions => "ISSN" , :line_level => 1 , :tag => "022" ,:issn => @marc_editor.issn_num
   @serial_receiving.create_serial_receiving_transaction
 end
+
+Then(/^document status should be in saved state$/) do
+  visit Serial_receiving do |page|
+    page.doc_search
+    sleep(3)
+    page.doc_id.set $document_id
+    page.search_req
+    page.doc_id_link
+    page.windows[1].use
+    sleep(10)
+    saved = page.doc_status
+    puts saved
+    page.doc_status.should == "SAVED"
+    page.windows[1].close
+  end
+end
