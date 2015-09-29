@@ -60,4 +60,24 @@ Before do
   @browser = browser
 end
 
+After do | scenario |
+  if (scenario.failed?)
+    begin
+      # Commented out since this code block was creating an exception after upgrading to selenium webdriver to 2.46.2
+      #screenshot_img = @browser.driver.save_screenshot("./failure.png")
+      #embed(screenshot_img, 'data:image/png')
+      # end of comment
+      @browser.driver.save_screenshot("./failure.png")
+      embed("failure.png", "image/png", "SCREENSHOT")
+    rescue Exception => e
+      puts "debug env.rb - screenshot failed - #{e.message}"
+    end
+    @browser.close unless @browser.nil?
+    browser = nil
+  end
+
+end
+
+
+
 at_exit { browser.close unless browser == nil }

@@ -31,7 +31,7 @@ class PatronPage < PageFactory
 
   #Doc_search
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
-  value(:doc_status) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:1).when_present(60).text}
+  value(:doc_status) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.tr(index:0).td(index:1).div(class:"uif-inputField uif-documentStatus").when_present(60).text}
   action(:doc_id_link) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:0).a(title:"").click}
   action(:search) { |b| b.iframe(id:"iframeportlet").button(title:"search").when_present(60).click}
   value(:patronstatus) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:3).when_present.text}
