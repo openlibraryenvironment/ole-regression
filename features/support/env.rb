@@ -1,4 +1,5 @@
 $test_site = "staging.ole.kuali.org"
+puts "environment---> #$test_site"
 
 $target_folder = File.expand_path("../lib/resources", "#{File}" )
 $: << File.dirname(__FILE__)+'/../../lib'
