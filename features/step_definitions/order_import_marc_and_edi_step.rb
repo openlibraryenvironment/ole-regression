@@ -8,9 +8,9 @@ end
 
 Then(/^the job status should be COMPLETED, total records and number of orders added successfully should be equal$/) do
   on Batch_process do |page|
-    level = 2
+    level = 0
     for level in 0 .. 25
-      if page.status == "COMPLETED"
+      if (page.status == "COMPLETED" || page.status == "STOPPED")
         break
       else
         sleep(20)
