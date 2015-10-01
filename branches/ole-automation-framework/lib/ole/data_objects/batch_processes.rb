@@ -19,7 +19,12 @@ class BatchProcesses < DataFactory
                 :batchprocess_invoice_import,
                 :file_name,
                 :file_type,
-                :profile_type
+                :profile_type,
+                :batchprocess_batch_export,
+                :batchexport_profile_name,
+                :output_filter,
+                :var
+
 
   def initialize(browser,opts={})
     @browser = browser
@@ -27,6 +32,7 @@ class BatchProcesses < DataFactory
     defaults = {
         batchprocess_bibtype: "Bib Import",
         batchprocess_order_import: "Order Record Import",
+        batchprocess_batch_export: "Batch Export",
         bib_import_profile_name: "Test_Bib_Import",
         file_type: "mrc",
         file_name: "10Marc",
@@ -153,6 +159,39 @@ class BatchProcesses < DataFactory
       end
       page.submit
       sleep(3)
+    end
+  end
+
+  def batch_export
+    count = 0
+    visit Batch_process do |page|
+      if(page.open_admin == true)
+        page.admin
+      end
+      page.batch_process
+      page.batch_process_type.select(batchprocess_batch_export)
+      sleep(5)
+      page.batch_export_profileName.set @batchexport_profile_name
+      page.send_keys :tab
+      @output_filter = uniq_alphanums
+      puts "file name ----> #@output_filter"
+      page.batch_output_file.set @output_filter
+      page.submit_action
+      sleep(10)
+      page.windows[1].use
+      sleep(5)
+      for count in 0 .. 25
+        if (page.status == "COMPLETED" || page.status == "STOPPED")
+          break
+        else
+          page.refresh_button
+          count+=1
+          sleep(5)
+        end
+      end
+      if(var == 1)
+        page.windows[1].close
+      end
     end
   end
 

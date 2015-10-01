@@ -49,4 +49,11 @@ class Batch_process < PageFactory
   action(:add_match_point) { |b| b.iframe(id:"iframeportlet").button(id:"bibMatchPoint_add_add").when_present(60).click}
   action(:submit) { |b| b.iframe(id:"iframeportlet").button(text:"submit").click}
 
+  element(:batch_export_profileName) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_batchExport_control").when_present(60)}
+  element(:batch_output_file) { |b| b.iframe(id:"iframeportlet").text_field(id:"outputFileField_control").when_present(60)}
+  action(:view_job_report) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.tr(index:4).td.div(id:"exportPath-popup").a(text:"View Export File").when_present(60).click}
+  value(:rows_count) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.rows.length}
+  value(:file_name) { |count_level,b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").div(id:"fileList_line#{count_level}").text}
+  value(:is_filename_exists) { |count_level,b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").div(id:"fileList_line#{count_level}").exists?}
+  action(:click_next) { |b| b.iframe(id:"iframeportlet").div(id:"u33_paginate").a(class:"next paginate_button").when_present(60).click}
 end
