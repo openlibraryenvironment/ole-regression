@@ -56,4 +56,15 @@ class Batch_process < PageFactory
   value(:file_name) { |count_level,b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").div(id:"fileList_line#{count_level}").text}
   value(:is_filename_exists) { |count_level,b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").div(id:"fileList_line#{count_level}").exists?}
   action(:click_next) { |b| b.iframe(id:"iframeportlet").div(id:"u33_paginate").a(class:"next paginate_button").when_present(60).click}
+
+  element(:serial_record_import) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_serialRecordImport_control").when_present(60)}
+  element(:input_field) { |b| b.iframe(id:"iframeportlet").select(id:"inputField_control").when_present(60)}
+  action(:upload_csv_file) {|line_level,b| b.iframe(id:"iframeportlet").file_field(id:"inputCSVFile#{line_level}_control").when_present(60)}
+  action(:upload_xml_file) { |b| b.iframe(id:"iframeportlet").file_field(id:"inputXMLFile_control").when_present(60)}
+  value(:if_xml) { |b| b.iframe(id:"iframeportlet").label(id:"inputXMLFile_label").visible?}
+
+  element(:batch_delete_profile) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_batchDelete_control").when_present(60)}
+  element(:patron_import_profile){ |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_patronImport_control").when_present(60)}
+  element(:location_import_profile) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_locationImport_control").when_present(60)}
+
 end
