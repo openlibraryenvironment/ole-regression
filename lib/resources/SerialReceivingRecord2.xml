@@ -1,0 +1,164 @@
+<serialReceivingRecord>
+  <serialReceivingDocuments>
+    <serialReceivingDocument>
+      <serialReceivingRecordId>1234</serialReceivingRecordId>
+      <bibId>wbm-10000001</bibId>
+      <boundLocation></boundLocation>
+      <callNumber>X</callNumber>
+      <receivingRecordType>Main</receivingRecordType>
+      <claim>Y</claim>
+      <claimIntervalInformation>10</claimIntervalInformation>
+      <copyNumber>2</copyNumber>
+      <createItem>Y</createItem>
+      <generalReceivingNote>Test Note</generalReceivingNote>
+      <instanceId>who-1</instanceId>
+      <issn></issn>
+      <poId></poId>
+      <printLabel>Y</printLabel>
+      <publisher>publisher</publisher>
+      <serialReceiptLocation></serialReceiptLocation>
+      <serialReceivingRecord>Periodical Department</serialReceivingRecord>
+      <subscriptionStatus>1</subscriptionStatus>
+      <treatmentInstructionNote>Test Note</treatmentInstructionNote>
+      <unboundLocation></unboundLocation>
+      <urgentNote>test note</urgentNote>
+      <vendorId></vendorId>
+      <operatorId>dev2</operatorId>
+      <machineId>123457</machineId>
+      <publicDisplay>Y</publicDisplay>
+      <specialIssueFlag>N</specialIssueFlag>
+      <treatmentNoteFlag>N</treatmentNoteFlag>
+      <active>Y</active>
+      <serialReceivingRecordHistories>
+        <serialReceivingRecordHistory>
+          <serialReceivingRecordId>1234</serialReceivingRecordId>
+          <serialReceivingRecordHistoryId>1234</serialReceivingRecordHistoryId>
+          <receivingRecordType>Main</receivingRecordType>
+          <chronologyCaptionLevel1>Year2014</chronologyCaptionLevel1>
+          <chronologyCaptionLevel2>Mon03</chronologyCaptionLevel2>
+          <chronologyCaptionLevel3></chronologyCaptionLevel3>
+          <chronologyCaptionLevel4></chronologyCaptionLevel4>
+          <claimCount>1</claimCount>
+          <claimDate>2014-02-11 06:32:00.980 UTC</claimDate>
+          <claimNote>Claimed</claimNote>
+          <claimTypeName>Not</claimTypeName>
+          <claimResponse>Received</claimResponse>
+          <publicDisplay>Y</publicDisplay>
+          <serialReceiptNote>receipt note</serialReceiptNote>
+          <operatorId>dev2</operatorId>
+          <machineId>12345</machineId>
+          <receiptStatus></receiptStatus>
+          <receiptDate>2014-02-11 06:32:00.980 UTC</receiptDate>
+          <publicReceipt></publicReceipt>
+          <staffOnlyReceipt></staffOnlyReceipt>
+          <chronologyCaption></chronologyCaption>
+        </serialReceivingRecordHistory>
+      </serialReceivingRecordHistories>
+      <returnToSearch>N</returnToSearch>
+      <urgentNoteFlag>N</urgentNoteFlag>
+      <serialReceivingTypes>
+        <serialReceivingType>
+          <serialReceivingRecordId>1234</serialReceivingRecordId>
+          <serialReceivingTypeId>1234</serialReceivingTypeId>
+          <receivingRecordType>Main</receivingRecordType>
+          <actionDate>2014-02-11 06:32:00.980 UTC</actionDate>
+          <actionInterval>interval</actionInterval>
+          <chronologyCaptionLevel1>Year-2014</chronologyCaptionLevel1>
+          <chronologyCaptionLevel2>Mon-03</chronologyCaptionLevel2>
+          <chronologyCaptionLevel3></chronologyCaptionLevel3>
+          <chronologyCaptionLevel4></chronologyCaptionLevel4>
+          <enumerationCaptionLevel1>Vol-10</enumerationCaptionLevel1>
+          <enumerationCaptionLevel2>No-11</enumerationCaptionLevel2>
+          <enumerationCaptionLevel3></enumerationCaptionLevel3>
+          <enumerationCaptionLevel4></enumerationCaptionLevel4>
+          <enumerationCaptionLevel5></enumerationCaptionLevel5>
+          <enumerationCaptionLevel6></enumerationCaptionLevel6>
+        </serialReceivingType>
+      </serialReceivingTypes>
+      <linkPO>N</linkPO>
+      <itemCheckFlag>N</itemCheckFlag>
+      <claimNoteFlag>N</claimNoteFlag>
+      <claimAgainNoteFlag>N</claimAgainNoteFlag>
+    </serialReceivingDocument>
+<serialReceivingDocument>
+      <serialReceivingRecordId>12345</serialReceivingRecordId>
+      <bibId>wbm-10000001</bibId>
+      <boundLocation></boundLocation>
+      <callNumber>X</callNumber>
+      <receivingRecordType>Main</receivingRecordType>
+      <claim>Y</claim>
+      <claimIntervalInformation>10</claimIntervalInformation>
+      <copyNumber>1</copyNumber>
+      <createItem>T</createItem>
+      <generalReceivingNote>recvng note</generalReceivingNote>
+      <instanceId>who-2</instanceId>
+      <issn></issn>
+      <poId></poId>
+      <printLabel>Y</printLabel>
+      <publisher>publisher</publisher>
+      <serialReceiptLocation></serialReceiptLocation>
+      <serialReceivingRecord>Periodical Department</serialReceivingRecord>
+      <subscriptionStatus>1</subscriptionStatus>
+      <treatmentInstructionNote>treatment note</treatmentInstructionNote>
+      <unboundLocation></unboundLocation>
+      <urgentNote>urgent note</urgentNote>
+      <vendorId></vendorId>
+      <operatorId>dev2</operatorId>
+      <machineId>123457</machineId>
+      <publicDisplay>Y</publicDisplay>
+      <specialIssueFlag>N</specialIssueFlag>
+      <treatmentNoteFlag>N</treatmentNoteFlag>
+      <active>Y</active>
+      <serialReceivingRecordHistories>
+        <serialReceivingRecordHistory>
+          <serialReceivingRecordId>12345</serialReceivingRecordId>
+          <serialReceivingRecordHistoryId>12345</serialReceivingRecordHistoryId>
+          <receivingRecordType>Main</receivingRecordType>
+          <chronologyCaptionLevel1>Vol12</chronologyCaptionLevel1>
+          <chronologyCaptionLevel2>No13</chronologyCaptionLevel2>
+          <chronologyCaptionLevel3></chronologyCaptionLevel3>
+          <chronologyCaptionLevel4></chronologyCaptionLevel4>
+          <claimCount>1</claimCount>
+          <claimDate>2014-02-11 06:32:00.980 UTC</claimDate>
+          <claimNote>Claimed</claimNote>
+          <claimTypeName>Not</claimTypeName>
+          <claimResponse>Received</claimResponse>
+          <publicDisplay>Y</publicDisplay>
+          <serialReceiptNote>receipt note</serialReceiptNote>
+          <operatorId>dev2</operatorId>
+          <machineId>12345</machineId>
+          <receiptStatus></receiptStatus>
+          <receiptDate>2014-02-11 06:32:00.980 UTC</receiptDate>
+          <publicReceipt></publicReceipt>
+          <staffOnlyReceipt></staffOnlyReceipt>
+          <chronologyCaption></chronologyCaption>
+        </serialReceivingRecordHistory>
+      </serialReceivingRecordHistories>
+      <returnToSearch>N</returnToSearch>
+      <urgentNoteFlag>N</urgentNoteFlag>
+      <serialReceivingTypes>
+        <serialReceivingType>
+          <serialReceivingRecordId>12345</serialReceivingRecordId>
+          <serialReceivingTypeId>12345</serialReceivingTypeId>
+          <receivingRecordType>Main</receivingRecordType>
+          <actionDate>2014-02-11 06:32:00.980 UTC</actionDate>
+          <actionInterval>interval</actionInterval>
+          <chronologyCaptionLevel1>Year-2014</chronologyCaptionLevel1>
+          <chronologyCaptionLevel2>Mon-04</chronologyCaptionLevel2>
+          <chronologyCaptionLevel3></chronologyCaptionLevel3>
+          <chronologyCaptionLevel4></chronologyCaptionLevel4>
+          <enumerationCaptionLevel1>Vol-12</enumerationCaptionLevel1>
+          <enumerationCaptionLevel2>No-13</enumerationCaptionLevel2>
+          <enumerationCaptionLevel3></enumerationCaptionLevel3>
+          <enumerationCaptionLevel4></enumerationCaptionLevel4>
+          <enumerationCaptionLevel5></enumerationCaptionLevel5>
+          <enumerationCaptionLevel6></enumerationCaptionLevel6>
+        </serialReceivingType>
+      </serialReceivingTypes>
+      <linkPO>N</linkPO>
+      <itemCheckFlag>N</itemCheckFlag>
+      <claimNoteFlag>N</claimNoteFlag>
+      <claimAgainNoteFlag>N</claimAgainNoteFlag>
+    </serialReceivingDocument>
+  </serialReceivingDocuments>
+</serialReceivingRecord>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationGroup xmlns="http://ole.kuali.org/standards/ole-location">
+    <location>
+        <locationCode>B-AAAMC</locationCode>
+        <locationName>Blmgtn - Arch. of African American Music &amp; Culture</locationName>
+        <locationLevelCode>LIBRARY</locationLevelCode>
+        <parentLocationCode/>
+    </location>
+</locationGroup>

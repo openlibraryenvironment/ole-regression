@@ -23,7 +23,21 @@ class BatchProcesses < DataFactory
                 :batchprocess_batch_export,
                 :batchexport_profile_name,
                 :output_filter,
-                :var
+                :serial_record_import_type,
+                :serial_record_profile,
+                :var,
+                :input_file,
+                :xml_file_name ,
+                :xml_file_type ,
+                :csv_file_name ,
+                :csv_file_type,
+                :batchprocess_batch_delete,
+                :batchprocess_patron_import,
+                :serial_record_profile,
+                :batch_delete_profile_type,
+                :patron_import_profile_type,
+                :batchprocess_location_import,
+                :location_import_profile_type
 
 
   def initialize(browser,opts={})
@@ -31,6 +45,7 @@ class BatchProcesses < DataFactory
 
     defaults = {
         batchprocess_bibtype: "Bib Import",
+        serial_record_import_type: "Serial Record Import",
         batchprocess_order_import: "Order Record Import",
         batchprocess_batch_export: "Batch Export",
         bib_import_profile_name: "Test_Bib_Import",
@@ -41,7 +56,20 @@ class BatchProcesses < DataFactory
         order_import_profile_name: "Test_Order_Import",
         invoice_import_profile_name: "Test_Invoice_Import",
         batch_process_name: "test",
-        batchprocess_invoice_import: "InvoiceImport"
+        batchprocess_invoice_import: "InvoiceImport",
+        serial_record_profile: "Test_Serial_Record_Import",
+        input_file: ["CSV","XML"].sample,
+        xml_file_name: "SerialReceivingRecord2",
+        xml_file_type: "xml",
+        csv_file_name: "1_ole_ser_rcv_rec",
+        csv_file_type: "csv",
+        batchprocess_batch_delete: "Batch Delete",
+        serial_record_profile: "Test_Serial_Record_Import",
+        batch_delete_profile_type: "Test_Batch_Delete",
+        batchprocess_patron_import: "Patron Import",
+        patron_import_profile_type: "Test_Patron_Import",
+        batchprocess_location_import: "Location Import",
+        location_import_profile_type: "Test_Location_Import"
     }
     set_options(defaults.merge(opts))
   end
@@ -192,6 +220,95 @@ class BatchProcesses < DataFactory
       if(var == 1)
         page.windows[1].close
       end
+    end
+  end
+
+  def serial_record_import
+    visit Batch_process do |page|
+      if(page.open_admin == true)
+        page.admin
+      end
+      page.batch_process
+      page.batch_process_type.select(serial_record_import_type)
+      sleep(5)
+      page.serial_record_import.set @serial_record_profile
+      page.input_field.select("CSV")
+      if(page.if_xml == true)
+        file_path = $target_folder+"/"+@xml_file_name+"."+@xml_file_type
+        page.upload_xml_file.set file_path
+        puts "xml file uploaded successfully"
+      else
+        file_path = $target_folder+"/"+@csv_file_name+"."+@csv_file_type
+        page.upload_csv_file(opts = 1).set file_path
+        puts "csv file uploaded successfully"
+      end
+      page.submit_action
+      sleep(10)
+      page.windows[1].use
+      sleep(10)
+    end
+  end
+
+  def batch_delete
+    visit Batch_process do |page|
+      if(page.open_admin == true)
+        page.admin
+      end
+      page.batch_process
+      page.batch_process_type.select(@batchprocess_batch_delete)
+      sleep(5)
+      page.batch_delete_profile.set @batch_delete_profile_type
+      sleep(5)
+      file_path = $target_folder+"/"+file_name+"."+file_type
+      puts file_path
+      page.ingest_file.set file_path
+      sleep(5)
+      page.submit_action
+      sleep(10)
+      page.windows[1].use
+      sleep(10)
+    end
+  end
+
+  def patron_import
+    visit Batch_process do |page|
+        if(page.open_admin == true)
+          page.admin
+        end
+        page.batch_process
+        page.batch_process_type.select(@batchprocess_patron_import)
+        sleep(5)
+        page.patron_import_profile.set @patron_import_profile_type
+        sleep(5)
+        file_path = $target_folder+"/"+file_name+"."+file_type
+        puts file_path
+        page.ingest_file.set file_path
+        sleep(5)
+        page.submit_action
+        sleep(10)
+        page.windows[1].use
+        sleep(10)
+    end
+  end
+
+  def location_import
+    visit Batch_process do |page|
+      if(page.open_admin == true)
+        page.admin
+      end
+      page.batch_process
+      page.batch_process_type.select(@batchprocess_location_import)
+      sleep(5)
+      page.location_import_profile.set @location_import_profile_type
+      sleep(5)
+      file_path = $target_folder+"/"+file_name+"."+file_type
+      puts file_path
+      page.ingest_file.set file_path
+      sleep(5)
+      page.submit_action
+      sleep(10)
+      page.windows[1].use
+      sleep(10)
     end
   end
 
