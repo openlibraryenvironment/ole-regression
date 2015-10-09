@@ -33,6 +33,7 @@ Then(/^a requisition should be successfully created$/) do
     page.windows[2].use
     page.purchase_order_status.should == 'FINAL'
     puts "FINAL"
+    page.windows[2].close
     page.windows[1].close
   end
 end
