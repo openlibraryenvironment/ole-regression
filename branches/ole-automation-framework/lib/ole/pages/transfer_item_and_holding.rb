@@ -56,5 +56,20 @@ class Transfer_item_and_holding < PageFactory
   element(:document_type_field){ |b| b.iframe(id:"iframeportlet").select(id:"item_SearchConditions_DocField_id_line0_control").when_present(60)}
   value(:location_info) { |b| b.form(id:"kualiForm").text_field(id:"OleItemLocationLevelName_control").when_present(60).visible?}
   action(:location_info_section) { |b| b.form(id:"kualiForm").img(id:"OleItemsLocationAndCallNumberInformation_toggle_col").when_present(60).click}
-  action(:search_icon) { |b| b.form(id:"kualiForm").ins(class:"jstree-icon").when_present(60).click}
+  action(:search_icon) { |b| b.form(id:"kualiForm").li(id:"u40_node_0_parent_root").ins(class:"jstree-icon").when_present(60).click}
+  action(:open_item) { |b| b.form(id:"kualiForm").span(id:"u39_node_0_parent_node_0_parent_root_span").when_present(60).click}
+  action(:open_item_location) { |b| b.iframe(id:"iframeportlet").img(id:"OleItemsLocationAndCallNumberInformation_toggle_col").when_present(60).click}
+  value(:item_location) { |b| b.iframe(id:"iframeportlet").text_field(id:"OleItemLocationLevelName_control").when_present(60).value}
+
+  #analytics
+
+  action(:analytics) { |b| b.a(class:"portal_link" , title:"Analytics").when_present(60).click}
+  action(:select_series) { |b| b.iframe(id:"iframeportlet").button(id:"selectAsSeriesButton").when_present(60).click}
+  action(:select_analytics) { |b| b.iframe(id:"iframeportlet").button(id:"selectAsAnalyticButton").when_present(60).click}
+  action(:series_holding) { |b| b.iframe(id:"iframeportlet").input(id:"AnalyticsSelectTree1_node_0_parent_node_0_parent_root_control").when_present(60).click}
+  action(:analytics_item) { |b| b.iframe(id:"iframeportlet").input(id:"AnalyticsSelectTree2_node_0_parent_node_0_parent_node_0_parent_root_control").when_present(60).click}
+  action(:create_analytics) { |b| b.iframe(id:"iframeportlet").button(id:"createAnalyticsButton").when_present(60).click}
+  value(:show_analytics) { |b| b.form(id:"kualiForm").li(id:"u40_node_1_parent_node_0_parent_root").a(target:"_blank").when_present(60).text}
+  value(:show_analytics_item) { |b| b.form(id:"kualiForm").span(id:"u39_node_1_parent_node_0_parent_root_span").when_present(60).text}
+
 end
