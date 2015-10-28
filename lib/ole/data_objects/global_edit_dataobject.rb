@@ -25,7 +25,7 @@ class Global_edit_dataobject < DataFactory
   end
 
   def global_edit
-    visit Transfer_item_and_holding do |page|
+    visit Global_edit do |page|
       page.describe
       page.global_edit
       page.document_type.select(@doc_field)
@@ -54,7 +54,7 @@ class Global_edit_dataobject < DataFactory
   end
 
   def verify_item_locations item_title , var
-    on Transfer_item_and_holding do |page|
+    on Global_edit do |page|
       page.search_workbench
       page.search_text.set item_title
       page.search

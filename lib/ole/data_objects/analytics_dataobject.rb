@@ -20,7 +20,7 @@ class Analytics_dataobject < DataFactory
   end
 
   def create_analytics
-    visit Transfer_item_and_holding do |page|
+    visit Analytics do |page|
       page.describe
       page.analytics
       page.item_title.set @item_title1
@@ -29,7 +29,7 @@ class Analytics_dataobject < DataFactory
       page.search_result
       page.select_series
       page.item_title.set @item_title2
-      puts "first item #@item_title2"
+      puts "second item #@item_title2"
       page.search_button
       page.search_result
       page.select_analytics
@@ -41,7 +41,7 @@ class Analytics_dataobject < DataFactory
   end
 
   def check_analytics
-    visit Transfer_item_and_holding do |page|
+    visit Analytics do |page|
       page.search_workbench
       page.search_text.set @item_title1
       page.search
