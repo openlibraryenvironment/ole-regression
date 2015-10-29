@@ -28,7 +28,8 @@ class PatronObject < DataFactory
                 :count_of_total_notes,
                 :remaining_count,
                 :patron_feetype,
-                :patron_amount
+                :patron_amount,
+                :patron_email_source
 
 
   def generate_random_string(length=6)
@@ -62,6 +63,7 @@ class PatronObject < DataFactory
         patron_email: email,
         patron_address_type: ["Home","Other","Work","Campus"].sample,
         patron_address_source: ["Registrar Load","Master Feed","Operator","Borrower"].sample,
+        patron_email_source: ["Registrar Load","Master Feed","Operator","Borrower"].sample,
         patron_status: "FINAL",
         proxy_patron_barcode: "1018",
         proxy_patron_activation_date: "11/26/2016",
@@ -104,6 +106,7 @@ class PatronObject < DataFactory
       page.activate_address
       page.add_address
       sleep(3)
+      page.email_source.select(@patron_email_source)
       page.email.set @patron_email
       page.preferred_email
       page.activate_email_addr
@@ -144,6 +147,7 @@ class PatronObject < DataFactory
       page.activate_address
       page.add_address
       sleep(3)
+      page.email_source.select(@patron_email_source)
       page.email.set @patron_email
       page.preferred_email
       page.activate_email_addr
@@ -198,6 +202,7 @@ class PatronObject < DataFactory
       page.activate_address
       page.add_address
       sleep(3)
+      page.email_source.select(@patron_email_source)
       page.email.set @patron_email
       page.preferred_email
       page.activate_email_addr
@@ -274,6 +279,7 @@ class PatronObject < DataFactory
       page.activate_address
       page.add_address
       sleep(3)
+      page.email_source.select(@patron_email_source)
       page.email.set @patron_email
       page.preferred_email
       page.activate_email_addr
