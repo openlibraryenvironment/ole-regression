@@ -48,6 +48,7 @@ class Batch_process < PageFactory
   element(:bib_match_point) { |b| b.iframe(id:"iframeportlet").text_field(id:"MatchPoint_Bib_add_control")}
   action(:add_match_point) { |b| b.iframe(id:"iframeportlet").button(id:"bibMatchPoint_add_add").when_present(60).click}
   action(:submit) { |b| b.iframe(id:"iframeportlet").button(text:"submit").click}
+  action(:add_unmatched_patron) { |b| b.iframe(id:"iframeportlet").input(id:"BatchProcessDefinition-patron-input_control").when_present(60).click}
 
   element(:batch_export_profileName) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_batchExport_control").when_present(60)}
   element(:batch_output_file) { |b| b.iframe(id:"iframeportlet").text_field(id:"outputFileField_control").when_present(60)}
@@ -66,5 +67,6 @@ class Batch_process < PageFactory
   element(:batch_delete_profile) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_batchDelete_control").when_present(60)}
   element(:patron_import_profile){ |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_patronImport_control").when_present(60)}
   element(:location_import_profile) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_locationImport_control").when_present(60)}
+
 
 end

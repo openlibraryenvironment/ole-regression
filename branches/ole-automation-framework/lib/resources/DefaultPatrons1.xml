@@ -39,6 +39,7 @@
         <emailAddresses>
             <emailAddress>
                 <emailAddressType>HM</emailAddressType>
+                <emailSource>REGL</emailSource>
                 <emailAddress>sample55@uchicago.edu</emailAddress>
                 <default>true</default>
                 <active>true</active>
@@ -47,12 +48,14 @@
         <telephoneNumbers>
             <telephoneNumber>
                 <telephoneNumberType>HM</telephoneNumberType>
+                <phoneSource>REGL</phoneSource>
                 <telephoneNumber>7737269999</telephoneNumber>
                 <default>true</default>
                 <active>true</active>
             </telephoneNumber>
             <telephoneNumber>
                 <telephoneNumberType>CMP</telephoneNumberType>
+                <phoneSource>REGL</phoneSource>
                 <telephoneNumber>7737269999</telephoneNumber>
                 <default>false</default>
                 <active>true</active>
