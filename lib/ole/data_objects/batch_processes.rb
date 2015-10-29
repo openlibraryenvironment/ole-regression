@@ -280,6 +280,7 @@ class BatchProcesses < DataFactory
         sleep(5)
         page.patron_import_profile.set @patron_import_profile_type
         sleep(5)
+        page.add_unmatched_patron
         file_path = $target_folder+"/"+file_name+"."+file_type
         puts file_path
         page.ingest_file.set file_path
