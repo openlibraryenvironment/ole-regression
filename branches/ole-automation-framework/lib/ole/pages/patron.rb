@@ -90,5 +90,6 @@ class PatronPage < PageFactory
 
   action(:add_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_add").when_present(60).click}
   action(:delete_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_del_line0").when_present(60).click}
+  value(:patronID) { |b| b.iframe(id:"iframeportlet").a(title:"show inquiry for Patron ").when_present(60).text}
 
 end
