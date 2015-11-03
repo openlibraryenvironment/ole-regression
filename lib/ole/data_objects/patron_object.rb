@@ -29,7 +29,9 @@ class PatronObject < DataFactory
                 :remaining_count,
                 :patron_feetype,
                 :patron_amount,
-                :patron_email_source
+                :patron_email_source,
+                :patron_id
+
 
 
   def generate_random_string(length=6)
@@ -68,7 +70,7 @@ class PatronObject < DataFactory
         proxy_patron_barcode: "1018",
         proxy_patron_activation_date: "11/26/2016",
         proxy_patron_expiration_date: "11/26/2060",
-        patron_feetype: ["Overdue Fine","Replacement Fee","Service Fee"].sample,
+        patron_feetype: ["Overdue Fine","Replacement Fee"].sample,
         patron_amount: '100'
 
 
@@ -304,6 +306,8 @@ class PatronObject < DataFactory
 
       page.patron_barcode.set @patron_barcode
       page.search_patron_barcode
+      @patron_id = page.patronID
+      puts "patron id ----> #@patron_id"
       page.createbill
       page.windows[1].use
       sleep(3)
