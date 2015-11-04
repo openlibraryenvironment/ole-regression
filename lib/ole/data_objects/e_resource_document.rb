@@ -70,17 +70,11 @@ class EResourceDocument < DataFactory
   end
 
   def search_e_resource
-    visit E_resource do |page|
-      page.e_search
-      page.record_id.select ("E-Resource Record Id")
-      page.criteria.set @e_resource_identifier
-      page.search_criteria
-      page.open_e_res
-      page.windows[1].use
+    on E_resource do |page|
       page.open_e_holding
       page.create_instance
       page.select_instance_id
-      page.windows[2].use
+      page.windows[1].use
       page.search_conditions.select ("Local Identifier")
       page.doc_type.select ("Holdings")
       page.search_text.set @local_id
@@ -90,10 +84,9 @@ class EResourceDocument < DataFactory
       page.holdings_search_results
       page.holdings_link
       sleep(3)
-      page.windows[1].use
+      page.windows[0].use
       page.save_instance
       sleep(3)
-
     end
   end
 end

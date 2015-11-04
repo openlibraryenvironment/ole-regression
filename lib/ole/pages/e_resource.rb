@@ -8,7 +8,7 @@ class E_resource < PageFactory
   element(:material_type) { |b| b.iframe(id:"iframeportlet").select(id:"oleMaterialType_line0_control")}
   element(:format_type) {|b| b.iframe(id:"iframeportlet").select(id:"oleFormatType_line0_control")}
   element(:content_type) { |b| b.iframe(id:"iframeportlet").select(id:"oleContentType_line0_control")}
-  action(:save) { |b| b.iframe(id:"iframeportlet").button(text:"Save").when_present(60).click}
+  action(:save) { |b| b.iframe(id:"iframeportlet").button(id:"ermSave").when_present(60).click}
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
   element(:doc_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"documentId") }
   action(:search_req) { |b| b.iframe(id:"iframeportlet").input(title:"search").click}
