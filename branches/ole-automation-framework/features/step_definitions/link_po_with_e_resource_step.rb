@@ -1,5 +1,6 @@
 When(/^I create PO and link it with E-Resource document$/) do
-  create_requsition()
+  @requisition = make Requisition
+  @requisition.create_requsition
   @eresouce = make EResourceDocument , :tab => 'red'
   @eresouce.requisition_local_id
   @identifier = @eresouce.po_identifier
