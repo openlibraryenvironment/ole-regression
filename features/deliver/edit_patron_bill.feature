@@ -1,6 +1,5 @@
 @nightly
-  Feature:
-    @retest
+  Feature:Edit patron bill
     Scenario: Edit patron bill
       Given I log in as ole_quickstart
       When I create patron bill and another fee type and fee amount

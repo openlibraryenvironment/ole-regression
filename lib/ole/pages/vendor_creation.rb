@@ -40,8 +40,8 @@ class Vendor_creation < PageFactory
   action(:add_contacts) { |b| b.iframe(id:"iframeportlet").button(id:"methodToCall.addLine.vendorContacts.(!!org.kuali.ole.vnd.businessobject.VendorContact!!)").when_present(60).click}
 
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
-  value(:doc_status) { |b| b.form(id:"kualiForm").table(class:"headerinfo").tbody.tr(index:0).td(index:1).text}
-  action(:doc_id_link) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:0).a(title:"").click}
+  value(:doc_status) { |b| b.form(id:"kualiForm").table(class:"headerinfo").tbody.tr(index:0).td(index:1).when_present(60).text}
+  action(:doc_id_link) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:0).a(title:"").when_present(60).click}
   action(:search) { |b| b.iframe(id:"iframeportlet").button(title:"search").when_present(60).click}
   element(:doc_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"documentId") }
 
