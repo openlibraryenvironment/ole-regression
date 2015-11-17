@@ -9,7 +9,7 @@ class Circulationdesk < PageFactory
     value(:previous_location) { |count_level,b| b.iframe(id:"iframeportlet").text_field(id:"shelvingLocation-pickup_line#{count_level}_control").value}
     action(:circ) { |b| b.a(text:"Circulation Desk").when_present(60).click}
     action(:circ_search) { |b| b.iframe(id:"iframeportlet").button(text:"Search").click}
-    action(:edit_circ) { |b| b.iframe(id:"iframeportlet").a(text:"edit" , title:"edit Ole Circulation Desk with Circulation Desk Id=1").when_present(60).click}
+    action(:edit_circ) { |b| b.iframe(id:"iframeportlet").a(text:"edit").when_present(60).click}
     element(:description) { |b| b.iframe(id:"iframeportlet").text_field(name:"document.documentHeader.documentDescription").when_present}
     action(:maintenance) { |b| b.a(class:"green" , title:"Maintenance").click}
     action(:submit_circ) { |b| b.iframe(id:"iframeportlet").button(text:"submit").click}

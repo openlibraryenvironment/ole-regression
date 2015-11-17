@@ -16,7 +16,7 @@ class Checkin_dataobject < DataFactory
   end
 
   def item_checkin
-    on ItemCheckoutAndCkeckin do |page|
+    visit ItemCheckoutAndCkeckin do |page|
       page.deliver
       page.return
       if(page.circ_desk_val != "1")
@@ -29,6 +29,17 @@ class Checkin_dataobject < DataFactory
       page.send_keys :enter
       page.checkin_button
       #sleep(5)
+    end
+  end
+
+  def checkin_with_different_location
+    visit ItemCheckoutAndCkeckin do |page|
+      page.deliver
+      page.return
+      page.checkin.set @item_id
+      page.send_keys :enter
+      page.continue_checkin
+      page.checkin_button
     end
   end
 

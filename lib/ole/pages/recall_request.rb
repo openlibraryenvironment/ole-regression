@@ -1,7 +1,7 @@
 class RecallRequest <  PageFactory
 
   page_url $test_site
-  element(:deliver) { |b| b.link(class:"red" , title:"Deliver")}
+  element(:deliver) { |b| b.a(title:"Deliver").click}
   action(:item_search) { |b| b.a(title:"Item Search").when_present(60).click}
   element(:item_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"OLEDeliverItemSearch_BarCode_control")}
   action(:click_item_search) { |b| b.iframe(id:"iframeportlet").button(id:"itemSearch_search_button").click}
@@ -21,6 +21,7 @@ class RecallRequest <  PageFactory
   action(:search_request) { |b| b.iframe(id:"iframeportlet").button(id:"searchReqBtn").when_present.click}
   value(:recallrequest_type) { |b| b.iframe(id:"iframeportlet").a(class:"uif-link").text}
   action(:activate_address) { |b| b.iframe(id:"iframeportlet").input(id:"active_add_control").click}
-  action(:set_pickup_location) { |b| b.iframe(id:"iframeportlet").select(id:"placeRequest-pickupLocation_control").option(:text=>"BL_EDUC").click}
+  action(:set_pickup_location) { |b| b.iframe(id:"iframeportlet").select(id:"placeRequest-pickupLocation_control").option(:text=>"UC_JRLMAIN").click}
   action(:open_deliver) { |b| b.a(class:"green" , title:"Deliver").click}
+  action(:check_hold) { |b| b.iframe(id:"iframeportlet").input(id:"holdRequestTyp_control_0").when_present(60).click}
 end
