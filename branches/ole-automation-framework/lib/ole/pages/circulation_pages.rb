@@ -29,6 +29,7 @@ class ItemCheckoutAndCkeckin < PageFactory
   element(:checkin) { |b| b.iframe(id:"iframeportlet").text_field(id:"checkIn-Item_control")}
   action(:checkin_button) { |b| b.iframe(id:"iframeportlet").button(id:"checkInButton-ok").when_present(60).click}
   value(:return_status) { |b| b.iframe(id:"iframeportlet").span(id:"checkedInItem-ItemStatus_line0_control").text}
+  action(:continue_checkin) { |b| b.iframe(id:"iframeportlet").button(id:"checkinRequestExistMessageOkButton").when_present(60).click}
 
   #renewal
 

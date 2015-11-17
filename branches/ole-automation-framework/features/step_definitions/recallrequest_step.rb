@@ -9,7 +9,7 @@ When(/^I'm raising the recall request$/) do
   @checkout.create_an_item(@patron.patron_barcode)
 
   @item = make ItemObject
-  @item.search (@checkout.item_barcode)
+  @item.item_search(@checkout.item_barcode)
   @item.place_request(@request_patron.patron_barcode)
 
 end
