@@ -21,6 +21,8 @@ class ItemCheckoutAndCkeckin < PageFactory
   value(:item_status) { |b| b.iframe(id:"iframeportlet").span(id:"currentyLoanedCheckoutItemStatus_line0_control").when_present(60).text}
   value(:duedate) { |b| b.iframe(id:"iframeportlet").span(id:"currentyLoanedLoanDueDate_line0_control").when_present(60).text}
   value(:popup_message) { |b| b.iframe(id:"iframeportlet").div(id:"ptrnValidationErrorMessageDialog").div(id:"errorMsgSection").when_present(60).text}
+  action(:select_proxy) { |b| b.iframe(id:"iframeportlet").input(id:"selfCheckout_line0_control").when_present(60).click}
+  action(:proceed_with_proxy) { |b| b.iframe(id:"iframeportlet").button(id:"btnProceed").when_present(60).click}
 
 
   #checkin
@@ -50,5 +52,7 @@ class ItemCheckoutAndCkeckin < PageFactory
   action(:select_box) { |b| b.iframe(id:"iframeportlet").input(id:"circ_checkIdRenew_line0_control").when_present(60).click}
   element(:set_due_date) { |b| b.iframe(id:"iframeportlet").text_field(id:"circ_renewDueDateForNonCirculatingItem_Date_line0_control").when_present(60)}
   action(:circ_renew_btn) { |b| b.iframe(id:"iframeportlet").button(id:"circ_renewDateBtn").when_present(60).click}
+  value(:fixed_duedate) { |b| b.iframe(id:"iframeportlet").input(id:"create_fixedDueDate_line0_control").when_present(60).value}
+
 
 end

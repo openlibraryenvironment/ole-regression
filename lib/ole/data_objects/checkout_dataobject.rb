@@ -13,7 +13,8 @@ class CheckoutDataobject < DataFactory
                 :item_type,
                 :callnumber_type,
                 :note,
-                :status
+                :status,
+                :proxy
 
 
   def initialize (browser , opts={})
@@ -25,7 +26,8 @@ class CheckoutDataobject < DataFactory
         item_type: "Book",
         callnumber_type: "Library of Congress Classification (LCC)",
         note: "testing",
-        status: 'LOANED'
+        status: 'LOANED',
+        proxy: "false"
     }
     set_options(default.merge(opts))
   end
@@ -41,6 +43,10 @@ class CheckoutDataobject < DataFactory
       end
       page.patron_barcode.set patron_barcode
       page.send_keys :enter
+      if(proxy == "true")
+        page.select_proxy
+        page.proceed_with_proxy
+      end
       page.fast_add_item
       page.item_title.set @title
       page.shelving_location.set @location
@@ -56,6 +62,7 @@ class CheckoutDataobject < DataFactory
       sleep(5)
     end
   end
+
 
   def check_inactive_patron patron_barcode
 

@@ -23,9 +23,11 @@ class RenewDataobject < DataFactory
       page.alter_due_date
       page.set_past_due_date.set @past_due_date
       page.update_past_date
-
+      sleep(10)
       page.select_loaned_item
+      sleep(5)
       page.renew
+      sleep(10)
       # page.select_box
       # page.set_due_date.set @due_date
       # page.circ_renew_btn
@@ -36,7 +38,7 @@ class RenewDataobject < DataFactory
       # page.renew_custom_due_date.set @due_date
       # page.renew_custom_due_date_button
       # page.ok_general_info
-      sleep(3)
+      sleep(10)
     end
   end
 
