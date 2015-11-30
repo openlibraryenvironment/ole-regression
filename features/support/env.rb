@@ -1,4 +1,4 @@
-$test_site = "demo.ole.kuali.org"
+$test_site = "dev.ole.kuali.org"
 puts "environment---> #$test_site"
 
 $target_folder = File.expand_path("../lib/resources", "#{File}" )
