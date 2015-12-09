@@ -1,5 +1,8 @@
 #$test_site = "staging.ole.kuali.org"
 $env = $test_site
+puts "test_site value"
+puts test_site
+puts "$test_site value --->#$test_site"
 puts "environment---> #$env"
 
 $target_folder = File.expand_path("../lib/resources", "#{File}" )
