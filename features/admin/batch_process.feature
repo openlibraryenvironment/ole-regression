@@ -1,4 +1,4 @@
-@nightly
+@nightly @admin
 Feature: Batch_Process
   Scenario: Bib import in batch process
     Given I logged in with user name ole-quickstart

@@ -1,4 +1,4 @@
-@nightly
+@nightly @admin
 Feature: Batch_Process
 
   Scenario: Batch export filter in batch process
