@@ -1,4 +1,4 @@
-@nightly
+@nightly @describe
 Feature: Marc_editor
   Scenario: Item creation through marc editor
     Given I logged in with username ole-quickstart

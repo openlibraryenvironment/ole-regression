@@ -1,4 +1,4 @@
-@nightly
+@nightly @describe
   Feature: Analytics
     Scenario: Keep an item in morethan one holding
       Given I am logged in as ole-quickstart to do analytics

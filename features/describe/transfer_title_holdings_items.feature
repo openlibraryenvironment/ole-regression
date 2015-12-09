@@ -1,4 +1,4 @@
-@nightly
+@nightly @describe
   Feature: Transfer titles,holdings or items
     Scenario: Transfer an item to another location
       Given I am logged in as ole-quickstart to transfer item

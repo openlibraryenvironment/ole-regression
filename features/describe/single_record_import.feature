@@ -1,4 +1,4 @@
-@nightly
+@nightly @describe
   Feature: Single Record Import
     Scenario: Importing single bib
       Given I login with ole-quickstart
