@@ -1,4 +1,4 @@
-@nightly
+@nightly @deliver
 Feature: OLE.RequestRecall
   Scenario: Recall deliver request for an item
     Given I logged in with ole_quickstart

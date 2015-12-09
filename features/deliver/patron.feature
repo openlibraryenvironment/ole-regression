@@ -1,4 +1,4 @@
-@nightly
+@nightly @deliver
  Feature: OLE.Patron
    Scenario: Create a patron without proxypatron
     Given Log in as ole-quickstart

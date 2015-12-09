@@ -1,4 +1,4 @@
-@nightly
+@nightly @deliver
 Feature: OLE.CheckoutItem
 
   Scenario: PL 1.1.1 Verify inactive patron

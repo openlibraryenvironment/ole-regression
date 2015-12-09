@@ -1,5 +1,5 @@
 
-@nightly
+@nightly @deliver
 Feature: OLE.CheckinItem
 
   Scenario: PL 1.1.3 Checkin an item

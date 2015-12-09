@@ -1,4 +1,4 @@
-@nightly
+@nightly @deliver
   Feature:Edit patron bill
     Scenario: Edit patron bill
       Given I log in as ole_quickstart
