@@ -2,7 +2,8 @@ class CreateReq < PageFactory #< BasePage
 
 
   puts"setting page url"
-  page_url $test_site
+  page_url $env
+  puts "env---->#$env"
   #expected_element :select_acquire,30
   puts"selecting select and acquire tab"
   element(:open_select_acquire) {|b| b.link(class: "green", title:"Select/Acquire").exists?}
