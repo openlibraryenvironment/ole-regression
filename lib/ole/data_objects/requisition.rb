@@ -52,7 +52,9 @@ class Requisition < DataFactory
         page.return_address
         page.room.set @room_no
       end
-      page.tab_vendor
+      if(page.vendor_tab_open == false)
+       page.tab_vendor
+      end
       page.vendor_alias_name.set @vendor
       page.vendor_select
       page.attachBib

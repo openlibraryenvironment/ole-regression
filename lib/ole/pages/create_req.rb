@@ -13,6 +13,7 @@ class CreateReq < PageFactory #< BasePage
   puts"after selecting documentnumber"
   value(:doc_no_value) { |b| b.iframe(id:"iframeportlet").div(id:"headerarea").table(class:"headerinfo").td(index:0).text }
 
+  value(:vendor_tab_open) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.vendorAliasName").when_present(60).exists?}
   action(:tab_vendor) { |b| b.iframe(id:"iframeportlet").input(id:"tab-Vendor-imageToggle").when_present(60).click}
   element(:vendor_alias_name) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.vendorAliasName") }
   action(:vendor_select) { |b| b.iframe(id:"iframeportlet").input(name:"methodToCall.selectVendor").when_present(60).click  }
