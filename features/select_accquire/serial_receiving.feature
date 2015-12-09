@@ -1,4 +1,4 @@
-@nightly
+@nightly @selectacquire
   Feature: Serial receiving
     Scenario: Creating serial receiving using PO via serial receiving search
       Given I log-in with user name ole-quickstart

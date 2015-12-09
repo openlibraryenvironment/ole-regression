@@ -1,4 +1,4 @@
-@nightly
+@nightly @selectacquire
 Feature: E-Resource
   Scenario: Create new E-Resource document
     Given I logged in with ole-quickstart

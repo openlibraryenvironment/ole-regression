@@ -1,4 +1,4 @@
-@nightly @invoice
+@nightly @selectacquire
 Feature: OLE.Create Invoice
 
   Scenario: PL 2.1.1 Verify that a invoice can be successfully created for a purchase order
