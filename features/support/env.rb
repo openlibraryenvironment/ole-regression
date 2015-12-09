@@ -1,7 +1,10 @@
-#$test_site = "staging.ole.kuali.org"
-$env = $test_site
+$test_site = "staging.ole.kuali.org"
+$test_site = ENV['TEST_SITE'] unless ENV['TEST_SITE'] == nil
+#$env = test_site
 puts "$test_site value --->#$test_site"
-puts "environment---> #$env"
+
+
+
 
 $target_folder = File.expand_path("../lib/resources", "#{File}" )
 $: << File.dirname(__FILE__)+'/../../lib'
