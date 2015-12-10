@@ -17,5 +17,7 @@ Then(/^Operator is presented with a pop-up message to allow or disallow loaning 
     page.popup_message.should == "Patron is Inactive"
     puts page.popup_message
     sleep(5)
+    page.inactive_patron
+    sleep(5)
   end
 end

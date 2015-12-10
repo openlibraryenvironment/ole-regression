@@ -23,6 +23,7 @@ class ItemCheckoutAndCkeckin < PageFactory
   value(:popup_message) { |b| b.iframe(id:"iframeportlet").div(id:"ptrnValidationErrorMessageDialog").div(id:"errorMsgSection").when_present(60).text}
   action(:select_proxy) { |b| b.iframe(id:"iframeportlet").input(id:"selfCheckout_line0_control").when_present(60).click}
   action(:proceed_with_proxy) { |b| b.iframe(id:"iframeportlet").button(id:"btnProceed").when_present(60).click}
+  action(:inactive_patron) { |b| b.iframe(id:"iframeportlet").button(id:"donNotLoanButton").when_present(60).click}
 
 
   #checkin
