@@ -24,7 +24,7 @@ class Fixed_due_date_dataobject < DataFactory
       page.fixed_due_date
       page.select_circ_policy.select("Circ Policy BOOK for Renewal")
       page.search
-      if(page.values_exists == true)
+      if(page.values_exists == "One item retrieved.")
         page.edit
         page.description.set'test'
         @due_date = page.fixed_duedate

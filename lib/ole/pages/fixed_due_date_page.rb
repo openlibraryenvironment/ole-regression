@@ -5,7 +5,7 @@ class Fixed_due_date_page < PageFactory
   action(:fixed_due_date) { |b| b.a(title:"Fixed Due Date").when_present(60).click}
   element(:select_circ_policy) { |b| b.iframe(id:"iframeportlet").select(id:"circulationPolicySetId_control").when_present(60)}
   action(:search) { |b| b.iframe(id:"iframeportlet").button(text:"Search").when_present(60).click}
-  value(:values_exists) { |b| b.iframe(id:"iframeportlet").a(text:"edit").when_present(60).exists?}
+  value(:values_exists) { |b| b.iframe(id:"iframeportlet").div(class:"uif-validationMessages uif-groupValidationMessages uif-pageValidationMessages-info").li(class:"uif-infoMessageItem").when_present(60).text}
   action(:edit) { |b| b.iframe(id:"iframeportlet").a(text:"edit").when_present(60).click}
   element(:description) { |b| b.iframe(id:"iframeportlet").text_field(name:"document.documentHeader.documentDescription").when_present(60)}
   value(:fixed_duedate) { |b| b.iframe(id:"iframeportlet").input(id:"create_fixedDueDate_line0_control").when_present(60).value}
