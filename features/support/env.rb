@@ -30,10 +30,7 @@ $browserPath = ENV['browser_path'] unless ENV['browser_path'].nil?
 
 if ENV['HEADLESS']
   require 'headless'
-  #headless = Headless.new :destroy_at_exit => false
-  # headless.start
-  display = ENV['BUILD_NUMBER'] || "99"
-  headless = Headless.new(:display => display)
+  headless = Headless.new :destroy_at_exit => false
   headless.start
 
   #to avoid nil browser error, retry initial browser connect in headless env
