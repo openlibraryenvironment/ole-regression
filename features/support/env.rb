@@ -1,4 +1,4 @@
-
+$test_site = "qa.ole.kuali.org"
 $test_site = ENV['TEST_SITE'] unless ENV['TEST_SITE'] == nil
 #$env = test_site
 puts "$test_site value --->#$test_site"
@@ -23,10 +23,17 @@ browser = nil
 headless = nil
 $browserPath = ENV['browser_path'] unless ENV['browser_path'].nil?
 
+# display = ENV['BUILD_NUMBER'] || "99"
+# headless = Headless.new(:display => display)
+# headless.start
+
 
 if ENV['HEADLESS']
   require 'headless'
-  headless = Headless.new :destroy_at_exit => false
+  #headless = Headless.new :destroy_at_exit => false
+  # headless.start
+  display = ENV['BUILD_NUMBER'] || "99"
+  headless = Headless.new(:display => display)
   headless.start
 
   #to avoid nil browser error, retry initial browser connect in headless env
