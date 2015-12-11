@@ -29,12 +29,6 @@ $browserPath = ENV['browser_path'] unless ENV['browser_path'].nil?
 
 
 if ENV['HEADLESS']
-
-  display = ENV['BUILD_NUMBER'] || "99"
-  puts "display value"
-  puts display
-  @headless = Headless.new(:display => display)
-  @headless.start
   require 'headless'
   headless = Headless.new :destroy_at_exit => false
   headless.start
