@@ -31,7 +31,7 @@ class Edifact_invoice_dataobject < DataFactory
         location: 'API',
         list_price: '10',
         acc_code: 'BL',
-        acc_number: '1031400',
+        acc_number: '0211102',
         object_code: '2100'
 
     }
