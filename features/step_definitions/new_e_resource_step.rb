@@ -3,7 +3,7 @@ Given(/^I logged in with ole-quickstart$/) do
 end
 
 When(/^I give material,format and content type and save the document$/) do
-  @eresouce = make EResourceDocument , :tab => 'green'
+  @eresouce = make EResourceDocument
   @eresouce.create_e_resource_document
 end
 

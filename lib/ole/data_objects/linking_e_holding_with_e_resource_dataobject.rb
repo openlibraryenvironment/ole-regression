@@ -1,5 +1,4 @@
-class Marc_editor < DataFactory
-
+class Linking_e_holding_with_e_resource_dataobject < DataFactory
   include Foundry
   include DateFactory
   include StringFactory
@@ -21,10 +20,7 @@ class Marc_editor < DataFactory
   end
 
   def create_bib
-    visit Marc_editor_fields do |page|
-
-      page.describe
-      page.open_marc_editor
+    on Linking_e_holding_with_e_resource_page do |page|
       page.datafield_tag(opts=@line_level=0).set '245'
       page.datafield_value(opts=@line_level=0).set @title
       page.add_tag_button(opts=@line_level=0)
@@ -38,54 +34,46 @@ class Marc_editor < DataFactory
       page.datafield_value(opts=@line_level=3).set @issn_num
       page.bib_submit
       sleep(3)
-    end
-  end
-
-  def create_holding
-    on Marc_editor_fields do |page|
-      page.add_holding
-      page.holding_location.set 'B-EDUC/BED-STACKS'
-      page.bib_submit
+      page.windows[0].use
       sleep(3)
-      @local_item_id = page.local_id
-      puts "local id---> #@local_item_id"
-    end
-  end
-
-  def create_e_holding
-    on Marc_editor_fields do |page|
-      page.add_e_holding
-      page.save_e_holding
-      sleep(3)
-    end
-  end
-
-  def create_item
-    on Marc_editor_fields do |page|
-      if(page.open_item == false)
-        page.click_icon
-      end
-      page.click_item
-      page.windows[1].use
-      page.set_barcode.set @item_barcode
-      page.select_item_type.set "BOOK"
-      page.item_status.select("Available")
-      @item_id = page.item_id
-      page.bib_submit
+      page.save_instance
       sleep(5)
       page.windows[1].close
     end
   end
 
-  def search_item
-    visit Search_workbench do |page|
-      page.search_workbench
-      page.search_selection_type.select("Item")
-      #page.item_search_condition.select("Item Barcode")
-      page.set_item_barcode.set @item_barcode
-      page.search
+  def link_e_holdings
+    on Linking_e_holding_with_e_resource_page do |page|
+      page.search_e_holdings.set @title
+      page.search_button
+      page.select_search_results
+      page.select_e_holding
+      page.e_holding_display_list
+      page.link
+      page.windows[0].use
+      sleep(3)
+      page.save_instance
+      sleep(5)
     end
   end
 
-
+  def create_e_holding_with_existing_bib
+    on Linking_e_holding_with_e_resource_page do |page|
+      page.search_e_holdings.set @title
+      page.search_button
+      if(page.e_holding_link_value == "Create New EInstance")  #"Create New EInstance" link is in 5th column in 2.1 and 6th column in 2.0
+        sleep(3)
+        page.create_e_holding_link
+      else
+        sleep(3)
+        page.e_holding_link
+      end
+      page.windows[2].use
+      page.save_e_instance
+      page.windows[0].use
+      sleep(3)
+      page.save_instance
+      sleep(5)
+    end
+  end
 end

@@ -11,7 +11,8 @@ class EResourceDocument < DataFactory
                 :local_id,
                 :e_resource_identifier,
                 :po_identifier,
-                :tab
+                :tab,
+                :line_level
 
   def initialize(browser, opts={})
     @browser = browser
@@ -52,11 +53,7 @@ class EResourceDocument < DataFactory
 
   def create_e_resource_document
     visit E_resource do |page|
-      if(@tab == "green")
       page.select_acquire
-      else
-       page.select_acquire_red
-      end
       page.e_resource
       page.doc_name.set @title
       page.material_type.select (@material_type)
@@ -87,6 +84,17 @@ class EResourceDocument < DataFactory
       page.windows[0].use
       page.save_instance
       sleep(3)
+    end
+  end
+
+  def create_e_instance
+    on E_resource do |page|
+      page.open_e_holding
+      page.create_instance
+      sleep(5)
+      page.new_e_holding(opts = @line_level)
+      sleep(5)
+      page.windows[1].use
     end
   end
 end

@@ -23,6 +23,8 @@ class Marc_editor_fields < PageFactory
   value(:local_id) { |b| b.iframe(id:"iframeportlet").span(id:"LocalIdHolding_control").text}
 
   action(:add_holding){ |b| b.iframe(id:"iframeportlet").button(title:"Add Holdings").click}
+  action(:add_e_holding) { |b| b.iframe(id:"iframeportlet").button(title:"Add Eholdings").click}
   value(:item_id) { |b| b.iframe(id:"iframeportlet").span(id:"LocalItem_control").text}
+  action(:save_e_holding) { |b| b.iframe(id:"iframeportlet").button(id:"EInstanceSave").click}
 
 end

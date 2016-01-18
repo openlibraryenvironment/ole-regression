@@ -2,7 +2,7 @@ class E_resource < PageFactory
   page_url $test_site
 
   action(:select_acquire_red) { |b| b.link(class: "red", title:"Select/Acquire").click}
-  action(:select_acquire) { |b| b.link(class: "green", title:"Select/Acquire").when_present(60).click}
+  action(:select_acquire) { |b| b.link(title:"Select/Acquire").when_present(60).click}
   action(:e_resource) { |b| b.link(class: "portal_link", title:"Create", index:6).when_present(60).click}
   element(:doc_name) { |b| b.iframe(id:"iframeportlet").text_field(name:"document.title")}
   element(:material_type) { |b| b.iframe(id:"iframeportlet").select(id:"oleMaterialType_line0_control")}
@@ -43,4 +43,10 @@ class E_resource < PageFactory
   action(:view_related_documents) { |b| b.form(id:"kualiForm").input(id:"tab-ViewRelatedDocuments-imageToggle").when_present(60).click}
   value(:po_id) { |b| b.form(id:"kualiForm").a(target:"_BLANK").text}
   value(:e_res_po_id) { |b| b.iframe(id:"iframeportlet").a(target:"_blank").text}
+
+  #linking_e-holding_in_e-resource
+
+  action(:new_e_holding) { |line_level,b| b.iframe(id:"iframeportlet").input(id:"selectInstanceId_control_#{line_level}").click}
+  value(:e_holding_title) { |b| b.iframe(id:"iframeportlet").table(id:"instanceDetails").tbody.tr.td(index:0).when_present(60).text}
+
 end
