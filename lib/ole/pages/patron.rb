@@ -79,7 +79,7 @@ class PatronPage < PageFactory
   element(:feetype) { |b| b.form(id:"kualiForm").select(id:"fee_feeType_add_control")}
   element(:feeamount) { |b| b.form(id:"kualiForm").text_field(id:"feeAmt_add_control")}
   action(:addfee) { |b| b.form(id:"kualiForm").button(id:"addFee_add").when_present.click}
-  action(:patron_submit) { |b| b.form(id:"kualiForm").button(id:"oleSubmit").when_present(60).click}
+  action(:patron_submit) { |b| b.form(id:"kualiForm").button(id:"olePatronBillSubmit").when_present(60).click}
   action(:patron_bill_link) { |b| b.iframe(id:"iframeportlet").a(text:"Patron Bill").when_present(60).click}
   element(:enabled_patron_bill) { |b| b.iframe(id:"iframeportlet").a(text:"Patron Bill")}
   value(:bill_date) { |b| b.form(id:"kualiForm").span(id:"billDate_line0_control").when_present.text}
