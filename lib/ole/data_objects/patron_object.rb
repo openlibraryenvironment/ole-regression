@@ -82,12 +82,7 @@ class PatronObject < DataFactory
 
   def create(opts={})
     on PatronPage do |page|
-      if (page.deliver_red_tab == true)
-        puts "deliver"
-        page.deliver_red
-      else
-        page.deliver_green
-      end
+      page.deliver
       page.patron
       page.create_new
       sleep(3)
@@ -122,12 +117,7 @@ class PatronObject < DataFactory
   end
   def create_patron_with_proxy
     visit PatronPage do |page|
-      if (page.deliver_red_tab == true)
-        puts "deliver"
-        page.deliver_red
-      else
-        page.deliver_green
-      end
+      page.deliver
       page.patron
       sleep(3)
       page.create_new
@@ -177,12 +167,7 @@ class PatronObject < DataFactory
 
   def create_patron_with_notes
     visit PatronPage do |page|
-      if (page.deliver_red_tab == true)
-        puts "deliver"
-        page.deliver_red
-      else
-        page.deliver_green
-      end
+      page.deliver
       page.patron
       sleep(3)
       page.create_new
@@ -226,12 +211,7 @@ class PatronObject < DataFactory
 
   def edit_patrons
     visit PatronPage do |page|
-      if (page.deliver_red_tab == true)
-        puts "deliver"
-        page.deliver_red
-      else
-        page.deliver_green
-      end
+      page.deliver
       page.patron
       sleep(3)
       page.patron_barcode.set @patron_barcode
@@ -252,12 +232,8 @@ class PatronObject < DataFactory
 
   def inactive_patron
     on PatronPage do |page|
-      if (page.deliver_red_tab == true)
-        puts "deliver"
-        page.deliver_red
-      else
-        page.deliver_green
-      end
+
+      page.deliver
       sleep(3)
       page.patron
       sleep(3)
@@ -296,14 +272,8 @@ class PatronObject < DataFactory
   def create_patron_bill patron_fee_amount
 
     visit PatronPage do |page|
-      if (page.deliver_red_tab == true)
-        puts "deliver"
-        page.deliver_red
-      else
-        page.deliver_green
-      end
+      page.deliver
       page.patron
-
       page.patron_barcode.set @patron_barcode
       page.search_patron_barcode
       @patron_id = page.patronID
@@ -323,5 +293,25 @@ class PatronObject < DataFactory
       page.windows[1].close
     end
   end
+
+
+  # def update_barcode patron_barcode,new_patron_barcode
+  #   visit PatronPage do |page|
+  #     page.deliver
+  #     page.patron
+  #     page.patron_barcode.set patron_barcode
+  #     page.search_patron_barcode
+  #     page.patron_edit
+  #     sleep(3)
+  #     page.overview_col
+  #     page.update_barcode
+  #     page.update_reason_note.set new_patron_barcode
+  #     page.lost_conform_botton
+  #     sleep(3)
+  #     page.barcode.set
+  #     page.submit
+  #     sleep(10)
+  #   end
+  # end
 end
 

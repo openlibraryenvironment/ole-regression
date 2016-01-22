@@ -2,15 +2,13 @@ class PatronPage < PageFactory
   page_url $test_site
 
   #Create a new patron
-  action(:deliver_green) { |b| b.a(class:"green" , title:"Deliver").when_present(60).click}
-  element(:deliver_green_tab){ |b| b.a(class:"green" , title:"Deliver").exists?}
-  element(:deliver_red_tab){ |b| b.a(class:"red" , title:"Deliver").exists?}
-  action(:deliver_red) { |b| b.link(class:"red" , title:"Deliver").click}
+  action(:deliver) { |b| b.a(title:"Deliver").when_present(60).click}
+
   value(:doc_number) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:0).when_present(60).text}
   value(:document_number) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.tr.td(index:0).when_present(60).text}
   element(:doc_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"documentId") }
   action(:patron) { |b| b.link(class:"portal_link" , title:"Patron").when_present(60).click}
-  action(:create_new) { |b| b.iframe(id:"iframeportlet").a(class:"uif-actionLink uif-createNewLink uif-boxLayoutHorizontalItem").when_present(60).click}
+  action(:create_new) { |b| b.iframe(id:"iframeportlet").button(id:"OLE_OlePatron_Uif-CreateNewLink").when_present(60).click}
   action(:overview) { |b| b.iframe(id:"iframeportlet").img(id:"OlePatronDocument-OverviewSection_toggle_col").when_present(60).click}
   element(:barcode) { |b| b.iframe(id:"iframeportlet").text_field(id:"barcode_control")}
   element(:borrowertype) { |b| b.iframe(id:"iframeportlet").select(id:"borrowerType_control")}
@@ -26,7 +24,7 @@ class PatronPage < PageFactory
   action(:deliver_address) { |b| b.iframe(id:"iframeportlet").input(id:"deliverAddress_add_control").click}
   action(:default_value) { |b| b.iframe(id:"iframeportlet").input(id:"defaultValue_add_control").click}
   action(:add_address) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-Address_add").click}
-  action(:submit) { |b| b.iframe(id:"iframeportlet").button(text:"submit").when_present.click}
+  action(:submit) { |b| b.iframe(id:"iframeportlet").button(id:"olePatronSubmit").when_present.click}
   action(:ole_submit) { |b| b.iframe(id:"iframeportlet").button(id:"oleSubmit").when_present(60).click}
   element(:email_source) { |b| b.iframe(id:"iframeportlet").select(id:"oleEmailAddressSource_add_control").when_present(60)}
 
@@ -91,5 +89,13 @@ class PatronPage < PageFactory
   action(:add_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_add").when_present(60).click}
   action(:delete_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_del_line0").when_present(60).click}
   value(:patronID) { |b| b.iframe(id:"iframeportlet").a(title:"show inquiry for Patron ").when_present(60).text}
+
+  value(:overview_section) { |b| b.iframe(id:"iframeportlet").div(id:"OlePatronDocument-OverviewSection").span.img(id:"OlePatronDocument-OverviewSection_toggle_exp").when_present(60).visible?}
+  action(:overview_exp) { |b| b.iframe(id:"iframeportlet").div(id:"OlePatronDocument-OverviewSection").span.img(id:"OlePatronDocument-OverviewSection_toggle_exp").when_present(60).click}
+  action(:overview_col) { |b| b.iframe(id:"iframeportlet").div(id:"OlePatronDocument-OverviewSection").span.img(id:"OlePatronDocument-OverviewSection_toggle_col").when_present(60).click}
+  action(:update_barcode) { |b| b.iframe(id:"iframeportlet").button(id:"lostBarcode_edit").when_present(60).click}
+  action(:update_reason_note) { |b| b.iframe(id:"iframeportlet").textarea(id:"OlePatronDocument-reason-note_control").when_present(60)}
+  action(:lost_conform_botton) { |b| b.iframe(id:"iframeportlet").button(id:"lostConfimButton").when_present(60).click}
+
 
 end
