@@ -33,7 +33,10 @@ class Analytics_dataobject < DataFactory
       page.search_button
       page.search_result
       page.select_analytics
+      page.open_series
       page.series_holding
+      page.open_analytics
+      page.open_analytics_holding
       page.analytics_item
       page.create_analytics
       sleep(5)

@@ -9,12 +9,12 @@ class Global_edit < PageFactory
   action(:view_items) { |b| b.iframe(id:"iframeportlet").button(id:"GlobalEditView-View-Button").when_present(60).click}
   action(:added_items) { |b| b.iframe(id:"iframeportlet").input(id:"GlobaEdit_ItemSearchResults_line0_select_control").when_present(60).click}
   action(:edit_items) { |b| b.iframe(id:"iframeportlet").button(id:"GlobalEditView-Edit-Button").when_present(60).click}
-  element(:edit_item_location) { |b| b.form(id:"kualiForm").text_field(id:"OleItemLocationLevelName_control").when_present(60)}
-  action(:update_edited_items) { |b| b.form(id:"kualiForm").button(id:"globalEditUpdate_button").when_present(60).click}
+  element(:edit_item_location) { |b| b.iframe(id:"iframeportlet").text_field(id:"OleItemLocationLevelName_control").when_present(60)}
+  action(:update_edited_items) { |b| b.iframe(id:"iframeportlet").button(id:"globalEditUpdate_button").when_present(60).click}
   element(:document_type) { |b| b.iframe(id:"iframeportlet").select(id:"global_docType_control").when_present(60)}
   element(:document_type_field){ |b| b.iframe(id:"iframeportlet").select(id:"item_SearchConditions_DocField_id_line0_control").when_present(60)}
   value(:location_info) { |b| b.form(id:"kualiForm").text_field(id:"OleItemLocationLevelName_control").when_present(60).visible?}
-  action(:location_info_section) { |b| b.form(id:"kualiForm").img(id:"OleItemsLocationAndCallNumberInformation_toggle_col").when_present(60).click}
+  action(:location_info_section) { |b| b.iframe(id:"iframeportlet").img(id:"OleItemsLocationAndCallNumberInformation_toggle_col").when_present(60).click}
   action(:search_icon) { |b| b.form(id:"kualiForm").li(id:"u40_node_0_parent_root").ins(class:"jstree-icon").when_present(60).click}
   action(:open_item) { |b| b.form(id:"kualiForm").span(id:"u39_node_0_parent_node_0_parent_root_span").when_present(60).click}
   action(:open_item_location) { |b| b.iframe(id:"iframeportlet").img(id:"OleItemsLocationAndCallNumberInformation_toggle_col").when_present(60).click}
