@@ -62,8 +62,8 @@ class Vendor_creation < PageFactory
   action(:add_customer_number) { |b|b.iframe(id:"iframeportlet").input(id:"methodToCall.addLine.vendorCustomerNumbers.(!!org.kuali.ole.vnd.businessobject.VendorCustomerNumber!!)").click}
 
   action(:open_phone_number) { |b| b.iframe(id:"iframeportlet").input(alt:"open Vendor Phone Number").when_present(60).click}
-  element(:vendor_phone_type) { |b| b.iframe(id:"iframeportlet").select(id:"document.newMaintainableObject.add.vendorPhoneNumbers.vendorPhoneTypeCode")}
-  element(:phone_number) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.newMaintainableObject.add.vendorPhoneNumbers.vendorPhoneNumber")}
-  action(:add_phone_numbers) { |b| b.iframe(id:"iframeportlet").button(id:"methodToCall.addLine.vendorPhoneNumbers.(!!org.kuali.ole.vnd.businessobject.VendorPhoneNumber!!)").when_present(60).click}
+  element(:vendor_phone_type) { |b| b.iframe(id:"iframeportlet").select(id:"document.newMaintainableObject.add.vendorContacts[0].vendorContactPhoneNumbers.vendorPhoneTypeCode")}
+  element(:phone_number) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.newMaintainableObject.add.vendorContacts[0].vendorContactPhoneNumbers.vendorPhoneNumber")}
+  action(:add_phone_numbers) { |b| b.iframe(id:"iframeportlet").button(id:"methodToCall.addLine.vendorContacts[0].vendorContactPhoneNumbers.(!!org.kuali.ole.vnd.businessobject.VendorContactPhoneNumber!!)").when_present(60).click}
 
 end

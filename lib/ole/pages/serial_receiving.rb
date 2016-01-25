@@ -6,7 +6,7 @@ class Serial_receiving < PageFactory
   element(:red_tab) { |b| b.a(class:"red" , title:"Select/Acquire").exists?}
   action(:search_and_receive) { |b| b.a(class:"portal_link" , title:"Search & Receive").when_present(60).click}
   element(:search_fields) { |line_level,b| b.iframe(id:"iframeportlet").text_field(id:"searchText_id_line#{line_level}_control")}
-  action(:search_button) { |b| b.iframe(id:"iframeportlet").button(id:"search_button").click}
+  action(:search_button) { |b| b.iframe(id:"iframeportlet").button(id:"serial_search_button").click}
   action(:create_serial_receiving) { |b| b.iframe(id:"iframeportlet").a(text:"Create").click}
   element(:substatus_field) { |b| b.iframe(id:"iframeportlet").select(id:"subStatusField_control")}
   value(:document_number) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:0).text}

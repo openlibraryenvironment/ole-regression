@@ -68,11 +68,10 @@ class Create_vendor < DataFactory
       add_address()
       add_contact()
       add_shipping_special_condition()
-      add_phone_number()
       add_acquisition_unit()
       #page.non_billable
       page.route
-      sleep(10)
+      sleep(25)
     end
   end
 
@@ -83,6 +82,10 @@ class Create_vendor < DataFactory
       page.contact_name.set "John"
       page.format.select(@formats)
       page.add_contacts
+      sleep(5)
+      page.vendor_phone_type.select("MOBILE")
+      page.phone_number.set '012-345-6789'
+      page.add_phone_numbers
     end
   end
 
