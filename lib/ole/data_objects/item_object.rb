@@ -58,7 +58,7 @@ class ItemObject < DataFactory
       page.conform_patron
       page.check_recall
       sleep(5)
-      page.set_pickup_location
+      page.pickup_location
       sleep(5)
       page.request_submit
       sleep(5)
