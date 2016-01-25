@@ -27,6 +27,11 @@ class Fixed_due_date_dataobject < DataFactory
       if(page.values_exists == "One item retrieved.")
         page.edit
         page.description.set'test'
+        page.from_date.set @from_date
+        page.to_date.set @to_date
+        page.add_fixed_due_date.set @fixed_due_date
+        page.add
+        sleep(5)
         @due_date = page.fixed_duedate
         page.submit
       else
