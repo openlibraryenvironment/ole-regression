@@ -14,7 +14,7 @@ class Edit_patron_bill_page < PageFactory
   element(:select_fee_type) { |b| b.iframe(id:"iframeportlet").select(id:"fee_feeType_add_control").when_present(60)}
   element(:add_fee_amount) { |b| b.iframe(id:"iframeportlet").text_field(id:"feeAmt_add_control").when_present(60)}
   action(:add_fee_type) { |b| b.iframe(id:"iframeportlet").button(id:"addFee_add").when_present(60).click}
-  action(:submit_patron) { |b| b.iframe(id:"iframeportlet").button(id:"oleSubmit").when_present(60).click}
+  action(:submit_patron) { |b| b.iframe(id:"iframeportlet").button(id:"olePatronBillSubmit").when_present(60).click}
   value(:patronID) { |b| b.iframe(id:"iframeportlet").a(title:"show inquiry for Patron ").when_present(60).text}
   value(:total_fee_amount) { |line_level,b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.span(id:"feeAmt_line#{line_level}_control").text.delete('$').to_f}
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
