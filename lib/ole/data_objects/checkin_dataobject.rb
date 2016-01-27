@@ -36,6 +36,9 @@ class Checkin_dataobject < DataFactory
     visit ItemCheckoutAndCkeckin do |page|
       page.deliver
       page.return
+      page.select_circ_desk.select(@circulation_desk)
+      page.circ_desk_button
+      sleep(5)
       page.checkin.set @item_id
       page.send_keys :enter
       page.continue_checkin

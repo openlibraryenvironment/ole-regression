@@ -11,13 +11,13 @@ When(/^I create hold-hold request and return that item$/) do
   @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
   @checkout.create_an_item(@patron.patron_barcode)
 
-  @pick_up_location = create Circulation_desk , :circulationdesk_code => 'UC_JRLMAIN'
+  @pick_up_location = create Circulation_desk , :circulationdesk_code => 'BL_HPER'
 
   @item = make ItemObject
   @item.item_search(@checkout.item_barcode)
   @item.hold_hold_request(@request_patron1.patron_barcode)
 
-  @checkin = make Checkin_dataobject , :item_id => @checkout.item_barcode
+  @checkin = make Checkin_dataobject , :item_id => @checkout.item_barcode , :circulation_desk => "BL_HPER"
   @checkin.checkin_with_different_location
 
 end

@@ -1,4 +1,4 @@
-@nightly @6206
+@6206
 Feature:EDIFACT invoice load
 
   Scenario: EDIFACT invoice load

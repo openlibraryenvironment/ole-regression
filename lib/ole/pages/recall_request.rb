@@ -21,7 +21,7 @@ class RecallRequest <  PageFactory
   action(:search_request) { |b| b.iframe(id:"iframeportlet").button(id:"searchReqBtn").when_present.click}
   value(:recallrequest_type) { |b| b.iframe(id:"iframeportlet").a(class:"uif-link").text}
   action(:activate_address) { |b| b.iframe(id:"iframeportlet").input(id:"active_add_control").click}
-  action(:set_pickup_location) { |b| b.iframe(id:"iframeportlet").select(id:"placeRequest-pickupLocation_control").option(:text=>"UC_JRLMAIN").click}
+  action(:set_pickup_location) { |b| b.iframe(id:"iframeportlet").select(id:"placeRequest-pickupLocation_control").option(:text=>"BL_HPER").click}
   action(:pickup_location) { |b| b.iframe(id:"iframeportlet").select(id:"placeRequest-pickupLocation_control").option(:text=>"BL_EDUC").click}
   action(:open_deliver) { |b| b.a(class:"green" , title:"Deliver").click}
   action(:check_hold) { |b| b.iframe(id:"iframeportlet").input(id:"holdRequestTyp_control_0").when_present(60).click}
