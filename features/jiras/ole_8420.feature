@@ -1,5 +1,5 @@
 
-@nightly @8420
+@8420
 Feature: Request queue positions
 
   Scenario: check request queue positions

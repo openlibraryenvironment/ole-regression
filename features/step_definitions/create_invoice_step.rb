@@ -18,11 +18,11 @@ Then(/^a invoice should be successfully created with status as FINAL$/) do
     page.doc_search
     sleep(10)
     page.doc_id.set @purchase_order_Doc_id
-    sleep(10)
+    sleep(40)
     page.search_req
-    sleep(30)
+    sleep(10)
     @doc_status= page.doc_status
-    @doc_status.should == 'PROCESSED'
+    @doc_status.should == 'FINAL'
     sleep(10)
     page.doc_id_link
     sleep(10)
