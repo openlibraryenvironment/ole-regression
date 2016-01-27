@@ -59,8 +59,8 @@ class Global_edit_dataobject < DataFactory
       page.search_text.set item_title
       page.search
       page.click_title
+      sleep(5)
       page.windows[1].use
-
       page.open_item
       page.windows[2].use
       page.open_item_location
