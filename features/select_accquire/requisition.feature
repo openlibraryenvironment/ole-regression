@@ -1,4 +1,4 @@
-@nightly @requisition @selectacquire
+@nightly @requisition @selectacquire @2.0
 Feature: OLE.Requisition
 
   Scenario: PL 1.1.1 Verify that a requisition can be successfully created

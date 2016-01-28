@@ -1,4 +1,4 @@
-@nightly @selectacquire
+@nightly @selectacquire @2.0
 Feature: OLE.Vendor
 
   Scenario: Verify that a vendor can be successfully created

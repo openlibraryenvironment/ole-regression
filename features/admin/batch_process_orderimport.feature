@@ -1,4 +1,4 @@
-@nightly @admin
+@nightly @admin @2.0
 Feature: Batch_Process_order_import
 
  Scenario: Order import in batch process with marc only
