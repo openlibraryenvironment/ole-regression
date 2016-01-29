@@ -28,7 +28,7 @@ class Requisition < DataFactory
         location: 'API',
         list_price: '10',
         acc_code: 'BL',
-        acc_number: '1031400',
+        acc_number: '0212009',
         object_code: '2100'
 
     }
@@ -78,6 +78,7 @@ class Requisition < DataFactory
       page.location.select(@location)
       page.listPrice.set @list_price
       page.addItem
+      sleep(5)
       page.windows[1].close
       page.accounting
       page.accountsCode.select(@acc_code)
