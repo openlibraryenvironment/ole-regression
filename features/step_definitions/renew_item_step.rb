@@ -26,7 +26,7 @@ Then(/^The due date should be updated$/) do
       puts @date
     end
     Date.parse(DateTime.strptime("#@duedate","%m/%d/%Y  %H:%M  %p").to_s).to_s.should == @date
-    puts "Item renewal done successfully"
+    puts "Item renewal done successfully ."
   end
 end
 
