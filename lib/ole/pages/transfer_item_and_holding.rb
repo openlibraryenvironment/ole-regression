@@ -22,7 +22,7 @@ class Transfer_item_and_holding < PageFactory
   action(:search_workbench) { |b| b.img(alt:"Search Workbench").when_present(60).click}
   element(:search_text) { |b| b.iframe(id:"iframeportlet").text_field(id:"SearchConditions_SearchText_id_line0_control")}
   element(:doc_field) { |b| b.iframe(id:"iframeportlet").select(id:"SearchConditions_DocField_id_line0_control")}
-  action(:search) { |b| b.iframe(id:"iframeportlet").button(id:"SearchButton").click}
+  action(:search) { |b| b.iframe(id:"iframeportlet").button(id:"SearchButton").when_present(60).click}
   action(:click_title) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").a(target:"_blank").when_present(60).click}
   value(:check_title) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").a(target:"_blank").exists?}
   action(:check_box) { |b| b.iframe(id:"iframeportlet").input(id:"BibSearchResults_line0_select_control").when_present(60).click}

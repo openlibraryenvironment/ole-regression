@@ -29,9 +29,9 @@ class ItemCheckoutAndCkeckin < PageFactory
   #checkin
 
   action(:return) { |b| b.a(class:"portal_link" , title:"Return").when_present(60).click}
-  element(:checkin) { |b| b.iframe(id:"iframeportlet").text_field(id:"checkIn-Item_control")}
+  element(:checkin) { |b| b.iframe(id:"iframeportlet").text_field(id:"checkIn-Item_control").when_present(60)}
   action(:checkin_button) { |b| b.iframe(id:"iframeportlet").button(id:"checkInButton-ok").when_present(60).click}
-  value(:return_status) { |b| b.iframe(id:"iframeportlet").span(id:"checkedInItem-ItemStatus_line0_control").text}
+  value(:return_status) { |b| b.iframe(id:"iframeportlet").span(id:"checkedInItem-ItemStatus_line0_control").when_present(60).text}
   action(:continue_checkin) { |b| b.iframe(id:"iframeportlet").button(id:"checkinRequestExistMessageOkButton").when_present(60).click}
 
   #renewal

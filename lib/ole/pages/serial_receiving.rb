@@ -16,7 +16,8 @@ class Serial_receiving < PageFactory
   action(:doc_search) { |b| b.img(alt:"doc search").when_present(60).click}
   element(:doc_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"documentId") }
   action(:search_req) { |b| b.iframe(id:"iframeportlet").input(title:"search").click}
-  value(:doc_status) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:1).text}
+  element(:doc_element) { |b| b.form(id:"kualiForm").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:1)}
+  value(:doc_status) { |b| b.doc_element.text}
   action(:doc_id_link) { |b| b.iframe(id:"iframeportlet").table(id:"row").td(index:0).a(title:"").click}
   value(:local_id) { |b| b.iframe(id:"iframeportlet").div(id:"instanceIdLinkField").text.gsub!(/\D/, "")}
 

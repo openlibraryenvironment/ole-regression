@@ -19,8 +19,8 @@ class Analytics < PageFactory
   action(:search_button) { |b| b.iframe(id:"iframeportlet").button(id:"SearchButton").when_present(60).click}
   action(:search_result) { |b| b.iframe(id:"iframeportlet").input(id:"BibSearchResults_line0_select_control").when_present(60).click}
   action(:search_workbench) { |b| b.img(alt:"Search Workbench").when_present(60).click}
-  element(:search_text) { |b| b.iframe(id:"iframeportlet").text_field(id:"SearchConditions_SearchText_id_line0_control")}
-  action(:search) { |b| b.iframe(id:"iframeportlet").button(id:"SearchButton").click}
+  element(:search_text) { |b| b.iframe(id:"iframeportlet").text_field(id:"SearchConditions_SearchText_id_line0_control").when_present(60)}
+  action(:search) { |b| b.iframe(id:"iframeportlet").button(id:"SearchButton").when_present(60).click}
   action(:click_title) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").a(target:"_blank").when_present(60).click}
 
 end

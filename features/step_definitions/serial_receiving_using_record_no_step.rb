@@ -19,7 +19,7 @@ Then(/^document status should be saved$/) do
     page.search_req
     page.doc_id_link
     page.windows[1].use
-    sleep(10)
+    page.doc_element.wait_until_present
     saved = page.doc_status
     puts saved
     page.doc_status.should == "SAVED"

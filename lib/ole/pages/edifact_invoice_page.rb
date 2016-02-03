@@ -92,7 +92,7 @@ class Edifact_invoice_page < PageFactory
   action(:vendorsearch) { |b| b.iframe(id:"iframeportlet").button(alt:"search").when_present(60).click}
   value(:search_exists) { |b| b.iframe(id:"iframeportlet").span(class:"pagebanner" , text:"One item retrieved.").when_present(60).exists?}
   value(:check_vendor_name) { |b| b.iframe(id:"iframeportlet").table(id:"row").tbody.tr.td(index:1).when_present(60).text}
-  value(:check_vendor_alias) { |b| b.iframe(id:"iframeportlet").table(id:"row").tbody.tr.td(index:2).text}
+  value(:check_vendor_alias) { |b| b.iframe(id:"iframeportlet").table(id:"row").tbody.tr.td(index:2).when_present(60).text}
   action(:edit_vendor) { |b| b.iframe(id:"iframeportlet").table(id:"row").tbody.tr.td(index:0).a(text:"edit").when_present(60).click}
   element(:set_description) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.documentHeader.documentDescription").when_present(60)}
   value(:vendor_varient_tab) { |b| b.iframe(id:"iframeportlet").input(id:"tab-VariantName-imageToggle").when_present(60).title}
@@ -107,21 +107,21 @@ class Edifact_invoice_page < PageFactory
   value(:status) { |b| b.form(id:"kualiForm").span(id:"statusField_line0_control").when_present(60).text}
   value(:per_complete) { |b| b.form(id:"kualiForm").span(id:"perCompletedField_line0_control").when_present(60).text}
   value(:job_status) { |b| b.form(id:"kualiForm").span(id:"statusDescField-popup_control").when_present(60).text}
-  action(:view_report) { |b| b.form(id:"kualiForm").a(text:"View Job Report").click}
-  value(:total_no_of_records) { |b| b.form(id:"kualiForm").span(id:"totalNoOfRecordsField-popup_control").text}
-  value(:no_of_success_records) { |b| b.form(id:"kualiForm").span(id:"noOfSuccessRecordsField-popup_control").text}
-  value(:no_of_failure_records) { |b| b.form(id:"kualiForm").span(id:"noOfFailureRecordsField-popup_control").text}
+  action(:view_report) { |b| b.form(id:"kualiForm").a(text:"View Job Report").when_present(60).click}
+  value(:total_no_of_records) { |b| b.form(id:"kualiForm").span(id:"totalNoOfRecordsField-popup_control").when_present(60).text}
+  value(:no_of_success_records) { |b| b.form(id:"kualiForm").span(id:"noOfSuccessRecordsField-popup_control").when_present(60).text}
+  value(:no_of_failure_records) { |b| b.form(id:"kualiForm").span(id:"noOfFailureRecordsField-popup_control").when_present(60).text}
 
 
   action(:invoice_history) { |b| b.iframe(id:"iframeportlet").div(id:"tab-Titles-div").div(class:"tab-container").table(class:"datatable").input(alt:"show" , index:2).when_present(60).click}
   action(:open_invoice) { |b| b.iframe(id:"iframeportlet").div(id:"tab-Titles-div").div(class:"tab-container").table(class:"datatable").link(class:"showvisit" , target:"_blank").when_present(60).click}
   action(:process_item) { |b| b.form(id:"kualiForm").link(text: "Process Items").when_present(60).click}
   value(:total_pos) { |b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.rows.length}
-  value(:po_id) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:3).a(target:"_blank").text}
-  value(:list_price) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:9).input(id:"OleInvoiceView-invoiceItems_line#{linelevel}_listPrice_control").value}
-  value(:extended_cost) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:13).text}
-  value(:total_cost) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:14).text}
-  value(:grand_total) { |b| b.form(id:"kualiForm").span(id:"myAccount_grandTotal_control").text}
+  value(:po_id) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:3).a(target:"_blank").when_present(60).text}
+  value(:list_price) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:9).input(id:"OleInvoiceView-invoiceItems_line#{linelevel}_listPrice_control").when_present(60).value}
+  value(:extended_cost) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:13).when_present(60).text}
+  value(:total_cost) { |linelevel,b| b.form(id:"kualiForm").div(id:"OleInvoiceView-invoiceItems_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout").tbody.tr(index:linelevel).td(index:14).when_present(60).text}
+  value(:grand_total) { |b| b.form(id:"kualiForm").span(id:"myAccount_grandTotal_control").when_present(60).text}
   value(:vendor_tab_open) { |b| b.iframe(id:"iframeportlet").input(id:"tab-Vendor-imageToggle").when_present(60).title}
 
 end

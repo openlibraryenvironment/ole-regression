@@ -4,7 +4,7 @@ class Edit_patron_bill_page < PageFactory
   action(:deliver_green) { |b| b.a(class:"green" , title:"Deliver").when_present(60).click}
   element(:deliver_green_tab){ |b| b.a(class:"green" , title:"Deliver").exists?}
   element(:deliver_red_tab){ |b| b.a(class:"red" , title:"Deliver").exists?}
-  action(:deliver_red) { |b| b.link(class:"red" , title:"Deliver").click}
+  action(:deliver_red) { |b| b.link(class:"red" , title:"Deliver").when_present(60).click}
   value(:doc_number) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.td(index:0).when_present(60).text}
   action(:edit_patron_bill) { |b| b.a(class:"portal_link" , title:"Edit Patron Bills").when_present(60).click}
   element(:patron_id) { |b| b.iframe(id:"iframeportlet").text_field(id:"lookUp_patronId_control").when_present(60)}

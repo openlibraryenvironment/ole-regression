@@ -14,8 +14,8 @@ class Vendor_creation < PageFactory
   action(:add_address) { |b| b.iframe(id:"iframeportlet").button(id:"methodToCall.addLine.vendorAddresses.(!!org.kuali.ole.vnd.businessobject.VendorAddress!!)").when_present(60).click}
   action(:blanket_approve) { |b| b.iframe(id:"iframeportlet").button(name:"methodToCall.blanketApprove").when_present(60).click}
   action(:route) { |b| b.iframe(id:"iframeportlet").button(name:"methodToCall.route").when_present(60).click}
-  value(:doc_number) { |b| b.iframe(id:"iframeportlet").table(class:"headerinfo").tbody.tr(index:0).td(index:0).text}
-  value(:vendor_search) { |b| b.form(id:"kualiForm").table(class:"headerinfo").tbody.tr(index:0).td(index:1).text}
+  value(:doc_number) { |b| b.iframe(id:"iframeportlet").table(class:"headerinfo").tbody.tr(index:0).td(index:0).when_present(60).text}
+  value(:vendor_search) { |b| b.form(id:"kualiForm").table(class:"headerinfo").tbody.tr(index:0).td(index:1).when_present(60).text}
   element(:state) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.newMaintainableObject.add.vendorAddresses.vendorStateCode")}
   element(:pin) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.newMaintainableObject.add.vendorAddresses.vendorZipCode")}
   action(:search_state_lookup) { |b| b.iframe(id:"iframeportlet").input(title:"Search State").when_present(60).click}
@@ -47,7 +47,7 @@ class Vendor_creation < PageFactory
 
   action(:open_supplier_diversity) { |b|b.iframe(id:"iframeportlet").input(alt:"open Supplier Diversity").when_present(60).click}
   element(:supplier_diversity_code) { |b| b.iframe(id:"iframeportlet").select(id:"document.newMaintainableObject.add.vendorHeader.vendorSupplierDiversities.vendorSupplierDiversityCode")}
-  action(:supplier_diversity) { |b| b.iframe(id:"iframeportlet").button(id:"methodToCall.addLine.vendorHeader.vendorSupplierDiversities.(!!org.kuali.ole.vnd.businessobject.VendorSupplierDiversity!!)").click}
+  action(:supplier_diversity) { |b| b.iframe(id:"iframeportlet").button(id:"methodToCall.addLine.vendorHeader.vendorSupplierDiversities.(!!org.kuali.ole.vnd.businessobject.VendorSupplierDiversity!!)").when_present(60).click}
 
   action(:open_shipping_condition) { |b|b.iframe(id:"iframeportlet").input(alt:"open Shipping Special Conditions").when_present(60).click}
   element(:vendor_shipping_code) { |b|b.iframe(id:"iframeportlet").select(id:"document.newMaintainableObject.add.vendorShippingSpecialConditions.vendorShippingSpecialConditionCode")}
@@ -59,11 +59,11 @@ class Vendor_creation < PageFactory
   action(:search_account_number_owner) { |b|b.iframe(id:"iframeportlet").input(alt:"Search Account Number Owner (Organization Code)").when_present(60).click}
   action(:search_acc_no) { |b| b.iframe(id:"iframeportlet").button(title:"search").when_present(60).click}
   action(:return_acc_no) { |b|b.iframe(id:"iframeportlet").a(text:"return value").when_present(60).click}
-  action(:add_customer_number) { |b|b.iframe(id:"iframeportlet").input(id:"methodToCall.addLine.vendorCustomerNumbers.(!!org.kuali.ole.vnd.businessobject.VendorCustomerNumber!!)").click}
+  action(:add_customer_number) { |b|b.iframe(id:"iframeportlet").input(id:"methodToCall.addLine.vendorCustomerNumbers.(!!org.kuali.ole.vnd.businessobject.VendorCustomerNumber!!)").when_present(60).click}
 
   action(:open_phone_number) { |b| b.iframe(id:"iframeportlet").input(alt:"open Vendor Phone Number").when_present(60).click}
-  element(:vendor_phone_type) { |b| b.iframe(id:"iframeportlet").select(id:"document.newMaintainableObject.add.vendorContacts[0].vendorContactPhoneNumbers.vendorPhoneTypeCode")}
-  element(:phone_number) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.newMaintainableObject.add.vendorContacts[0].vendorContactPhoneNumbers.vendorPhoneNumber")}
+  element(:vendor_phone_type) { |b| b.iframe(id:"iframeportlet").select(id:"document.newMaintainableObject.add.vendorContacts[0].vendorContactPhoneNumbers.vendorPhoneTypeCode").when_present(60)}
+  element(:phone_number) { |b| b.iframe(id:"iframeportlet").text_field(id:"document.newMaintainableObject.add.vendorContacts[0].vendorContactPhoneNumbers.vendorPhoneNumber").when_present(60)}
   action(:add_phone_numbers) { |b| b.iframe(id:"iframeportlet").button(id:"methodToCall.addLine.vendorContacts[0].vendorContactPhoneNumbers.(!!org.kuali.ole.vnd.businessobject.VendorContactPhoneNumber!!)").when_present(60).click}
 
 end
