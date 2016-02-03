@@ -1,4 +1,3 @@
-@nightly @deliver
   Feature: OLE.Renew
     Scenario: Renew item
       Given I Logged in as ole-quickstart
