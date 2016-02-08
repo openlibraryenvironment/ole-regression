@@ -8,10 +8,10 @@ Feature: Batch_Process
     Then the job status should be completed, total records and success records should be equal
 
 
-  Scenario: Batch export full in batch process
-    Given I logged in with user name ole-quickstart
-    When I select Batch Export full profile and start the job
-    Then the job status should be completed, total records and success records should be equal
+#  Scenario: Batch export full in batch process
+#    Given I logged in with user name ole-quickstart
+#    When I select Batch Export full profile and start the job
+#    Then the job status should be completed, total records and success records should be equal
 
   @2.0
   Scenario: Batch export incremental in batch process

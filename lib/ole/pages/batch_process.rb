@@ -1,8 +1,8 @@
 class Batch_process < PageFactory
   page_url $test_site
 
-  element(:open_admin){ |b| b.a(class:"green" , title:"Admin").when_present(60).exists?}
-  action(:admin) { |b| b.a(class:"green" , title:"Admin").when_present(60).click}
+  element(:open_admin){ |b| b.a(title:"Admin").when_present(60).exists?}
+  action(:admin) { |b| b.a(title:"Admin").when_present(60).click}
   action(:batch_process) { |b| b.a(class:"portal_link" , title:"Batch Process").when_present(60).click}
   element(:batch_process_type) { |b| b.iframe(id:"iframeportlet").select(id:"BatchProcessDefinition-batchProcessType_control").when_present(60)}
   element(:batchprocess_bib_import_profile_name) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_bibImport_control").when_present(60)}
