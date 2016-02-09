@@ -30,4 +30,10 @@ Feature: E-Resource
     When I create new E-resource document and adding new E-Holding in to it
     Then the added E-Holding should be displayed in E-resource document
 
+  Scenario:Link new E-Holding to platform
+    Given logged in with ole-quickstart
+    When I create platform and linked to the existsing E-Holdings to the E-Resource document
+    Then the added E-Holding should be displayed in E-resource document
+
+
 

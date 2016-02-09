@@ -14,7 +14,8 @@ class CheckoutDataobject < DataFactory
                 :callnumber_type,
                 :note,
                 :status,
-                :proxy
+                :proxy,
+                :item_status
 
 
   def initialize (browser , opts={})
@@ -81,4 +82,22 @@ class CheckoutDataobject < DataFactory
     end
 
   end
+
+  def create_item
+    visit ItemCheckoutAndCkeckin do |page|
+      page.deliver
+      page.item_fast_add
+      page.item_title.set @title
+      page.shelving_location.set @location
+      page.item_barcode.set @item_barcode
+      puts @item_barcode
+      page.item_type.select(@item_type)
+      page.call_number_type.select(@callnumber_type)
+      page.checkin_note.set @note
+      page.submit_item
+      sleep(5)
+    end
+  end
+
+
 end

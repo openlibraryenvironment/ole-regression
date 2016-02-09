@@ -9,7 +9,8 @@ class Linking_e_holding_with_e_resource_dataobject < DataFactory
                 :local_item_id,
                 :title,
                 :issn_num,
-                :item_id
+                :item_id,
+                :platform_name
 
   def initialize(browser,opts={})
     @browser = browser
@@ -69,11 +70,26 @@ class Linking_e_holding_with_e_resource_dataobject < DataFactory
         page.e_holding_link
       end
       page.windows[2].use
+      name = @platform_name
+      puts name
+      if(name != nil)
+        page.platform.select(@platform_name)
+      end
       page.save_e_instance
       page.windows[0].use
       sleep(3)
       page.save_instance
       sleep(5)
+    end
+  end
+
+  def e_holding_platform
+    visit E_resource_platform do |page|
+      page.select_acquire
+      page.platform
+      page.platform_name.set @platform_name
+      page.save_platform
+      sleep(10)
     end
   end
 end

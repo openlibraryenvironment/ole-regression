@@ -22,5 +22,6 @@ class Linking_e_holding_with_e_resource_page < PageFactory
   value(:e_holding_link_value) { |b| b.form(id:"kualiForm").div(id:"OLEERSSearchResultsPanel").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.tr.td(index:5).when_present(60).text}
   action(:create_e_holding_link) { |b| b.form(id:"kualiForm").div(id:"OLEERSSearchResultsPanel").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.tr.td(index:5).a(text:"Create New EInstance").when_present(60).click}
   action(:e_holding_link) { |b| b.form(id:"kualiForm").div(id:"OLEERSSearchResultsPanel").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.tr.td(index:6).div.a(text:"Create New EInstance").when_present(60).click}
+  element(:platform) { |b| b.form(id:"kualiForm").select(id:"OleEinstance-platformName_control").when_present(60)}
 
 end

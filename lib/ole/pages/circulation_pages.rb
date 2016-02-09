@@ -55,5 +55,14 @@ class ItemCheckoutAndCkeckin < PageFactory
   action(:circ_renew_btn) { |b| b.iframe(id:"iframeportlet").button(id:"circ_renewDateBtn").when_present(60).click}
   value(:fixed_duedate) { |b| b.iframe(id:"iframeportlet").input(id:"create_fixedDueDate_line0_control").when_present(60).value}
 
+  #for item creation
+
+  action(:item_fast_add) { |b| b.a(title:"Item Fast Add").when_present(60).click}
+  action(:submit_item) { |b| b.iframe(id:"iframeportlet").button(id:"saveItemFastAddBtn").when_present(60).click}
+  action(:search_workbench) { |b| b.img(alt:"Search Workbench").when_present(60).click}
+  element(:document_search) { |b| b.iframe(id:"iframeportlet").select(id:"DocumentAndSearchSelectionType_DocType_control").when_present(60)}
+  element(:search_conditions) { |b| b.iframe(id:"iframeportlet").text_field(id:"SearchConditions_SearchText_id_line0_control").when_present(60)}
+  action(:search_item) { |b| b.iframe(id:"iframeportlet").button(id:"SearchButton").when_present(60).click}
+  value(:itemStatus) { |b| b.iframe(id:"iframeportlet").div(id:"SearchFieldResultSection_disclosureContent").div(id:"ItemSearchResults").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.td(index:8).when_present(60).text}
 
 end

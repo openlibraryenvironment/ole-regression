@@ -25,7 +25,9 @@ class ItemObject < DataFactory
     on RecallRequest do |page|
       page.open_request
       page.place_request
+      sleep(10)
       page.windows[1].use
+      sleep(5)
       page.patron_detail.set patron_barcode
       page.send_keys :enter
       page.conform_patron
