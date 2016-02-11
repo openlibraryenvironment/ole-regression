@@ -10,7 +10,8 @@ class Marc_editor_fields < PageFactory
   action(:bib_submit) { |b| b.iframe(id:"iframeportlet").button(id:"submitEditor").when_present(60).click}
 
   action(:add_holdings) { |b| b.iframe(id:"iframeportlet").input(title:"Add Holdings").when_present(60).click}
-  element(:holding_location) { |b| b.iframe(id:"iframeportlet").text_field(id:"OleHoldingLocation_control")}
+  value(:holding_location_value) { |b| b.iframe(id:"iframeportlet").text_field(id:"OleHoldingLocation_control").exists?}
+  element(:holding_location) { |b| b.iframe(id:"iframeportlet").text_field(id:"OleHoldingLocation_control").when_present(60)}
 
   element(:open_item) { |b| b.iframe(id:"iframeportlet").span(text:"Item").visible?}
   action(:click_icon) { |b| b.iframe(id:"iframeportlet").ins(class:"jstree-icon").when_present(60).click}

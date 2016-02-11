@@ -44,11 +44,37 @@ class Marc_editor < DataFactory
   def create_holding
     on Marc_editor_fields do |page|
       page.add_holding
-      page.holding_location.set 'B-EDUC/BED-STACKS'
-      page.bib_submit
-      sleep(3)
-      @local_item_id = page.local_id
-      puts "local id---> #@local_item_id"
+      if(page.holding_location_value == false)
+        page.windows[1].use
+        puts "using new window"
+        page.holding_location.set 'B-EDUC/BED-STACKS'
+        page.bib_submit
+        sleep(3)
+        @local_item_id = page.local_id
+        puts "local id---> #@local_item_id"
+        sleep(3)
+        create_item
+      else
+        puts "In the same window"
+        page.holding_location.set 'B-EDUC/BED-STACKS'
+        page.bib_submit
+        sleep(3)
+        @local_item_id = page.local_id
+        puts "local id---> #@local_item_id"
+        sleep(3)
+          if(page.open_item == false)
+            page.click_icon
+          end
+        page.click_item
+        page.windows[1].use
+        page.set_barcode.set @item_barcode
+        page.select_item_type.set "BOOK"
+        page.item_status.select("Available")
+        @item_id = page.item_id
+        page.bib_submit
+        sleep(5)
+        page.windows[1].close
+      end
     end
   end
 
@@ -66,13 +92,14 @@ class Marc_editor < DataFactory
         page.click_icon
       end
       page.click_item
-      page.windows[1].use
+      page.windows[2].use
       page.set_barcode.set @item_barcode
       page.select_item_type.set "BOOK"
       page.item_status.select("Available")
       @item_id = page.item_id
       page.bib_submit
       sleep(5)
+      page.windows[2].close
       page.windows[1].close
     end
   end

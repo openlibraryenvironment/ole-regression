@@ -7,14 +7,6 @@
 
 module Workflows
 
-  def initialize(browser , opts={})
-    @browser = browser
-
-    defaults = {
-        loan_item_barcode: 0
-    }
-    set_options(defaults.merge(opts))
-  end
 
   def log_in(username)
 

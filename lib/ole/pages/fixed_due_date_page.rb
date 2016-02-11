@@ -18,4 +18,7 @@ class Fixed_due_date_page < PageFactory
   action(:add) { |b| b.iframe(id:"iframeportlet").button(id:"timespan-add_add").when_present(60).click}
   action(:submit) { |b| b.iframe(id:"iframeportlet").button(text:"submit").when_present(60).click}
 
+  value(:total_rows) { |b| b.iframe(id:"iframeportlet").div(id:"create_timeSpan_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout uif-hasAddLine").tbody.rows.length}
+  value(:due_date_fixed) { |line_level,b| b.iframe(id:"iframeportlet").text_field(id:"create_fixedDueDate_line#{line_level}_control").when_present(60).value}
+
 end

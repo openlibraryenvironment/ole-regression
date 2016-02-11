@@ -6,7 +6,6 @@ When(/^I give bib,holding,item informations and open the item in search workbenc
   @marc_editor = make Marc_editor , :item_barcode => uniq_number  ,:title => uniq_alphanums
   @marc_editor.create_bib
   @marc_editor.create_holding
-  @marc_editor.create_item
   @marc_editor.search_item
 end
 

@@ -6,12 +6,10 @@ When(/^I create two items and linked into multiple holding$/) do
   @marc_editor1 = make Marc_editor , :item_barcode => uniq_number  ,:title => uniq_alphanums
   @marc_editor1.create_bib
   @marc_editor1.create_holding
-  @marc_editor1.create_item
 
   @marc_editor2 = make Marc_editor , :item_barcode => uniq_number  ,:title => uniq_alphanums
   @marc_editor2.create_bib
   @marc_editor2.create_holding
-  @marc_editor2.create_item
 
   @analytics = make Analytics_dataobject , :item_title1 => @marc_editor1.title , :item_title2 => @marc_editor2.title
   @analytics.create_analytics

@@ -6,12 +6,10 @@ When(/^I create two bibs and select item and holding to transfer$/) do
   @marc_editor1 = make Marc_editor , :item_barcode => uniq_number  ,:title => uniq_alphanums
   @marc_editor1.create_bib
   @marc_editor1.create_holding
-  @marc_editor1.create_item
 
   @marc_editor2 = make Marc_editor , :item_barcode => uniq_number  ,:title => uniq_alphanums
   @marc_editor2.create_bib
   @marc_editor2.create_holding
-  @marc_editor2.create_item
 
   @transfer = make Transfer_item_and_holding_dataobject , :item_title1 => @marc_editor1.title , :item_title2 => @marc_editor2.title
   @transfer.transfer_item_and_holding
