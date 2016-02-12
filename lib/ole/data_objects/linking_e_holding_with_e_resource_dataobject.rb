@@ -81,6 +81,7 @@ class Linking_e_holding_with_e_resource_dataobject < DataFactory
       page.save_instance
       sleep(5)
       page.windows[2].close
+      page.windows[1].close
     end
   end
 

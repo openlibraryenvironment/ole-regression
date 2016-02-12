@@ -18,7 +18,6 @@ Then(/^the E-Holding informations should be displayed in E-resource document$/) 
     page.open_e_holding
     sleep(5)
     page.e_holding_title.should == @marc_editor.title
-    page.windows[2].close
-    page.windows[1].close
+
   end
 end
