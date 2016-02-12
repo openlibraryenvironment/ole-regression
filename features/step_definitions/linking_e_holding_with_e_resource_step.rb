@@ -17,5 +17,7 @@ Then(/^the added E-Holding should be displayed in E-resource document$/) do
     page.doc_status.should == "SAVED"
     page.open_e_holding
     sleep(5)
+    page.windows[1].close
+
   end
 end
