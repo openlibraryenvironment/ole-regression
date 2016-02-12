@@ -65,7 +65,7 @@ class Requisition < DataFactory
       count=@browser.windows.count
       puts count
       page.windows[1].use
-      sleep(5)
+      sleep(10)
       #page.dataField_tag_data.exists?.should be_true
       # page.dataField_tag_data.set @tag
       # page.dataField_tag_id_line0_control.set @title
@@ -85,11 +85,7 @@ class Requisition < DataFactory
       page.accountNumber.set @acc_number
       page.financialObjectCode.set @object_code
       page.sourceAnchor
-
-      sleep(10)
       page.institutionalInfo
-
-      sleep(10)
       page.blanketApprove
       sleep(10)
 

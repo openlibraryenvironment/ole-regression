@@ -3,7 +3,6 @@ When(/^I search record local identifier and start creating serial receiving tran
   @marc_editor = make Marc_editor , :item_barcode => uniq_number  ,:title => uniq_alphanums
   @marc_editor.create_bib
   @marc_editor.create_holding
-  @marc_editor.create_item
 
   @serial_receiving = make Serial_receiving_transaction , :item_identifier => @marc_editor.item_barcode , :doc_type => "Item Barcode" ,:search_conditions => "Local Identifier" , :line_level => 3 ,:local_id => @marc_editor.local_item_id
   @serial_receiving.create_serial_receiving_transaction

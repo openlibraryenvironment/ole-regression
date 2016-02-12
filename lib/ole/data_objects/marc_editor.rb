@@ -81,7 +81,16 @@ class Marc_editor < DataFactory
   def create_e_holding
     on Marc_editor_fields do |page|
       page.add_e_holding
-      page.save_e_holding
+      if(page.e_holding_value == false)
+        puts "new window"
+        page.windows[1].use
+        page.save_e_holding
+        sleep(3)
+        page.windows[1].close
+      else
+        puts "same window"
+        page.save_e_holding
+      end
       sleep(3)
     end
   end

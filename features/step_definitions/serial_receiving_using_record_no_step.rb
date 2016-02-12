@@ -2,7 +2,6 @@ When(/^I search record using serial receiving record number and update the recor
   @marc_editor = make Marc_editor , :item_barcode => uniq_number , :title => uniq_alphanums ,:issn_num => uniq_number
   @marc_editor.create_bib
   @marc_editor.create_holding
-  @marc_editor.create_item
 
   @serial_receiving = make Serial_receiving_transaction , :title => @marc_editor.title ,:search_conditions => "Title" , :line_level => 0
   @serial_receiving.create_serial_receiving_transaction

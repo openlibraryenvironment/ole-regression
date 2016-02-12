@@ -3,7 +3,6 @@ When(/^I add special issues of enumeration and chronology and receive it$/) do
   @marc_editor = make Marc_editor , :item_barcode => uniq_number , :title => uniq_alphanums
   @marc_editor.create_bib
   @marc_editor.create_holding
-  @marc_editor.create_item
 
   @serial_receiving = make Serial_receiving_transaction , :title => @marc_editor.title ,:search_conditions => "Title" , :line_level => 0
   @serial_receiving.create_serial_receiving_transaction
