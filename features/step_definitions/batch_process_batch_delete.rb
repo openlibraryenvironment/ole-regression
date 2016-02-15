@@ -1,5 +1,6 @@
 When(/^I select Batch delete profile and upload mrc or text file$/) do
   @batch_del = make BatchProcesses , :file_name => "marcimport8" , :file_type => "mrc"
+  @batch_del.batch_delete_match_point
   @batch_del.batch_delete
 end
 

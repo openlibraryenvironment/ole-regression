@@ -68,5 +68,14 @@ class Batch_process < PageFactory
   element(:patron_import_profile){ |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_patronImport_control").when_present(60)}
   element(:location_import_profile) { |b| b.iframe(id:"iframeportlet").text_field(id:"BatchProcessDefinition-batchProcessProfileName_locationImport_control").when_present(60)}
 
+  #batch_delete
+
+  element(:select_batch_delete) { |b| b.iframe(id:"iframeportlet").select(id:"lookup-batchProcessProfileType_control").when_present(60)}
+  element(:matchPoint_open) { |b| b.iframe(id:"iframeportlet").img(id:"OLEBatchProcessProfileBo-MaintenanceView-MatchPointSection_toggle_col").visible?}
+  action(:open_matchPoint) { |b| b.iframe(id:"iframeportlet").img(id:"OLEBatchProcessProfileBo-MaintenanceView-MatchPointSection_toggle_col").when_present(60).click}
+  value(:total_rows) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout uif-hasAddLine").tbody.rows.length}
+
+
+
 
 end

@@ -247,6 +247,28 @@ class BatchProcesses < DataFactory
     end
   end
 
+  def batch_delete_match_point
+    visit Batch_process do |page|
+      page.admin
+      page.batch_process_profile
+      page.select_batch_delete.select("Batch Delete")
+      page.search_profile
+      sleep(5)
+      page.edit_profile
+      page.description.set @description
+      if(page.matchPoint_open == true)
+        page.open_matchPoint
+      end
+      if(page.total_rows == 1)
+        page.bib_match_point.set'001'
+        page.add_match_point
+      end
+      sleep(3)
+      page.submit
+      sleep(3)
+    end
+  end
+
   def batch_delete
     visit Batch_process do |page|
       if(page.open_admin == true)
