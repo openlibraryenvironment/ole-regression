@@ -1,4 +1,5 @@
-  Feature: OLE.Renew
+ @nightly @deliver
+Feature: OLE.Renew
     Scenario: Renew item
       Given I Logged in as ole-quickstart
       When I altered the due date for loaned item

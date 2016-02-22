@@ -12,13 +12,16 @@ Then(/^the patron bill should create with current date$/) do
   on PatronPage do |page|
     page.search_patron_barcode
     sleep(5)
-    page.enabled_patron_bill.exists?.should be_true
+    view_patronBill = page.enabled_patron_bill.exists?
+    puts view_patronBill
+    view_patronBill.should == true
     page.patron_bill_link
     sleep(5)
     page.windows[1].use
     puts $fee_amount
     page.view_patron_amount.should == $fee_amount
     page.bill_date.should == Date.today.strftime("%m/%d/%Y")
+    sleep(3)
     page.windows[1].close
     sleep(5)
     page.doc_search
@@ -29,9 +32,9 @@ Then(/^the patron bill should create with current date$/) do
     sleep(10)
     page.doc_id_link
     page.windows[1].use
-    sleep(10)
-    saved = page.doc_status
-    puts saved
+    sleep(5)
+    # saved = page.doc_status
+    # puts saved
     page.doc_status.should == "FINAL"
     sleep(5)
     page.windows[1].close

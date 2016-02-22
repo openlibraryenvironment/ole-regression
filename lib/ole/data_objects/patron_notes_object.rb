@@ -33,8 +33,9 @@ class PatronNotesObject < DataFactory
       page.note_type.select(@note_type)
       sleep(3)
       page.note_text.set @note_text
-
+      sleep(3)
       page.add_note
+      sleep(5)
     end
   end
 

@@ -221,8 +221,9 @@ class PatronObject < DataFactory
       page.note
       @deleted_text = page.text_deleted
       puts "deleted note text is #@deleted_text"
-      sleep(3)
+      sleep(5)
       page.delete_note
+      sleep(5)
       $document_id = page.doc_number
       puts $document_id
       page.submit
