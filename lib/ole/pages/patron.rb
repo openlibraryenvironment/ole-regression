@@ -82,9 +82,9 @@ class PatronPage < PageFactory
   action(:patron_submit) { |b| b.form(id:"kualiForm").button(id:"olePatronBillSubmit").when_present(60).click}
   action(:patron_bill_link) { |b| b.iframe(id:"iframeportlet").a(text:"Patron Bill").when_present(60).click}
   element(:enabled_patron_bill) { |b| b.iframe(id:"iframeportlet").a(text:"Patron Bill")}
-  value(:bill_date) { |b| b.form(id:"kualiForm").span(id:"billDate_line0_control").when_present(60).text}
+  value(:bill_date) { |b| b.form(id:"kualiForm").div(id:"PatronBillMaintenanceDocument-BillSection").table(class:"table table-condensed table-bordered uif-gridLayout").tbody.tr.td.span(id:"bill_billDate_control").when_present(60).text}
   value(:patron_amount) { |b| b.form(id:"kualiForm").span(id:"feeAmt_line0_control").when_present(60).text}
-  value(:view_patron_amount) { |b| b.form(id:"kualiForm").span(id:"totalFeeAmount_line0_control").when_present(60).text}
+  value(:view_patron_amount) { |b| b.form(id:"kualiForm").div(id:"PatronBillMaintenanceDocument-FeeTypeSection").div(id:"PatronBillMaintenanceDocument-FeeTypeSection_disclosureContent").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.tr.span(id:"feeAmt_line0_control").when_present(60).text}
 
   action(:add_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_add").when_present(60).click}
   action(:delete_notes) { |b| b.iframe(id:"iframeportlet").button(id:"OlePatronDocument-NotesSection_del_line0").when_present(60).click}
