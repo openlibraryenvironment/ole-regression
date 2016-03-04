@@ -24,6 +24,7 @@ class ItemCheckoutAndCkeckin < PageFactory
   action(:select_proxy) { |b| b.iframe(id:"iframeportlet").input(id:"selfCheckout_line0_control").when_present(60).click}
   action(:proceed_with_proxy) { |b| b.iframe(id:"iframeportlet").button(id:"btnProceed").when_present(60).click}
   action(:inactive_patron) { |b| b.iframe(id:"iframeportlet").button(id:"donNotLoanButton").when_present(60).click}
+  action(:test_pop_up) { |b| b.iframe(id:"iframeportlet").button(id:"btnOKLocationPopup").when_present(60).click}
 
 
   #checkin

@@ -28,6 +28,7 @@ class Checkin_dataobject < DataFactory
       #sleep(3)
       page.send_keys :enter
       page.checkin_button
+      page.test_pop_up
       #sleep(5)
     end
   end
