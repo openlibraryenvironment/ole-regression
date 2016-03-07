@@ -1,6 +1,6 @@
 @nightly @deliver
-  Feature: OLE Request
+  Feature: OLE Create new request
     Scenario: Create new request
       Given I am log-in with ole-quickstart
-      When I give request type , patron and item informations in request screen
+      When I give request type patron and item informations in request screen
       Then the request should be created successfully
