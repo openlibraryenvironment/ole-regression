@@ -2,7 +2,7 @@ class ItemCheckoutAndCkeckin < PageFactory
 
   page_url $test_site
 
-  action(:deliver) { |b| b.link(class:"red" , title:"Deliver").when_present(60).click}
+  action(:deliver) { |b| b.link(title:"Deliver").when_present(60).click}
   action(:loan) { |b| b.link(class:"portal_link" , title:"Loan").when_present(60).click}
   element(:select_circ_desk) { |b| b.iframe(id:"iframeportlet").select(id:"circDeskSection_control").when_present(60)}
   value(:circ_desk_val) { |b| b.iframe(id:"iframeportlet").select(id:"circDeskSection_control").when_present(60).value}
@@ -25,7 +25,7 @@ class ItemCheckoutAndCkeckin < PageFactory
   action(:proceed_with_proxy) { |b| b.iframe(id:"iframeportlet").button(id:"btnProceed").when_present(60).click}
   action(:inactive_patron) { |b| b.iframe(id:"iframeportlet").button(id:"donNotLoanButton").when_present(60).click}
   action(:test_pop_up) { |b| b.iframe(id:"iframeportlet").button(id:"btnOKLocationPopup").when_present(60).click}
-
+  value(:is_pop_up) { |b| b.iframe(id:"iframeportlet").div(id:"checkinLocationPopupMsg").when_present(60).visible?}
 
   #checkin
 
@@ -66,4 +66,17 @@ class ItemCheckoutAndCkeckin < PageFactory
   action(:search_item) { |b| b.iframe(id:"iframeportlet").button(id:"SearchButton").when_present(60).click}
   value(:itemStatus) { |b| b.iframe(id:"iframeportlet").div(id:"SearchFieldResultSection_disclosureContent").div(id:"ItemSearchResults").table(class:"table table-condensed table-bordered uif-tableCollectionLayout dataTable").tbody.td(index:8).when_present(60).text}
 
+
+  action(:maintenance) { |b| b.a(title:"Maintenance").when_present(60).click}
+  action(:circ) { |b| b.a(text:"Circulation Desk").when_present(60).click}
+  action(:circ_search) { |b| b.iframe(id:"iframeportlet").button(text:"Search").when_present(60).click}
+  action(:edit_circ) { |b| b.iframe(id:"iframeportlet").a(text:"edit").when_present(60).click}
+  element(:description) { |b| b.iframe(id:"iframeportlet").text_field(name:"document.documentHeader.documentDescription").when_present(60)}
+  element(:circulation_desk_code) { |b| b.iframe(id:"iframeportlet").text_field(id:"cd_circulationDeskCode_control").when_present(60)}
+  value(:location_count) { |b| b.iframe(id:"iframeportlet").table(class:"table table-condensed table-bordered uif-tableCollectionLayout uif-hasAddLine").tbody.rows.length}
+  value(:location_value) { |line_level,b| b.iframe(id:"iframeportlet").text_field(id:"shelvingLocation_line#{line_level}_control").when_present(60).value}
+  value(:pop_up_message_check) { |line_level,b| b.iframe(id:"iframeportlet").input(id:"locationPopup_line#{line_level}_control").checked?}
+  element(:location) { |b| b.iframe(id:"iframeportlet").text_field(id:"shelvingLocation_add_control").when_present(60)}
+  action(:add_location) { |b| b.iframe(id:"iframeportlet").button(id:"CKDSK_addLine_add").when_present(60).click}
+  action(:submit_circ) { |b| b.iframe(id:"iframeportlet").button(text:"submit").when_present(60).click}
 end

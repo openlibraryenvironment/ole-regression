@@ -8,6 +8,7 @@ When(/^I give item id for checkin$/) do
   @checkout.create_an_item(@patron.patron_barcode)
 
   @checkin = make Checkin_dataobject , :item_id => @checkout.item_barcode
+  @checkin.circulation_desk_location
   @checkin.item_checkin
 end
 
