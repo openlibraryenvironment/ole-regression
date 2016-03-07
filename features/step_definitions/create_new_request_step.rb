@@ -3,7 +3,7 @@ Given(/^I am log-in with ole-quickstart$/) do
 end
 
 When(/^I give request type patron and item informations in request screen$/) do
-  puts "enter in to when step"
+
   @create_patron = create PatronObject , :patron_barcode => uniq_alphanums
   @patron = create PatronObject , :patron_barcode => uniq_alphanums
   @checkout = make CheckoutDataobject  , :item_barcode => uniq_number
