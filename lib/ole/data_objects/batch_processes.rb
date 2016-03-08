@@ -141,13 +141,17 @@ class BatchProcesses < DataFactory
       sleep(5)
       page.submit_action
       sleep(5)
-      if(page.popup_box)
+      @count=@browser.windows.count
+      puts "no of windows-->#@count"
+      if(@count == 1)
         if(page.popup_message == "Warning: This EDIFACT invoice file has already been loaded. Are you sure you want to load it again?")
           puts  page.popup_message
           page.continue_process
         end
       end
       sleep(5)
+      count=@browser.windows.count
+      puts count
       page.windows[1].use
       sleep(10)
     end
