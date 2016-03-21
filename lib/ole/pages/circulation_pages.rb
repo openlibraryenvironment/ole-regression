@@ -79,4 +79,8 @@ class ItemCheckoutAndCkeckin < PageFactory
   element(:location) { |b| b.iframe(id:"iframeportlet").text_field(id:"shelvingLocation_add_control").when_present(60)}
   action(:add_location) { |b| b.iframe(id:"iframeportlet").button(id:"CKDSK_addLine_add").when_present(60).click}
   action(:submit_circ) { |b| b.iframe(id:"iframeportlet").button(text:"submit").when_present(60).click}
+
+  #ole_8452
+  value(:checkin_date) { |b| b.iframe(id:"iframeportlet").span(id:"checkedInItem-CheckInDate_line0_control").when_present(60).text}
+
 end
