@@ -98,4 +98,10 @@ class PatronPage < PageFactory
   action(:lost_conform_botton) { |b| b.iframe(id:"iframeportlet").button(id:"lostConfimButton").when_present(60).click}
 
 
+  element(:fee_type) { |b| b.iframe(id:"iframeportlet").select(id:"fee_feeType_add_control").when_present(60)}
+  element(:fee_amount) { |b| b.iframe(id:"iframeportlet").text_field(id:"feeAmt_add_control").when_present(60)}
+  action(:add_fee) { |b| b.iframe(id:"iframeportlet").button(id:"addFee_add").when_present(60).click}
+  action(:proxy_patron_submit) { |b| b.iframe(id:"iframeportlet").button(id:"olePatronBillSubmit").when_present(60).click}
+  value(:proxy_patron_amount) { |b| b.iframe(id:"iframeportlet").span(id:"feeAmt_line0_control").when_present(60).text}
+
 end

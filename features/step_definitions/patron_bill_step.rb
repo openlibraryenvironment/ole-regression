@@ -5,7 +5,7 @@ end
 When(/^I give feetype and amount in patron bill$/) do
   @patronbill = create PatronObject , :patron_barcode => uniq_alphanums
   @patron_amount = "100"
-  @patronbill.create_patron_bill(@patron_amount)
+  @patronbill.create_patron_bill(@patron_amount,@patronbill.patron_barcode)
 end
 
 Then(/^the patron bill should create with current date$/) do

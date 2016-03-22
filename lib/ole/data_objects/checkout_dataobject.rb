@@ -83,6 +83,14 @@ class CheckoutDataobject < DataFactory
 
   end
 
+  def check_proxy_patron
+    on ItemCheckoutAndCkeckin do |page|
+      page.select_patron
+      page.button_proceed
+      sleep(5)
+    end
+  end
+
   def create_item
     visit ItemCheckoutAndCkeckin do |page|
       page.deliver

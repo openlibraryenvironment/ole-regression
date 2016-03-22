@@ -82,5 +82,8 @@ class ItemCheckoutAndCkeckin < PageFactory
 
   #ole_8452
   value(:checkin_date) { |b| b.iframe(id:"iframeportlet").span(id:"checkedInItem-CheckInDate_line0_control").when_present(60).text}
-
+  value(:message) { |b| b.iframe(id:"iframeportlet").form(id:"kualiLightboxForm").div(id:"ptrnValidationErrorMessageDialog").div(id:"errorMsgSection").div(id:"errorMessageForPatronValidation").span.text}
+  action(:select_patron) { |b| b.iframe(id:"iframeportlet").input(id:"proxyForPatronList-HorizontalBoxSection_line0_control").when_present(60).click}
+  action(:button_proceed) { |b| b.iframe(id:"iframeportlet").button(id:"btnProceed").when_present(60).click}
+  action(:do_not_loan_button) { |b| b.iframe(id:"iframeportlet").button(id:"donNotLoanButton").when_present(60).click}
 end

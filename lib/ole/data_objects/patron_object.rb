@@ -270,12 +270,12 @@ class PatronObject < DataFactory
     end
   end
 
-  def create_patron_bill patron_fee_amount
+  def create_patron_bill patron_fee_amount,patron_barcode
 
     visit PatronPage do |page|
       page.deliver
       page.patron
-      page.patron_barcode.set @patron_barcode
+      page.patron_barcode.set patron_barcode
       page.search_patron_barcode
       @patron_id = page.patronID
       puts "patron id ----> #@patron_id"
@@ -295,24 +295,31 @@ class PatronObject < DataFactory
     end
   end
 
+  def create_proxy_patron_bill patron_fee_amount,patron_barcode
+    visit PatronPage do |page|
+      page.deliver
+      page.patron
+      page.patron_barcode.set patron_barcode
+      page.search_patron_barcode
+      @patron_id = page.patronID
+      puts "patron id ----> #@patron_id"
+      page.createbill
+      page.windows[1].use
+      sleep(3)
+      $document_id = page.doc_number
+      puts $document_id
+      page.fee_type.select(@patron_feetype)
+      page.fee_amount.set patron_fee_amount
+      page.add_fee
+      sleep(10)
+      $fee_amount=page.proxy_patron_amount
+      page.proxy_patron_submit
+      sleep(10)
+      page.windows[1].close
+    end
+  end
 
-  # def update_barcode patron_barcode,new_patron_barcode
-  #   visit PatronPage do |page|
-  #     page.deliver
-  #     page.patron
-  #     page.patron_barcode.set patron_barcode
-  #     page.search_patron_barcode
-  #     page.patron_edit
-  #     sleep(3)
-  #     page.overview_col
-  #     page.update_barcode
-  #     page.update_reason_note.set new_patron_barcode
-  #     page.lost_conform_botton
-  #     sleep(3)
-  #     page.barcode.set
-  #     page.submit
-  #     sleep(10)
-  #   end
-  # end
+
+
 end
 
