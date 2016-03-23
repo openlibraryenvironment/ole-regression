@@ -1,7 +1,7 @@
 When(/^I create patron bill and another fee type and fee amount$/) do
   @createpatronbill = create PatronObject , :patron_barcode => uniq_alphanums
   @fee_amount = "100"
-  @createpatronbill.create_patron_bill(@fee_amount)
+  @createpatronbill.create_patron_bill(@fee_amount,@createpatronbill.patron_barcode)
 
   @editpatronbill = make Edit_patron_bill_dataobject , :patron_id => @createpatronbill.patron_id
   @editpatronbill.edit_patron_bill(@fee_amount)
